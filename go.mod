@@ -1,6 +1,6 @@
 module daml-escrow-commons
 
-go 1.26.5
+go 1.25.0
 
 require github.com/xeipuuv/gojsonschema v1.2.0
 
