@@ -1,4 +1,4 @@
-module daml-escrow-commons
+module github.com/vdatacloud/daml-escrow-commons
 
 go 1.25.0
 

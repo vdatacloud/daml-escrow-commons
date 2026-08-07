@@ -21,12 +21,19 @@ used by one repo today, it stays in that repo until a second consumer actually n
 
 ## Using this module
 
-From a consumer repo's `go.mod`, during local development:
+Module path: `github.com/vdatacloud/daml-escrow-commons` (matches the repo location so tagged versions are
+resolvable via `go get`, not just local `replace` — see `RELEASING.md`).
+
+During local development, from a consumer repo's `go.mod`:
 
 ```
-require daml-escrow-commons v0.0.0
-replace daml-escrow-commons => ../daml-escrow-commons
+require github.com/vdatacloud/daml-escrow-commons v0.0.0
+replace github.com/vdatacloud/daml-escrow-commons => ../daml-escrow-commons
 ```
+
+Once a tagged release exists, drop the `replace` line and pin the `require` to a real version
+(`go get github.com/vdatacloud/daml-escrow-commons@vX.Y.Z`) — see `RELEASING.md` for cutting one, including the
+private-repo module-fetch setup a consumer needs one time.
 
 ## Status
 
