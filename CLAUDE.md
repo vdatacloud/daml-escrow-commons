@@ -16,6 +16,8 @@ business logic, no T1/T2/T3 identity resolution. See `README.md` for the current
 - `go test ./...` — run all unit tests (no network/Docker dependencies; keep it that way — this module is a
   dependency of two other repos' test suites and must stay fast).
 - `go vet ./...` — static checks.
+- See `RELEASING.md` for cutting a tagged version — this module's path (`github.com/vdatacloud/daml-escrow-commons`)
+  matches its repo location so tagged releases are `go get`-resolvable, not just usable via local `replace`.
 
 ## Architecture
 
