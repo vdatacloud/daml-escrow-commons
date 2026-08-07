@@ -1,0 +1,14 @@
+# Go build/test artifacts
+*.test
+*.out
+coverage.*
+*.coverprofile
+profile.cov
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Editor/OS
+.DS_Store
+*.swp
