@@ -91,15 +91,21 @@ dependencies by design (see `CLAUDE.md`).
 
 ## Branch Protection Strategy
 
-**Current reality:** GitHub branch protection is not turned on for `main`, and
-cannot be today — the `vdatacloud` org is on GitHub's Free plan, and both the
-classic protection API and the rulesets API return `403: Upgrade to GitHub Pro
-or make this repository public to enable this feature` for a private repo on
-that plan (verified 2026-08-10 against `../daml-escrow`, same org). The rules
-above are enforced **only** by this document, the `github-ci` skill, and
-human/agent discipline — not by GitHub itself.
+**Current reality:** GitHub branch protection is not turned on for `main` yet,
+but — unlike `../daml-escrow`, `../daml-escrow-cms`, and
+`../daml-escrow-identity`, which stay private and are genuinely blocked by
+the `vdatacloud` org's Free plan (`403: Upgrade to GitHub Pro...`) — it
+**can** be turned on here. This repo went public 2026-08-10 (see README/
+CLAUDE.md: it's dependency-light with no domain logic, so nothing is lost by
+that), and classic branch protection is available on GitHub's Free plan for
+public repos. Verified: `gh api repos/vdatacloud/daml-escrow-commons/
+branches/main/protection` now returns `404: Branch not protected` (not
+enabled yet, but reachable) instead of the `403` the three private siblings
+get. The rules above are, for now, still enforced only by this document, the
+`github-ci` skill, and human/agent discipline — but turning on real
+enforcement here is a config change away, not a plan upgrade.
 
-**If the org plan changes**, apply:
+**To actually enable it**, apply:
 
 ```bash
 gh api repos/vdatacloud/daml-escrow-commons/branches/main/protection -X PUT --input - <<'EOF'

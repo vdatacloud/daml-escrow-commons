@@ -32,12 +32,17 @@ replace github.com/vdatacloud/daml-escrow-commons => ../daml-escrow-commons
 ```
 
 Once a tagged release exists, drop the `replace` line and pin the `require` to a real version
-(`go get github.com/vdatacloud/daml-escrow-commons@vX.Y.Z`) — see `RELEASING.md` for cutting one, including the
-private-repo module-fetch setup a consumer needs one time.
+(`go get github.com/vdatacloud/daml-escrow-commons@vX.Y.Z`) — see `RELEASING.md` for cutting one. This repo is
+public, so no auth/module-fetch setup is needed to consume a tagged version once one exists.
 
 ## Status
 
-Scaffolded 2026-08-07 with three packages, each with full unit test coverage (`go test ./...`). Not yet wired up
-as a dependency of `daml-escrow` or `daml-escrow-cms` — both repos currently carry their own equivalent code
-(`daml-escrow/internal/services/schema_service.go`, `internal/services/compliance.go`'s HMAC verification). See
-`../daml-escrow/plans/CMS_SEPARATION_PLAN.md` for the migration note.
+Scaffolded 2026-08-07 with three packages, each with full unit test coverage (`go test ./...`). As of 2026-08-10,
+real dependencies of two sibling repos: `daml-escrow-cms` (`schema`, validating drafted `metadata`) and
+`daml-escrow-identity` (`hmacsig`, deriving its `identity_token`) — both via the local-dev `replace` shown above.
+`daml-escrow` itself has not migrated its own `schema_service.go`/`compliance.go` HMAC verification onto this
+module yet — see `../daml-escrow/plans/CMS_SEPARATION_PLAN.md`'s "Shared utilities" section.
+
+Made public 2026-08-10 (it already fit the bar: dependency-light, no domain logic, no ledger client code, no T2/T3
+identity) — this also resolved a CI cross-repo-checkout problem in `daml-escrow-cms`/`daml-escrow-identity` for
+free, with no PAT or deploy key to manage.
