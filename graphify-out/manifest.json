@@ -1,0 +1,87 @@
+{
+  "go.mod": {
+    "mtime": 1786139855.9079752,
+    "ast_hash": "d6172ec0999b5f2271ae495646a6d448",
+    "semantic_hash": ""
+  },
+  "hmacsig/hmacsig.go": {
+    "mtime": 1786131250.4662607,
+    "ast_hash": "e02fd8d205e772a72427a6f0d56b1cf8",
+    "semantic_hash": ""
+  },
+  "hmacsig/hmacsig_test.go": {
+    "mtime": 1786131258.31061,
+    "ast_hash": "c3977e33e0dbdc2b86b2b9c920170325",
+    "semantic_hash": ""
+  },
+  "schema/schema.go": {
+    "mtime": 1786131014.6876743,
+    "ast_hash": "68cfebbeac76543e17c2682d20b4c53d",
+    "semantic_hash": ""
+  },
+  "schema/schema_test.go": {
+    "mtime": 1786131031.8499863,
+    "ast_hash": "e2863bbcf771989c35bad4efe64a46d4",
+    "semantic_hash": ""
+  },
+  "schema/testdata/widget.json": {
+    "mtime": 1786131022.8902476,
+    "ast_hash": "34b19b312c1868ce06af5aa24be51f02",
+    "semantic_hash": ""
+  },
+  "scripts/install-git-hooks.sh": {
+    "mtime": 1786377011.890519,
+    "ast_hash": "9256a63737de58f50289c1fc3f13994d",
+    "semantic_hash": ""
+  },
+  "validate/validate.go": {
+    "mtime": 1786131276.9105237,
+    "ast_hash": "7e451329f5910c59029dd634de823ad9",
+    "semantic_hash": ""
+  },
+  "validate/validate_test.go": {
+    "mtime": 1786131285.4858272,
+    "ast_hash": "63622dad7a0d852f002ca16ab7044c93",
+    "semantic_hash": ""
+  },
+  ".agents/skills/github-ci/SKILL.md": {
+    "mtime": 1786377004.344659,
+    "ast_hash": "f7854a30dfc2276f4232b3652d356779",
+    "semantic_hash": ""
+  },
+  ".claude/CLAUDE.md": {
+    "mtime": 1786377040.8444815,
+    "ast_hash": "e0ffb21b3f694458edd539bd996fa41c",
+    "semantic_hash": ""
+  },
+  ".claude/skills/commons-contribution/SKILL.md": {
+    "mtime": 1786131867.5811274,
+    "ast_hash": "8bb9740b09b5f6dfd3f064117a41b6ea",
+    "semantic_hash": ""
+  },
+  ".gemini/repo_rules.md": {
+    "mtime": 1786379032.6828856,
+    "ast_hash": "582f6e8f94c928222ebc49a2ed7104c3",
+    "semantic_hash": ""
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1786139855.906135,
+    "ast_hash": "b2f97420909e58638354fff6d07b5500",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1786377064.0768714,
+    "ast_hash": "f7475fdeef4d75eb9d0f4d0dfc6df710",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1786379087.4188812,
+    "ast_hash": "fcdcc7b022eef6849a84c59c61e7c2d0",
+    "semantic_hash": ""
+  },
+  "RELEASING.md": {
+    "mtime": 1786139855.907701,
+    "ast_hash": "6e66e4d4dcd5dd4aec0dc81c993ccc4e",
+    "semantic_hash": ""
+  }
+}

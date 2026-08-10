@@ -14,8 +14,9 @@ business logic, no T1/T2/T3 identity resolution. See `README.md` for the current
 
 - `go build ./...` — build all packages.
 - `go test ./...` — run all unit tests (no network/Docker dependencies; keep it that way — this module is a
-  dependency of two other repos' test suites and must stay fast).
+  dependency of other repos' test suites and must stay fast).
 - `go vet ./...` — static checks.
+- `make install-hooks` — installs the pre-commit (graphify) and pre-push (`make verify`) git hooks.
 - See `RELEASING.md` for cutting a tagged version — this module's path (`github.com/vdatacloud/daml-escrow-commons`)
   matches its repo location so tagged releases are `go get`-resolvable, not just usable via local `replace`.
 
@@ -33,7 +34,10 @@ that only needs `hmacsig` shouldn't have to pull in `schema`'s `gojsonschema` de
 ## Conventions carried over from `daml-escrow` / `daml-escrow-cms`
 
 - Git: conventional commit prefixes (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`), commits signed
-  off (`-s`)/GPG-signed, changes land via PR rather than direct pushes to `main`.
+  off (`-s`)/GPG-signed, changes land via PR rather than direct pushes to `main`. Full policy (branching,
+  required PR sections, review requirements, branch protection strategy) in `.gemini/repo_rules.md`; day-to-day
+  git/gh mechanics and CI failure triage in `.agents/skills/github-ci/SKILL.md`. `make install-hooks` installs a
+  pre-commit hook (`graphify update .`) and a pre-push hook (`make verify`).
 - No scattered config/env reads — this module takes configuration as constructor/function arguments from its
   caller, never reads its own env vars or files outside of what's explicitly passed in (e.g. `schema.LoadDirectory`
   takes a directory path argument, it does not default to a well-known path).
