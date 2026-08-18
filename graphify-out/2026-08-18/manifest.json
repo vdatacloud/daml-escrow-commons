@@ -30,7 +30,7 @@
     "semantic_hash": ""
   },
   "scripts/install-git-hooks.sh": {
-    "mtime": 1786379402.3076785,
+    "mtime": 1786377011.890519,
     "ast_hash": "9256a63737de58f50289c1fc3f13994d",
     "semantic_hash": ""
   },
@@ -45,12 +45,12 @@
     "semantic_hash": ""
   },
   ".agents/skills/github-ci/SKILL.md": {
-    "mtime": 1786379402.2998397,
+    "mtime": 1786377004.344659,
     "ast_hash": "f7854a30dfc2276f4232b3652d356779",
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1786379402.3001204,
+    "mtime": 1786377040.8444815,
     "ast_hash": "e0ffb21b3f694458edd539bd996fa41c",
     "semantic_hash": ""
   },
@@ -60,7 +60,7 @@
     "semantic_hash": ""
   },
   ".gemini/repo_rules.md": {
-    "mtime": 1786379402.300548,
+    "mtime": 1786379032.6828856,
     "ast_hash": "582f6e8f94c928222ebc49a2ed7104c3",
     "semantic_hash": ""
   },
@@ -70,28 +70,18 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1786379402.3007958,
+    "mtime": 1786377064.0768714,
     "ast_hash": "f7475fdeef4d75eb9d0f4d0dfc6df710",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1787081206.103842,
-    "ast_hash": "f55c7cbf98c88ba3db38bdb217f4408a",
+    "mtime": 1786379087.4188812,
+    "ast_hash": "fcdcc7b022eef6849a84c59c61e7c2d0",
     "semantic_hash": ""
   },
   "RELEASING.md": {
     "mtime": 1786139855.907701,
     "ast_hash": "6e66e4d4dcd5dd4aec0dc81c993ccc4e",
-    "semantic_hash": ""
-  },
-  "metering/metering.go": {
-    "mtime": 1787081166.3533776,
-    "ast_hash": "f8752f86e98d15ec4ce853e0a1c40cbc",
-    "semantic_hash": ""
-  },
-  "metering/metering_test.go": {
-    "mtime": 1787081187.1849177,
-    "ast_hash": "e1907b7c767f22520603984750b76b9f",
     "semantic_hash": ""
   }
 }

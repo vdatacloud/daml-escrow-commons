@@ -11,6 +11,7 @@ once either consumer repo needs stability across independent releases).
 | `schema` | Loads a directory of JSON Schema files, validates arbitrary JSON payloads against them by type name. | Both repos validate against the *same* schema authority (`daml-escrow/architecture/schemas/*.json`) — daml-escrow for `EscrowMetadata`, daml-escrow-cms for structurally-extracted contract terms before draft creation. One implementation, one behavior. |
 | `hmacsig` | HMAC-SHA256 sign/verify with constant-time comparison. | Every webhook-style integration on the platform needs the same primitive — daml-escrow's oracle/fiat-settlement webhooks today, daml-escrow-cms's import/OCR callbacks and any third-party-CLM substitution point tomorrow. |
 | `validate` | Small composable field-level checks (`RequireNonEmpty`, `RequirePositive`, `RequireOneOf`, `RequireValidEmail`) plus an `Errors` aggregator, for the `.Validate() error` DTO convention both repos use. | The primitives are identical everywhere; only the domain-specific composition (which fields, which rules) differs per DTO and stays local. |
+| `metering` | `LedgerCommandEvent`/`SettlementEvent` — price-free usage-fact shapes for `daml-escrow-platform`'s rating/billing layer (Phase 34), plus their `Validate()`. | Both daml-escrow and daml-escrow-cms submit ledger commands and must emit identically-shaped usage events, or `daml-escrow-platform`'s per-tenant aggregation needs repo-specific special-casing. One shape, one behavior, same as `schema`'s rationale. |
 
 ## What's NOT here, and won't be
 
