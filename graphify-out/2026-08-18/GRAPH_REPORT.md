@@ -1,48 +1,46 @@
-# Graph Report - daml-escrow-commons  (2026-08-18)
+# Graph Report - daml-escrow-commons  (2026-08-10)
 
 ## Corpus Check
-- 18 files · ~6,850 words
+- 16 files · ~5,936 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 129 nodes · 151 edges · 16 communities (12 shown, 4 thin omitted)
-- Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.8)
+- 117 nodes · 133 edges · 14 communities (11 shown, 3 thin omitted)
+- Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `28a0427a`
+- Built from commit: `f5317de6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - GitHub & CI Workflow Skill
-- RequireNonEmpty
+- validate_test.go
 - widget.json
 - Repository Guardrails
 - Verify
-- LoadDirectory
+- Registry
 - Releasing
-- SettlementEvent
+- LoadDirectory
 - CLAUDE.md
 - /commons-contribution
 - daml-escrow-commons
 - .claude/CLAUDE.md
 - install-git-hooks.sh
 - github.com/vdatacloud/daml-escrow-commons
-- metering_test.go
-- Errors
 
 ## God Nodes (most connected - your core abstractions)
 1. `GitHub & CI Workflow Skill` - 12 edges
 2. `Repository Guardrails` - 8 edges
 3. `LoadDirectory()` - 7 edges
 4. `Releasing` - 7 edges
-5. `RequireNonEmpty()` - 6 edges
-6. `Verify()` - 5 edges
-7. `SettlementEvent` - 5 edges
-8. `Registry` - 5 edges
-9. `/commons-contribution` - 5 edges
-10. `daml-escrow-commons` - 5 edges
+5. `Verify()` - 5 edges
+6. `Registry` - 5 edges
+7. `/commons-contribution` - 5 edges
+8. `daml-escrow-commons` - 5 edges
+9. `Sign()` - 4 edges
+10. `TestSignAndVerify_RoundTrip()` - 4 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `TestSignAndVerify_RoundTrip()` --calls--> `Sign()`  [INFERRED]
@@ -59,15 +57,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (16 total, 4 thin omitted)
+## Communities (14 total, 3 thin omitted)
 
 ### Community 0 - "GitHub & CI Workflow Skill"
 Cohesion: 0.11
 Nodes (17): 10. Useful Reference Commands, 11. References, 1. Pre-Commit Local Verification (MANDATORY — do this before every commit), 2. Branching Rules, 3. Commit Standards, 4. Staging & Pushing Changes, 5. Pull Request Creation, 6. CI Pipeline Overview (+9 more)
 
-### Community 1 - "RequireNonEmpty"
-Cohesion: 0.29
-Nodes (11): RequireNonEmpty(), RequireOneOf(), RequirePositive(), RequireValidEmail(), T, TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty(), TestRequireNonEmpty() (+3 more)
+### Community 1 - "validate_test.go"
+Cohesion: 0.20
+Nodes (12): Errors, RequireNonEmpty(), RequireOneOf(), RequirePositive(), RequireValidEmail(), T, TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty() (+4 more)
 
 ### Community 2 - "widget.json"
 Cohesion: 0.14
@@ -81,17 +79,17 @@ Nodes (8): Branch Protection Strategy, Branching Strategy, CI Requirements, Code
 Cohesion: 0.47
 Nodes (7): Sign(), T, TestSignAndVerify_RoundTrip(), TestVerify_MalformedHexFails(), TestVerify_TamperedMessageFails(), TestVerify_WrongSecretFails(), Verify()
 
-### Community 5 - "LoadDirectory"
-Cohesion: 0.18
-Nodes (11): Schema, ErrUnknownType, Registry, LoadDirectory(), T, TestLoadDirectory_CompilesSchemas(), TestLoadDirectory_MissingDirectory(), TestValidate_InvalidPayloadReportsFailures() (+3 more)
+### Community 5 - "Registry"
+Cohesion: 0.22
+Nodes (4): Schema, ErrUnknownType, Registry, ValidationError
 
 ### Community 6 - "Releasing"
 Cohesion: 0.25
 Nodes (7): 1. Prerequisites (one-time, per machine that will `go get` this module), 2. Decide the version bump, 3. Tag and push, 4. Publish the GitHub release, 5. Update consumers, Future automation, Releasing
 
-### Community 7 - "SettlementEvent"
-Cohesion: 0.43
-Nodes (5): ChargeBearer, LedgerCommandEvent, Rail, SettlementEvent, Time
+### Community 7 - "LoadDirectory"
+Cohesion: 0.54
+Nodes (7): LoadDirectory(), T, TestLoadDirectory_CompilesSchemas(), TestLoadDirectory_MissingDirectory(), TestValidate_InvalidPayloadReportsFailures(), TestValidate_UnknownType(), TestValidate_ValidPayload()
 
 ### Community 8 - "CLAUDE.md"
 Cohesion: 0.29
@@ -105,26 +103,18 @@ Nodes (5): /commons-contribution, How to add something, Removing something, When
 Cohesion: 0.33
 Nodes (5): daml-escrow-commons, Status, Using this module, What's here, What's NOT here, and won't be
 
-### Community 14 - "metering_test.go"
-Cohesion: 0.67
-Nodes (3): T, TestLedgerCommandEvent_Validate(), TestSettlementEvent_Validate()
-
 ## Knowledge Gaps
 - **53 isolated node(s):** `github.com/vdatacloud/daml-escrow-commons`, `$schema`, `title`, `type`, `type` (+48 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `RequireNonEmpty()` connect `RequireNonEmpty` to `SettlementEvent`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `SettlementEvent` connect `SettlementEvent` to `RequireNonEmpty`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **Why does `LoadDirectory()` connect `LoadDirectory` to `Registry`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `LoadDirectory()` (e.g. with `TestLoadDirectory_CompilesSchemas()` and `TestLoadDirectory_MissingDirectory()`) actually correct?**
   _`LoadDirectory()` has 5 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 5 inferred relationships involving `RequireNonEmpty()` (e.g. with `.Validate()` and `.Validate()`) actually correct?**
-  _`RequireNonEmpty()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `github.com/vdatacloud/daml-escrow-commons`, `$schema`, `title` to the rest of the system?**
   _53 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `GitHub & CI Workflow Skill` be split into smaller, more focused modules?**
