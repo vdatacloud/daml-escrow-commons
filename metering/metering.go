@@ -41,6 +41,14 @@ const (
 // the infra-cost side of metering. One event per ledger command, emitted at
 // the point of submission regardless of outcome (a rejected command still
 // consumed synchronizer traffic).
+// OccurredAt on both event types below must be set with time.Now().UTC() (or
+// an equivalent explicit UTC conversion), not a bare time.Now() -- the
+// receiving daml-escrow-platform database stores it in a TIMESTAMPTZ column
+// precisely so multiple independent emitters (daml-escrow, and
+// daml-escrow-cms once it gains its own ledger-submission point) stay
+// chronologically comparable regardless of which timezone each process
+// runs in. The column type alone doesn't enforce this -- every emitter must
+// standardize on UTC at the call site.
 type LedgerCommandEvent struct {
 	TenantID        string    `json:"tenantId"`
 	EscrowID        string    `json:"escrowId"`
