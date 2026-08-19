@@ -75,7 +75,7 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1787084548.1852734,
+    "mtime": 1787081206.103842,
     "ast_hash": "f55c7cbf98c88ba3db38bdb217f4408a",
     "semantic_hash": ""
   },
@@ -85,12 +85,12 @@
     "semantic_hash": ""
   },
   "metering/metering.go": {
-    "mtime": 1787172688.5594144,
-    "ast_hash": "f0849f2dc064b54e9e2869d32431d0f4",
+    "mtime": 1787081166.3533776,
+    "ast_hash": "f8752f86e98d15ec4ce853e0a1c40cbc",
     "semantic_hash": ""
   },
   "metering/metering_test.go": {
-    "mtime": 1787084548.1892216,
+    "mtime": 1787081187.1849177,
     "ast_hash": "e1907b7c767f22520603984750b76b9f",
     "semantic_hash": ""
   }
