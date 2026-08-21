@@ -7,7 +7,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **daml-escrow-commons** is a shared Go module for utilities used by more than one repo in this platform —
 currently `../daml-escrow` (ledger/settlement) and `../daml-escrow-cms` (contract authoring/CLM). It holds tools,
 utilities, and validators, deliberately excluding anything domain-specific: no ledger client code, no escrow
-business logic, no T1/T2/T3 identity resolution. See `README.md` for the current package list and rationale, and
+business logic, no identity *resolution/reconciliation* logic (deciding who a party is, merging T1/T2/T3 records,
+JIT provisioning). It does hold `identityclient`, a pure T1 HTTP transport client (no domain logic, no T2/T3
+assumptions) — the wire-level "call daml-escrow-identity over HTTP" plumbing is a utility like `hmacsig`, not a
+business decision; the actual resolution logic that *uses* it stays in each consumer's own `IdentityService`. See
+`README.md` for the current package list and rationale, and
 `.claude/skills/commons-contribution/SKILL.md` before adding anything new here.
 
 ## Commands

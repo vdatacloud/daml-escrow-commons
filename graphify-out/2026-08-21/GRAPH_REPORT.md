@@ -1,16 +1,16 @@
-# Graph Report - daml-escrow-commons  (2026-08-21)
+# Graph Report - daml-escrow-commons  (2026-08-19)
 
 ## Corpus Check
-- 20 files · ~8,224 words
+- 18 files · ~6,934 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 149 nodes · 196 edges · 17 communities (14 shown, 3 thin omitted)
-- Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 31 edges (avg confidence: 0.8)
+- 129 nodes · 151 edges · 16 communities (12 shown, 4 thin omitted)
+- Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fef5b3ae`
+- Built from commit: `f732a632`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,45 +30,44 @@
 - install-git-hooks.sh
 - github.com/vdatacloud/daml-escrow-commons
 - metering_test.go
-- Client
-- New
+- Errors
 
 ## God Nodes (most connected - your core abstractions)
 1. `GitHub & CI Workflow Skill` - 12 edges
-2. `New()` - 10 edges
-3. `Client` - 8 edges
-4. `Repository Guardrails` - 8 edges
-5. `LoadDirectory()` - 7 edges
-6. `Releasing` - 7 edges
-7. `Verify()` - 6 edges
-8. `Identity` - 6 edges
-9. `RequireNonEmpty()` - 6 edges
-10. `Sign()` - 5 edges
+2. `Repository Guardrails` - 8 edges
+3. `LoadDirectory()` - 7 edges
+4. `Releasing` - 7 edges
+5. `RequireNonEmpty()` - 6 edges
+6. `Verify()` - 5 edges
+7. `SettlementEvent` - 5 edges
+8. `Registry` - 5 edges
+9. `/commons-contribution` - 5 edges
+10. `daml-escrow-commons` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Sign()` --calls--> `New()`  [INFERRED]
-  hmacsig/hmacsig.go → identityclient/identityclient.go
-- `Verify()` --calls--> `New()`  [INFERRED]
-  hmacsig/hmacsig.go → identityclient/identityclient.go
 - `TestSignAndVerify_RoundTrip()` --calls--> `Sign()`  [INFERRED]
   hmacsig/hmacsig_test.go → hmacsig/hmacsig.go
 - `TestVerify_TamperedMessageFails()` --calls--> `Sign()`  [INFERRED]
   hmacsig/hmacsig_test.go → hmacsig/hmacsig.go
 - `TestVerify_WrongSecretFails()` --calls--> `Sign()`  [INFERRED]
   hmacsig/hmacsig_test.go → hmacsig/hmacsig.go
+- `TestSignAndVerify_RoundTrip()` --calls--> `Verify()`  [INFERRED]
+  hmacsig/hmacsig_test.go → hmacsig/hmacsig.go
+- `TestVerify_MalformedHexFails()` --calls--> `Verify()`  [INFERRED]
+  hmacsig/hmacsig_test.go → hmacsig/hmacsig.go
 
 ## Import Cycles
 - None detected.
 
-## Communities (17 total, 3 thin omitted)
+## Communities (16 total, 4 thin omitted)
 
 ### Community 0 - "GitHub & CI Workflow Skill"
 Cohesion: 0.11
 Nodes (17): 10. Useful Reference Commands, 11. References, 1. Pre-Commit Local Verification (MANDATORY — do this before every commit), 2. Branching Rules, 3. Commit Standards, 4. Staging & Pushing Changes, 5. Pull Request Creation, 6. CI Pipeline Overview (+9 more)
 
 ### Community 1 - "RequireNonEmpty"
-Cohesion: 0.20
-Nodes (12): Errors, RequireNonEmpty(), RequireOneOf(), RequirePositive(), RequireValidEmail(), T, TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty() (+4 more)
+Cohesion: 0.29
+Nodes (11): RequireNonEmpty(), RequireOneOf(), RequirePositive(), RequireValidEmail(), T, TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty(), TestRequireNonEmpty() (+3 more)
 
 ### Community 2 - "widget.json"
 Cohesion: 0.14
@@ -110,30 +109,22 @@ Nodes (5): daml-escrow-commons, Status, Using this module, What's here, What's N
 Cohesion: 0.67
 Nodes (3): T, TestLedgerCommandEvent_Validate(), TestSettlementEvent_Validate()
 
-### Community 15 - "Client"
-Cohesion: 0.42
-Nodes (4): Context, Client, Identity, Request
-
-### Community 16 - "New"
-Cohesion: 0.50
-Nodes (8): New(), T, TestClient_GetByEmail_ServerError(), TestClient_GetByOktaSub_Found(), TestClient_GetByToken_NotFound(), TestClient_ManagesIdentity(), TestClient_ManagesIdentity_ServerError(), TestClient_Upsert_Success()
-
 ## Knowledge Gaps
 - **53 isolated node(s):** `github.com/vdatacloud/daml-escrow-commons`, `$schema`, `title`, `type`, `type` (+48 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `New()` connect `New` to `Verify`, `Client`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `Client` connect `Client` to `New`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Are the 8 inferred relationships involving `New()` (e.g. with `Sign()` and `Verify()`) actually correct?**
-  _`New()` has 8 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `RequireNonEmpty()` connect `RequireNonEmpty` to `SettlementEvent`?**
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **Why does `SettlementEvent` connect `SettlementEvent` to `RequireNonEmpty`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `LoadDirectory()` (e.g. with `TestLoadDirectory_CompilesSchemas()` and `TestLoadDirectory_MissingDirectory()`) actually correct?**
   _`LoadDirectory()` has 5 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 5 inferred relationships involving `RequireNonEmpty()` (e.g. with `.Validate()` and `.Validate()`) actually correct?**
+  _`RequireNonEmpty()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `github.com/vdatacloud/daml-escrow-commons`, `$schema`, `title` to the rest of the system?**
   _53 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `GitHub & CI Workflow Skill` be split into smaller, more focused modules?**
