@@ -70,13 +70,13 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1787350843.6373959,
-    "ast_hash": "e483a61cb186c9ed8130927ea2c41fbe",
+    "mtime": 1786379402.3007958,
+    "ast_hash": "f7475fdeef4d75eb9d0f4d0dfc6df710",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1787350856.117532,
-    "ast_hash": "e831fde48bbafdf8baa4ee82bc3a2348",
+    "mtime": 1787084548.1852734,
+    "ast_hash": "f55c7cbf98c88ba3db38bdb217f4408a",
     "semantic_hash": ""
   },
   "RELEASING.md": {
@@ -85,23 +85,13 @@
     "semantic_hash": ""
   },
   "metering/metering.go": {
-    "mtime": 1787173930.8541636,
+    "mtime": 1787172688.5594144,
     "ast_hash": "f0849f2dc064b54e9e2869d32431d0f4",
     "semantic_hash": ""
   },
   "metering/metering_test.go": {
     "mtime": 1787084548.1892216,
     "ast_hash": "e1907b7c767f22520603984750b76b9f",
-    "semantic_hash": ""
-  },
-  "identityclient/identityclient.go": {
-    "mtime": 1787345721.3660457,
-    "ast_hash": "4a2d74a4bcecdf1d3e3efe5a5f0707d8",
-    "semantic_hash": ""
-  },
-  "identityclient/identityclient_test.go": {
-    "mtime": 1787345735.635243,
-    "ast_hash": "93d6e193fb1ed47b202e2137bd118a2a",
     "semantic_hash": ""
   }
 }
