@@ -1,0 +1,48 @@
+name: Update Graphify Memory Map
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-graphifyy
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Graphify
+        run: |
+          python -m pip install --upgrade pip
+          pip install graphifyy
+
+      - name: Generate Codebase Graph
+        run: |
+          echo "🤖 Building structural memory map..."
+          graphify update .
+
+      - name: Commit and Push Updated Graph
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: automated graphify memory map update [skip ci]"
+          file_pattern: 'graphify-out/*'
+          branch: main
