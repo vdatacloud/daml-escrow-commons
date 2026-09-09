@@ -1,0 +1,4 @@
+# .claudeignore
+graphify-out/
+.graphify/
+graph.json
