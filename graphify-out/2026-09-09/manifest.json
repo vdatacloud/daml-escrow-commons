@@ -1,133 +1,111 @@
 {
   "go.mod": {
-    "mtime": 1788956930.806763,
-    "seen": 1788956941.6765132,
+    "mtime": 1786139855.9079752,
     "ast_hash": "d6172ec0999b5f2271ae495646a6d448",
     "semantic_hash": ""
   },
   "hmacsig/hmacsig.go": {
-    "mtime": 1788956930.8093145,
-    "seen": 1788956941.6765156,
+    "mtime": 1786131250.4662607,
     "ast_hash": "e02fd8d205e772a72427a6f0d56b1cf8",
     "semantic_hash": ""
   },
   "hmacsig/hmacsig_test.go": {
-    "mtime": 1788956930.8098447,
-    "seen": 1788956941.6765168,
+    "mtime": 1786131258.31061,
     "ast_hash": "c3977e33e0dbdc2b86b2b9c920170325",
     "semantic_hash": ""
   },
   "schema/schema.go": {
-    "mtime": 1788956930.8100355,
-    "seen": 1788956941.676521,
+    "mtime": 1786131014.6876743,
     "ast_hash": "68cfebbeac76543e17c2682d20b4c53d",
     "semantic_hash": ""
   },
   "schema/schema_test.go": {
-    "mtime": 1788956930.8101218,
-    "seen": 1788956941.6765218,
+    "mtime": 1786131031.8499863,
     "ast_hash": "e2863bbcf771989c35bad4efe64a46d4",
     "semantic_hash": ""
   },
   "schema/testdata/widget.json": {
-    "mtime": 1788956930.8101218,
-    "seen": 1788956941.6765225,
+    "mtime": 1786131022.8902476,
     "ast_hash": "34b19b312c1868ce06af5aa24be51f02",
     "semantic_hash": ""
   },
   "scripts/install-git-hooks.sh": {
-    "mtime": 1788956930.8101218,
-    "seen": 1788956941.6765232,
+    "mtime": 1786379402.3076785,
     "ast_hash": "9256a63737de58f50289c1fc3f13994d",
     "semantic_hash": ""
   },
   "validate/validate.go": {
-    "mtime": 1788956930.8101218,
-    "seen": 1788956941.6765244,
+    "mtime": 1786131276.9105237,
     "ast_hash": "7e451329f5910c59029dd634de823ad9",
     "semantic_hash": ""
   },
   "validate/validate_test.go": {
-    "mtime": 1788956930.8102963,
-    "seen": 1788956941.676525,
+    "mtime": 1786131285.4858272,
     "ast_hash": "63622dad7a0d852f002ca16ab7044c93",
     "semantic_hash": ""
   },
   ".agents/skills/github-ci/SKILL.md": {
-    "mtime": 1788956930.8062685,
-    "seen": 1788956941.6765258,
+    "mtime": 1786379402.2998397,
     "ast_hash": "f7854a30dfc2276f4232b3652d356779",
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1788956930.8062685,
-    "seen": 1788956941.6765265,
+    "mtime": 1786379402.3001204,
     "ast_hash": "e0ffb21b3f694458edd539bd996fa41c",
     "semantic_hash": ""
   },
   ".claude/skills/commons-contribution/SKILL.md": {
-    "mtime": 1788956930.8064878,
-    "seen": 1788956941.6765275,
+    "mtime": 1786131867.5811274,
     "ast_hash": "8bb9740b09b5f6dfd3f064117a41b6ea",
     "semantic_hash": ""
   },
   ".gemini/repo_rules.md": {
-    "mtime": 1788956930.8064878,
-    "seen": 1788956941.6765287,
+    "mtime": 1786379402.300548,
     "ast_hash": "582f6e8f94c928222ebc49a2ed7104c3",
     "semantic_hash": ""
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1788956930.8067167,
-    "seen": 1788956941.6765294,
+    "mtime": 1786139855.906135,
     "ast_hash": "b2f97420909e58638354fff6d07b5500",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1788956930.806763,
-    "seen": 1788956941.6765306,
+    "mtime": 1787355505.7744105,
     "ast_hash": "e483a61cb186c9ed8130927ea2c41fbe",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1788956930.806763,
-    "seen": 1788956941.6765318,
+    "mtime": 1787355505.774769,
     "ast_hash": "e831fde48bbafdf8baa4ee82bc3a2348",
     "semantic_hash": ""
   },
   "RELEASING.md": {
-    "mtime": 1788956930.806763,
-    "seen": 1788956941.6765325,
+    "mtime": 1786139855.907701,
     "ast_hash": "6e66e4d4dcd5dd4aec0dc81c993ccc4e",
     "semantic_hash": ""
   },
   "metering/metering.go": {
-    "mtime": 1788956930.809937,
-    "seen": 1788956941.6765194,
+    "mtime": 1787173930.8541636,
     "ast_hash": "f0849f2dc064b54e9e2869d32431d0f4",
     "semantic_hash": ""
   },
   "metering/metering_test.go": {
-    "mtime": 1788956930.8100355,
-    "seen": 1788956941.6765199,
+    "mtime": 1787084548.1892216,
     "ast_hash": "e1907b7c767f22520603984750b76b9f",
     "semantic_hash": ""
   },
   "identityclient/identityclient.go": {
-    "mtime": 1788956930.8098447,
-    "seen": 1788956941.676518,
+    "mtime": 1787355505.7784142,
     "ast_hash": "4a2d74a4bcecdf1d3e3efe5a5f0707d8",
     "semantic_hash": ""
   },
   "identityclient/identityclient_test.go": {
-    "mtime": 1788956930.809937,
-    "seen": 1788956941.6765187,
+    "mtime": 1787355505.778571,
     "ast_hash": "93d6e193fb1ed47b202e2137bd118a2a",
     "semantic_hash": ""
   },
   ".github/workflows/update-graph.yml": {
-    "mtime": 1788956930.806763,
-    "seen": 1788956941.67653,
+    "mtime": 1788899872.939878,
     "ast_hash": "84241b5228691002e1a7a28065d88f94",
     "semantic_hash": ""
   }
