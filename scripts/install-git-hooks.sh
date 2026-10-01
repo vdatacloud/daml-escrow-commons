@@ -53,11 +53,16 @@ PRE_COMMIT_HOOK="$HOOKS_DIR/pre-commit"
 
 echo "Installing git pre-commit hook..."
 
+# Regenerates graphify-out/ locally for this checkout's own queries, but
+# never stages it: .github/workflows/update-graph.yml regenerates and
+# commits it on main after merge. Staging it here put graphify-out/ churn in
+# every PR, which then conflicted with that bot's commits (same convention
+# as daml-escrow's hook). CI rejects PRs that touch graphify-out/.
 cat << 'EOF' > "$PRE_COMMIT_HOOK"
 #!/bin/sh
-# Auto-update graphify database on commit
-graphify update .
-git add graphify-out/
+echo "[pre-commit] Updating local Graphify memory map (not staged)..."
+graphify update . || { echo "Graphify update failed. Aborting commit."; exit 1; }
+exit 0
 EOF
 
 chmod +x "$PRE_COMMIT_HOOK"
