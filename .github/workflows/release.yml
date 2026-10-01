@@ -14,8 +14,12 @@ on:
 permissions:
   contents: write
 
+# Shared with update-graph.yml: both push to this repo on every merge to
+# main (the release tag, the graphify commit), and GitHub can reject one of
+# two concurrent pushes ("remote rejected ... Internal Server Error" --
+# daml-escrow-commons, merge of #13). Serialized, they never overlap.
 concurrency:
-  group: release
+  group: main-push
   cancel-in-progress: false
 
 jobs:

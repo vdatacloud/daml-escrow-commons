@@ -8,6 +8,12 @@ on:
 permissions:
   contents: write
 
+# Shared with release.yml so the graphify commit and the release tag are
+# never pushed at the same moment (see the comment there).
+concurrency:
+  group: main-push
+  cancel-in-progress: false
+
 jobs:
   build-graph:
     runs-on: ubuntu-latest
