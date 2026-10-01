@@ -12,6 +12,7 @@
 package metering
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/vdatacloud/daml-escrow-commons/validate"
@@ -83,7 +84,31 @@ type SettlementEvent struct {
 	Rail         Rail         `json:"rail"`
 	ChargeBearer ChargeBearer `json:"chargeBearer"`
 	OccurredAt   time.Time    `json:"occurredAt"`
+
+	// NetworkFee* (optional, all-or-nothing) record the on-chain network
+	// (gas) fee the settlement's transfer incurred, exactly as the custody
+	// provider reported it -- a raw fact, never converted or priced here
+	// (daml-escrow PLAN.md Phase 67: per-tenant gas attribution).
+	// NetworkFeeBaseUnits is a non-negative integer in the fee asset's
+	// smallest unit (e.g. wei) as a decimal string, since such amounts
+	// overflow float64 precision. NetworkFeeAsset is that asset's ticker
+	// (e.g. "sepeth"). NetworkFeePaidFrom says whose funds actually paid
+	// it -- the sending wallet's own native balance, or the custody
+	// provider's enterprise Gas Tank (a pooled platform cost to recover).
+	// Absent on fiat-rail events and on stablecoin events whose provider
+	// reports no fee.
+	NetworkFeeBaseUnits string          `json:"networkFeeBaseUnits,omitempty"`
+	NetworkFeeAsset     string          `json:"networkFeeAsset,omitempty"`
+	NetworkFeePaidFrom  NetworkFeePayer `json:"networkFeePaidFrom,omitempty"`
 }
+
+// NetworkFeePayer identifies whose funds paid a settlement's network fee.
+type NetworkFeePayer string
+
+const (
+	NetworkFeePaidBySenderWallet NetworkFeePayer = "SENDER_WALLET"
+	NetworkFeePaidByGasTank      NetworkFeePayer = "GAS_TANK"
+)
 
 // Validate checks SettlementEvent's required fields.
 func (e SettlementEvent) Validate() error {
@@ -96,6 +121,26 @@ func (e SettlementEvent) Validate() error {
 	errs.Add(validate.RequireOneOf("chargeBearer", string(e.ChargeBearer), string(ChargeBearerOur), string(ChargeBearerShared), string(ChargeBearerBen)))
 	if e.OccurredAt.IsZero() {
 		errs.Add(validate.RequireNonEmpty("occurredAt", ""))
+	}
+	errs.Add(e.validateNetworkFee())
+	return errs.ErrIfAny()
+}
+
+// validateNetworkFee: the NetworkFee* fields are all set or all empty, and
+// when set the amount is a non-negative base-10 integer string.
+func (e SettlementEvent) validateNetworkFee() error {
+	if e.NetworkFeeBaseUnits == "" && e.NetworkFeeAsset == "" && e.NetworkFeePaidFrom == "" {
+		return nil
+	}
+	var errs validate.Errors
+	errs.Add(validate.RequireNonEmpty("networkFeeBaseUnits", e.NetworkFeeBaseUnits))
+	errs.Add(validate.RequireNonEmpty("networkFeeAsset", e.NetworkFeeAsset))
+	errs.Add(validate.RequireOneOf("networkFeePaidFrom", string(e.NetworkFeePaidFrom), string(NetworkFeePaidBySenderWallet), string(NetworkFeePaidByGasTank)))
+	for _, c := range e.NetworkFeeBaseUnits {
+		if c < '0' || c > '9' {
+			errs.Add(fmt.Errorf("networkFeeBaseUnits must be a non-negative integer string, got %q", e.NetworkFeeBaseUnits))
+			break
+		}
 	}
 	return errs.ErrIfAny()
 }

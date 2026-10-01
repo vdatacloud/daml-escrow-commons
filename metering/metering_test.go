@@ -62,6 +62,12 @@ func TestSettlementEvent_Validate(t *testing.T) {
 		{"invalid rail", SettlementEvent{TenantID: "t", EscrowID: "e", Amount: 1, Currency: "USD", Rail: "crypto", ChargeBearer: ChargeBearerOur, OccurredAt: time.Now()}},
 		{"invalid chargeBearer", SettlementEvent{TenantID: "t", EscrowID: "e", Amount: 1, Currency: "USD", Rail: RailFiat, ChargeBearer: "XXX", OccurredAt: time.Now()}},
 		{"zero occurredAt", SettlementEvent{TenantID: "t", EscrowID: "e", Amount: 1, Currency: "USD", Rail: RailFiat, ChargeBearer: ChargeBearerOur}},
+		{"network fee without asset", withFee(valid, "21000000000000", "", NetworkFeePaidByGasTank)},
+		{"network fee without payer", withFee(valid, "21000000000000", "sepeth", "")},
+		{"network fee bad payer", withFee(valid, "21000000000000", "sepeth", "BANK")},
+		{"network fee not an integer", withFee(valid, "0.5", "sepeth", NetworkFeePaidBySenderWallet)},
+		{"network fee negative", withFee(valid, "-1", "sepeth", NetworkFeePaidBySenderWallet)},
+		{"payer without amount", withFee(valid, "", "sepeth", NetworkFeePaidByGasTank)},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
@@ -69,5 +75,26 @@ func TestSettlementEvent_Validate(t *testing.T) {
 				t.Fatalf("expected validation error for %s", tc.name)
 			}
 		})
+	}
+}
+
+func withFee(e SettlementEvent, baseUnits, asset string, payer NetworkFeePayer) SettlementEvent {
+	e.NetworkFeeBaseUnits, e.NetworkFeeAsset, e.NetworkFeePaidFrom = baseUnits, asset, payer
+	return e
+}
+
+// The network-fee fields are optional (all-or-nothing) and carry a raw
+// base-unit integer string that can exceed float64/int64 range.
+func TestSettlementEvent_NetworkFee(t *testing.T) {
+	base := SettlementEvent{TenantID: "t", EscrowID: "e", Amount: 1, Currency: "USD", Rail: RailStablecoin, ChargeBearer: ChargeBearerShared, OccurredAt: time.Now()}
+	for name, e := range map[string]SettlementEvent{
+		"no fee":                   base,
+		"gas tank paid":            withFee(base, "21000000000000", "sepeth", NetworkFeePaidByGasTank),
+		"sender wallet paid":       withFee(base, "0", "tarbeth", NetworkFeePaidBySenderWallet),
+		"beyond int64 (raw units)": withFee(base, "123456789012345678901234567890", "eth", NetworkFeePaidByGasTank),
+	} {
+		if err := e.Validate(); err != nil {
+			t.Errorf("%s: expected valid, got %v", name, err)
+		}
 	}
 }
