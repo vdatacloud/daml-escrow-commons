@@ -1,0 +1,65 @@
+name: Release
+
+# Auto-release on merge to main: computes the next semver tag from the
+# Conventional Commits since the last v* tag (scripts/next-version.sh, rules
+# in RELEASING.md), re-verifies the build, then pushes the tag and publishes
+# a GitHub release. No release when the range has only chore/docs/test/ci/
+# refactor commits. Graphify's automated "[skip ci]" commits never trigger it.
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code (full history + tags)
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Compute next version
+        id: version
+        run: |
+          next="$(bash scripts/next-version.sh)"
+          echo "next=$next" >> "$GITHUB_OUTPUT"
+          if [ -z "$next" ]; then
+            echo "No feat/fix/breaking commits since the last tag -- nothing to release."
+          else
+            echo "Next release: $next"
+          fi
+
+      - name: Set up Go
+        if: steps.version.outputs.next != ''
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.25'
+
+      - name: Verify (build, vet, test)
+        if: steps.version.outputs.next != ''
+        run: go build ./... && go vet ./... && go test ./...
+
+      - name: Tag and publish release
+        if: steps.version.outputs.next != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT: ${{ steps.version.outputs.next }}
+        run: |
+          if git rev-parse -q --verify "refs/tags/$NEXT" >/dev/null; then
+            echo "Tag $NEXT already exists -- nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$NEXT" -m "$NEXT"
+          git push origin "$NEXT"
+          gh release create "$NEXT" --title "$NEXT" --generate-notes --verify-tag
