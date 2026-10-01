@@ -1,29 +1,29 @@
 # Graph Report - daml-escrow-commons  (2026-10-01)
 
 ## Corpus Check
-- 21 files · ~8,937 words
+- 21 files · ~9,336 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 3)
 
 ## Summary
-- 165 nodes · 228 edges · 17 communities (12 shown, 5 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 25 edges (avg confidence: 0.85)
+- 169 nodes · 242 edges · 17 communities (12 shown, 5 thin omitted)
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 25 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `38b95ceb`
+- Built from commit: `9bd06349`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - GitHub & CI Workflow Skill
-- validate_test.go
+- validate.go
 - widget.json
 - Repository Guardrails
 - hmacsig.go
-- LoadDirectory
-- Releasing
 - schema.go
+- Releasing
+- metering.go
 - CLAUDE.md
 - /commons-contribution
 - daml-escrow-commons
@@ -39,12 +39,12 @@
 2. `Client` - 9 edges
 3. `Releasing` - 9 edges
 4. `New()` - 8 edges
-5. `Repository Guardrails` - 8 edges
-6. `LoadDirectory()` - 7 edges
-7. `Identity` - 6 edges
-8. `RequireNonEmpty()` - 6 edges
-9. `Verify()` - 5 edges
-10. `SettlementEvent` - 5 edges
+5. `SettlementEvent` - 8 edges
+6. `Repository Guardrails` - 8 edges
+7. `LoadDirectory()` - 7 edges
+8. `RequireNonEmpty()` - 7 edges
+9. `Identity` - 6 edges
+10. `Verify()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `TestSignAndVerify_RoundTrip()` --calls--> `Sign()`  [INFERRED]
@@ -67,9 +67,9 @@
 Cohesion: 0.11
 Nodes (17): 10. Useful Reference Commands, 11. References, 1. Pre-Commit Local Verification (MANDATORY — do this before every commit), 2. Branching Rules, 3. Commit Standards, 4. Staging & Pushing Changes, 5. Pull Request Creation, 6. CI Pipeline Overview (+9 more)
 
-### Community 1 - "validate_test.go"
-Cohesion: 0.19
-Nodes (12): ChargeBearer, LedgerCommandEvent, Rail, SettlementEvent, RequireNonEmpty(), RequireOneOf(), RequirePositive(), TestErrors_AggregatesAndReports() (+4 more)
+### Community 1 - "validate.go"
+Cohesion: 0.15
+Nodes (11): Errors, RequireNonEmpty(), RequireOneOf(), RequirePositive(), RequireValidEmail(), TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty(), TestRequireNonEmpty() (+3 more)
 
 ### Community 2 - "widget.json"
 Cohesion: 0.17
@@ -83,17 +83,17 @@ Nodes (8): Branch Protection Strategy, Branching Strategy, CI Requirements, Code
 Cohesion: 0.27
 Nodes (6): Sign(), TestSignAndVerify_RoundTrip(), TestVerify_MalformedHexFails(), TestVerify_TamperedMessageFails(), TestVerify_WrongSecretFails(), Verify()
 
-### Community 5 - "LoadDirectory"
-Cohesion: 0.25
-Nodes (7): Registry, LoadDirectory(), TestLoadDirectory_CompilesSchemas(), TestLoadDirectory_MissingDirectory(), TestValidate_InvalidPayloadReportsFailures(), TestValidate_UnknownType(), TestValidate_ValidPayload()
+### Community 5 - "schema.go"
+Cohesion: 0.13
+Nodes (9): ErrUnknownType, Registry, LoadDirectory(), TestLoadDirectory_CompilesSchemas(), TestLoadDirectory_MissingDirectory(), TestValidate_InvalidPayloadReportsFailures(), TestValidate_UnknownType(), TestValidate_ValidPayload() (+1 more)
 
 ### Community 6 - "Releasing"
 Cohesion: 0.20
 Nodes (9): 1. Prerequisites (one-time, per machine that will `go get` this module), 2. Decide the version bump, 3. Tag and push, 4. Publish the GitHub release, 5. Update consumers, Automated (default), Future automation, Manual It follows [Semantic Versioning](https://semver.org/) and (+1 more)
 
-### Community 7 - "schema.go"
-Cohesion: 0.12
-Nodes (5): ErrUnknownType, ValidationError, Errors, RequireValidEmail(), TestRequireValidEmail()
+### Community 7 - "metering.go"
+Cohesion: 0.23
+Nodes (9): ChargeBearer, LedgerCommandEvent, TestLedgerCommandEvent_Validate(), TestSettlementEvent_NetworkFee(), TestSettlementEvent_Validate(), withFee(), NetworkFeePayer, Rail (+1 more)
 
 ### Community 8 - "CLAUDE.md"
 Cohesion: 0.29
@@ -108,8 +108,8 @@ Cohesion: 0.33
 Nodes (5): daml-escrow-commons, Status, Using this module, What's here, What's NOT here, and won't be
 
 ### Community 16 - "testing.T"
-Cohesion: 0.17
-Nodes (9): New(), TestClient_GetByEmail_ServerError(), TestClient_GetByOktaSub_Found(), TestClient_GetByToken_NotFound(), TestClient_ManagesIdentity(), TestClient_ManagesIdentity_ServerError(), TestClient_Upsert_Success(), TestLedgerCommandEvent_Validate() (+1 more)
+Cohesion: 0.23
+Nodes (7): New(), TestClient_GetByEmail_ServerError(), TestClient_GetByOktaSub_Found(), TestClient_GetByToken_NotFound(), TestClient_ManagesIdentity(), TestClient_ManagesIdentity_ServerError(), TestClient_Upsert_Success()
 
 ## Knowledge Gaps
 - **55 isolated node(s):** `github.com/vdatacloud/daml-escrow-commons`, `$schema`, `title`, `type`, `type` (+50 more)
@@ -122,9 +122,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Client` connect `Client` to `testing.T`?**
   _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Why does `New()` connect `testing.T` to `Client`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
-- **Why does `LoadDirectory()` connect `LoadDirectory` to `schema.go`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
 - **Are the 6 inferred relationships involving `New()` (e.g. with `TestClient_GetByEmail_ServerError()` and `TestClient_GetByOktaSub_Found()`) actually correct?**
   _`New()` has 6 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `github.com/vdatacloud/daml-escrow-commons`, `$schema`, `title` to the rest of the system?**
@@ -132,4 +130,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `GitHub & CI Workflow Skill` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `schema.go` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.12631578947368421 - nodes in this community are weakly interconnected._
