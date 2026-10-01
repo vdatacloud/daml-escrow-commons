@@ -1,23 +1,23 @@
 # Graph Report - daml-escrow-commons  (2026-10-01)
 
 ## Corpus Check
-- 22 files · ~9,865 words
+- 22 files · ~10,341 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 3)
 
 ## Summary
-- 174 nodes · 249 edges · 19 communities (14 shown, 5 thin omitted)
+- 178 nodes · 260 edges · 19 communities (14 shown, 5 thin omitted)
 - Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 25 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `02134675`
+- Built from commit: `cdd653ee`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - GitHub & CI Workflow Skill
-- validate_test.go
+- RequireNonEmpty
 - widget.json
 - Repository Guardrails
 - hmacsig.go
@@ -42,9 +42,9 @@
 3. `Releasing` - 9 edges
 4. `New()` - 8 edges
 5. `SettlementEvent` - 8 edges
-6. `Repository Guardrails` - 8 edges
-7. `LoadDirectory()` - 7 edges
-8. `RequireNonEmpty()` - 7 edges
+6. `RequireNonEmpty()` - 8 edges
+7. `Repository Guardrails` - 8 edges
+8. `LoadDirectory()` - 7 edges
 9. `Identity` - 6 edges
 10. `Verify()` - 5 edges
 
@@ -69,9 +69,9 @@
 Cohesion: 0.11
 Nodes (17): 10. Useful Reference Commands, 11. References, 1. Pre-Commit Local Verification (MANDATORY — do this before every commit), 2. Branching Rules, 3. Commit Standards, 4. Staging & Pushing Changes, 5. Pull Request Creation, 6. CI Pipeline Overview (+9 more)
 
-### Community 1 - "validate_test.go"
-Cohesion: 0.31
-Nodes (8): RequireNonEmpty(), RequireOneOf(), RequirePositive(), TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty(), TestRequireNonEmpty(), TestRequireOneOf(), TestRequirePositive()
+### Community 1 - "RequireNonEmpty"
+Cohesion: 0.24
+Nodes (9): requireBaseUnits(), RequireNonEmpty(), RequireOneOf(), RequirePositive(), TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty(), TestRequireNonEmpty(), TestRequireOneOf() (+1 more)
 
 ### Community 2 - "widget.json"
 Cohesion: 0.17
@@ -95,7 +95,7 @@ Nodes (9): 1. Prerequisites (one-time, per machine that will `go get` this modul
 
 ### Community 7 - "metering.go"
 Cohesion: 0.21
-Nodes (9): ChargeBearer, LedgerCommandEvent, TestLedgerCommandEvent_Validate(), TestSettlementEvent_NetworkFee(), TestSettlementEvent_Validate(), withFee(), NetworkFeePayer, Rail (+1 more)
+Nodes (11): ChargeBearer, LedgerCommandEvent, TestLedgerCommandEvent_Validate(), TestNetworkFeeEvent_Validate(), TestSettlementEvent_NetworkFee(), TestSettlementEvent_Validate(), withFee(), NetworkFeeEvent (+3 more)
 
 ### Community 8 - "CLAUDE.md"
 Cohesion: 0.29
