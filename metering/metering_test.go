@@ -130,3 +130,53 @@ func TestNetworkFeeEvent_Validate(t *testing.T) {
 		t.Errorf("zero fee should be valid (a sponsored or free transfer), got %v", err)
 	}
 }
+
+func TestLedgerCommandEvent_Timing(t *testing.T) {
+	now := time.Now().UTC()
+	base := LedgerCommandEvent{TenantID: "t", EscrowID: "e", CommandType: "Fund", ParticipantNode: "bank", OccurredAt: now}
+	timed := base
+	timed.SubmittedAt, timed.CompletedAt, timed.Outcome = now, now.Add(1500*time.Millisecond), CommandOutcomeOK
+	for name, e := range map[string]LedgerCommandEvent{"untimed (v0.4.0 shape)": base, "timed": timed} {
+		if err := e.Validate(); err != nil {
+			t.Errorf("%s: expected valid, got %v", name, err)
+		}
+	}
+	bad := map[string]func(*LedgerCommandEvent){
+		"outcome only":        func(e *LedgerCommandEvent) { e.SubmittedAt, e.CompletedAt = time.Time{}, time.Time{} },
+		"missing completedAt": func(e *LedgerCommandEvent) { e.CompletedAt = time.Time{} },
+		"completed before":    func(e *LedgerCommandEvent) { e.CompletedAt = e.SubmittedAt.Add(-time.Second) },
+		"unknown outcome":     func(e *LedgerCommandEvent) { e.Outcome = "MAYBE" },
+		"missing outcome":     func(e *LedgerCommandEvent) { e.Outcome = "" },
+	}
+	for name, f := range bad {
+		e := timed
+		f(&e)
+		if err := e.Validate(); err == nil {
+			t.Errorf("%s: expected validation error", name)
+		}
+	}
+}
+
+func TestNetworkFeeEvent_SpotPrice(t *testing.T) {
+	base := NetworkFeeEvent{TenantID: "t", EscrowID: "e", Provider: "bitgo", TransferID: "w1:t1",
+		FeeBaseUnits: "69216383616241", FeeAsset: "sepeth", PaidFrom: NetworkFeePaidBySenderWallet, OccurredAt: time.Now()}
+	priced := base
+	priced.SpotPriceUSD, priced.PriceSource, priced.PricedAt = "2648.4051136778", "bitgo:usdRate", time.Now()
+	for name, e := range map[string]NetworkFeeEvent{"unpriced (v0.4.0 shape)": base, "priced": priced} {
+		if err := e.Validate(); err != nil {
+			t.Errorf("%s: expected valid, got %v", name, err)
+		}
+	}
+	for _, bad := range []string{"-1", "1e3", "2,648.40", ".5", "5.", "1.2.3", "abc"} {
+		e := priced
+		e.SpotPriceUSD = bad
+		if err := e.Validate(); err == nil {
+			t.Errorf("spot price %q: expected validation error", bad)
+		}
+	}
+	partial := base
+	partial.SpotPriceUSD = "2648.41"
+	if err := partial.Validate(); err == nil {
+		t.Error("price without source/pricedAt: expected validation error")
+	}
+}
