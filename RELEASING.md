@@ -1,7 +1,23 @@
 # Releasing
 
-This repo has no automated release pipeline yet (no `release-please`, no `goreleaser`, no tag-triggered CI job) —
-this is the manual process to use until one exists. It follows [Semantic Versioning](https://semver.org/) and
+## Automated (default)
+
+Every push to `main` runs `.github/workflows/release.yml`: it computes the next version from the
+Conventional Commits since the last `v*` tag (`scripts/next-version.sh`, rules in section 2 below), re-runs
+`go build`/`go vet`/`go test`, then pushes an annotated tag and publishes a GitHub release with generated
+notes. **Merging a PR is releasing it** — so the PR's commit prefixes decide the bump:
+
+- `feat!:` / `fix!:` / a `BREAKING CHANGE:` footer → major (pre-1.0: minor)
+- `feat:` → minor
+- `fix:` / `perf:` → patch
+- only `chore:` / `docs:` / `test:` / `ci:` / `refactor:` / `style:` / `build:` → **no release**
+
+Preview what merging would release: `scripts/next-version.sh <branch>` (empty output = no release). Tags are
+made by `github-actions[bot]` (annotated, not GPG-signed). After a release, update consumers (section 5).
+
+The manual process below remains the fallback (e.g. a re-release, or if the workflow is unavailable).
+
+## Manual It follows [Semantic Versioning](https://semver.org/) and
 reads version bumps off [Conventional Commits](https://www.conventionalcommits.org/) prefixes, matching the commit
 convention already used across this repo and `daml-escrow`/`daml-escrow-cms`.
 
@@ -44,7 +60,8 @@ Read the commit prefixes in that range:
 |---|---|
 | any `feat!:` or a `BREAKING CHANGE:` footer | **major** (or, pre-1.0, treat as the next **minor** — see note below) |
 | `feat:` | **minor** |
-| `fix:`, `chore:`, `refactor:`, `test:`, `docs:` only | **patch** |
+| `fix:` / `perf:` | **patch** |
+| `chore:`, `refactor:`, `test:`, `docs:`, `ci:` only | **no release** (nothing consumer-visible changed) |
 
 **Pre-1.0 note:** while this module is `v0.x.y`, semver treats the whole surface as unstable — conventionally,
 what would be a major bump becomes a minor bump instead (`v0.1.0 → v0.2.0`), and everything else maps to patch.
