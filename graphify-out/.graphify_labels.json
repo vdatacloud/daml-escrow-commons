@@ -1,10 +1,9 @@
 {
   "0": "GitHub & CI Workflow Skill",
-  "1": "RequireNonEmpty",
+  "1": "validate.go",
   "2": "widget.json",
   "3": "Repository Guardrails",
   "4": "hmacsig.go",
-  "5": "LoadDirectory",
   "6": "Releasing",
   "7": "metering.go",
   "8": "CLAUDE.md",

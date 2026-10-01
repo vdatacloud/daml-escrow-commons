@@ -224,88 +224,99 @@
       "source_location": "L63"
     },
     {
-      "id": "metering_metering_requirebaseunits",
-      "label": "requireBaseUnits()",
+      "id": "pseudoref_pseudoref_test",
+      "label": "pseudoref_test.go",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
-      "norm_label": "requirebaseunits()",
-      "source_file": "metering/metering.go",
-      "source_location": "L154"
+      "norm_label": "pseudoref_test.go",
+      "source_file": "pseudoref/pseudoref_test.go",
+      "source_location": "L1"
     },
     {
-      "id": "metering_networkfeeevent_validate",
-      "label": ".Validate()",
+      "id": "validate_errors",
+      "label": "Errors",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
-      "norm_label": ".validate()",
-      "source_file": "metering/metering.go",
-      "source_location": "L136"
-    },
-    {
-      "id": "metering_settlementevent_validate",
-      "label": ".Validate()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "RequireNonEmpty",
-      "file_type": "code",
-      "norm_label": ".validate()",
-      "source_file": "metering/metering.go",
-      "source_location": "L172"
-    },
-    {
-      "id": "metering_settlementevent_validatenetworkfee",
-      "label": ".validateNetworkFee()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "RequireNonEmpty",
-      "file_type": "code",
-      "norm_label": ".validatenetworkfee()",
-      "source_file": "metering/metering.go",
-      "source_location": "L189"
-    },
-    {
-      "id": "validate_validate_requirenonempty",
-      "label": "RequireNonEmpty()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "RequireNonEmpty",
-      "file_type": "code",
-      "norm_label": "requirenonempty()",
+      "norm_label": "errors",
       "source_file": "validate/validate.go",
-      "source_location": "L42"
+      "source_location": "L17"
     },
     {
-      "id": "validate_validate_requireoneof",
-      "label": "RequireOneOf()",
+      "id": "validate_errors_add",
+      "label": ".Add()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
-      "norm_label": "requireoneof()",
+      "norm_label": ".add()",
       "source_file": "validate/validate.go",
-      "source_location": "L58"
+      "source_location": "L26"
+    },
+    {
+      "id": "validate_errors_errifany",
+      "label": ".ErrIfAny()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "validate.go",
+      "file_type": "code",
+      "norm_label": ".errifany()",
+      "source_file": "validate/validate.go",
+      "source_location": "L34"
+    },
+    {
+      "id": "validate_errors_error",
+      "label": ".Error()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "validate.go",
+      "file_type": "code",
+      "norm_label": ".error()",
+      "source_file": "validate/validate.go",
+      "source_location": "L19"
+    },
+    {
+      "id": "validate_validate",
+      "label": "validate.go",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "validate.go",
+      "file_type": "code",
+      "norm_label": "validate.go",
+      "source_file": "validate/validate.go",
+      "source_location": "L1"
     },
     {
       "id": "validate_validate_requirepositive",
       "label": "RequirePositive()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
       "norm_label": "requirepositive()",
       "source_file": "validate/validate.go",
       "source_location": "L50"
     },
     {
+      "id": "validate_validate_requirevalidemail",
+      "label": "RequireValidEmail()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "validate.go",
+      "file_type": "code",
+      "norm_label": "requirevalidemail()",
+      "source_file": "validate/validate.go",
+      "source_location": "L71"
+    },
+    {
       "id": "validate_validate_test",
       "label": "validate_test.go",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
       "norm_label": "validate_test.go",
       "source_file": "validate/validate_test.go",
@@ -316,7 +327,7 @@
       "label": "TestErrors_AggregatesAndReports()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
       "norm_label": "testerrors_aggregatesandreports()",
       "source_file": "validate/validate_test.go",
@@ -327,7 +338,7 @@
       "label": "TestErrors_ErrIfAny_NilWhenEmpty()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
       "norm_label": "testerrors_errifany_nilwhenempty()",
       "source_file": "validate/validate_test.go",
@@ -338,7 +349,7 @@
       "label": "TestRequireNonEmpty()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
       "norm_label": "testrequirenonempty()",
       "source_file": "validate/validate_test.go",
@@ -349,7 +360,7 @@
       "label": "TestRequireOneOf()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
       "norm_label": "testrequireoneof()",
       "source_file": "validate/validate_test.go",
@@ -360,11 +371,22 @@
       "label": "TestRequirePositive()",
       "_origin": "ast",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "file_type": "code",
       "norm_label": "testrequirepositive()",
       "source_file": "validate/validate_test.go",
       "source_location": "L14"
+    },
+    {
+      "id": "validate_validate_test_testrequirevalidemail",
+      "label": "TestRequireValidEmail()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "validate.go",
+      "file_type": "code",
+      "norm_label": "testrequirevalidemail()",
+      "source_file": "validate/validate_test.go",
+      "source_location": "L35"
     },
     {
       "id": "readme",
@@ -400,7 +422,7 @@
       "node_kind": "heading",
       "norm_label": "status",
       "source_file": "README.md",
-      "source_location": "L40"
+      "source_location": "L41"
     },
     {
       "id": "readme_using_this_module",
@@ -412,7 +434,7 @@
       "node_kind": "heading",
       "norm_label": "using this module",
       "source_file": "README.md",
-      "source_location": "L24"
+      "source_location": "L25"
     },
     {
       "id": "readme_what_s_here",
@@ -436,7 +458,7 @@
       "node_kind": "heading",
       "norm_label": "what's not here, and won't be",
       "source_file": "README.md",
-      "source_location": "L17"
+      "source_location": "L18"
     },
     {
       "id": "claude_claude_cross_repo_context",
@@ -518,6 +540,17 @@
       "type": "package"
     },
     {
+      "id": "go_type_github_com_xeipuuv_gojsonschema_schema",
+      "label": "github.com/xeipuuv/gojsonschema.Schema",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "schema.go",
+      "file_type": "code",
+      "norm_label": "github.com/xeipuuv/gojsonschema.schema",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "schema_errunknowntype",
       "label": "ErrUnknownType",
       "_origin": "ast",
@@ -538,6 +571,39 @@
       "norm_label": ".error()",
       "source_file": "schema/schema.go",
       "source_location": "L86"
+    },
+    {
+      "id": "schema_registry",
+      "label": "Registry",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "schema.go",
+      "file_type": "code",
+      "norm_label": "registry",
+      "source_file": "schema/schema.go",
+      "source_location": "L21"
+    },
+    {
+      "id": "schema_registry_types",
+      "label": ".Types()",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "schema.go",
+      "file_type": "code",
+      "norm_label": ".types()",
+      "source_file": "schema/schema.go",
+      "source_location": "L61"
+    },
+    {
+      "id": "schema_registry_validate",
+      "label": ".Validate()",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "schema.go",
+      "file_type": "code",
+      "norm_label": ".validate()",
+      "source_file": "schema/schema.go",
+      "source_location": "L95"
     },
     {
       "id": "schema_schema",
@@ -571,83 +637,6 @@
       "norm_label": ".error()",
       "source_file": "schema/schema.go",
       "source_location": "L77"
-    },
-    {
-      "id": "validate_errors",
-      "label": "Errors",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "schema.go",
-      "file_type": "code",
-      "norm_label": "errors",
-      "source_file": "validate/validate.go",
-      "source_location": "L17"
-    },
-    {
-      "id": "validate_errors_add",
-      "label": ".Add()",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "schema.go",
-      "file_type": "code",
-      "norm_label": ".add()",
-      "source_file": "validate/validate.go",
-      "source_location": "L26"
-    },
-    {
-      "id": "validate_errors_errifany",
-      "label": ".ErrIfAny()",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "schema.go",
-      "file_type": "code",
-      "norm_label": ".errifany()",
-      "source_file": "validate/validate.go",
-      "source_location": "L34"
-    },
-    {
-      "id": "validate_errors_error",
-      "label": ".Error()",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "schema.go",
-      "file_type": "code",
-      "norm_label": ".error()",
-      "source_file": "validate/validate.go",
-      "source_location": "L19"
-    },
-    {
-      "id": "validate_validate",
-      "label": "validate.go",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "schema.go",
-      "file_type": "code",
-      "norm_label": "validate.go",
-      "source_file": "validate/validate.go",
-      "source_location": "L1"
-    },
-    {
-      "id": "validate_validate_requirevalidemail",
-      "label": "RequireValidEmail()",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "schema.go",
-      "file_type": "code",
-      "norm_label": "requirevalidemail()",
-      "source_file": "validate/validate.go",
-      "source_location": "L71"
-    },
-    {
-      "id": "validate_validate_test_testrequirevalidemail",
-      "label": "TestRequireValidEmail()",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "schema.go",
-      "file_type": "code",
-      "norm_label": "testrequirevalidemail()",
-      "source_file": "validate/validate_test.go",
-      "source_location": "L35"
     },
     {
       "id": "go_type_context_context",
@@ -879,6 +868,171 @@
       "norm_label": "testclient_upsert_success()",
       "source_file": "identityclient/identityclient_test.go",
       "source_location": "L11"
+    },
+    {
+      "id": "metering_metering_test",
+      "label": "metering_test.go",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "metering_test.go",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L1"
+    },
+    {
+      "id": "metering_metering_test_testledgercommandevent_timing",
+      "label": "TestLedgerCommandEvent_Timing()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testledgercommandevent_timing()",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L134"
+    },
+    {
+      "id": "metering_metering_test_testledgercommandevent_validate",
+      "label": "TestLedgerCommandEvent_Validate()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testledgercommandevent_validate()",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L8"
+    },
+    {
+      "id": "metering_metering_test_testnetworkfeeevent_spotprice",
+      "label": "TestNetworkFeeEvent_SpotPrice()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testnetworkfeeevent_spotprice()",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L160"
+    },
+    {
+      "id": "metering_metering_test_testnetworkfeeevent_validate",
+      "label": "TestNetworkFeeEvent_Validate()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testnetworkfeeevent_validate()",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L102"
+    },
+    {
+      "id": "metering_metering_test_testsettlementevent_networkfee",
+      "label": "TestSettlementEvent_NetworkFee()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testsettlementevent_networkfee()",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L88"
+    },
+    {
+      "id": "metering_metering_test_testsettlementevent_validate",
+      "label": "TestSettlementEvent_Validate()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testsettlementevent_validate()",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L39"
+    },
+    {
+      "id": "metering_metering_test_withfee",
+      "label": "withFee()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "withfee()",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L81"
+    },
+    {
+      "id": "schema_schema_loaddirectory",
+      "label": "LoadDirectory()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "loaddirectory()",
+      "source_file": "schema/schema.go",
+      "source_location": "L28"
+    },
+    {
+      "id": "schema_schema_test",
+      "label": "schema_test.go",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "schema_test.go",
+      "source_file": "schema/schema_test.go",
+      "source_location": "L1"
+    },
+    {
+      "id": "schema_schema_test_testloaddirectory_compilesschemas",
+      "label": "TestLoadDirectory_CompilesSchemas()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testloaddirectory_compilesschemas()",
+      "source_file": "schema/schema_test.go",
+      "source_location": "L15"
+    },
+    {
+      "id": "schema_schema_test_testloaddirectory_missingdirectory",
+      "label": "TestLoadDirectory_MissingDirectory()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testloaddirectory_missingdirectory()",
+      "source_file": "schema/schema_test.go",
+      "source_location": "L8"
+    },
+    {
+      "id": "schema_schema_test_testvalidate_invalidpayloadreportsfailures",
+      "label": "TestValidate_InvalidPayloadReportsFailures()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testvalidate_invalidpayloadreportsfailures()",
+      "source_file": "schema/schema_test.go",
+      "source_location": "L52"
+    },
+    {
+      "id": "schema_schema_test_testvalidate_unknowntype",
+      "label": "TestValidate_UnknownType()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testvalidate_unknowntype()",
+      "source_file": "schema/schema_test.go",
+      "source_location": "L27"
+    },
+    {
+      "id": "schema_schema_test_testvalidate_validpayload",
+      "label": "TestValidate_ValidPayload()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testvalidate_validpayload()",
+      "source_file": "schema/schema_test.go",
+      "source_location": "L40"
     },
     {
       "id": "scripts_next_version",
@@ -1314,125 +1468,37 @@
       "source_location": "L34"
     },
     {
-      "id": "go_type_github_com_xeipuuv_gojsonschema_schema",
-      "label": "github.com/xeipuuv/gojsonschema.Schema",
+      "id": "pseudoref_pseudoref",
+      "label": "pseudoref.go",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
+      "community": 4,
+      "community_name": "hmacsig.go",
       "file_type": "code",
-      "norm_label": "github.com/xeipuuv/gojsonschema.schema",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "schema_registry",
-      "label": "Registry",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": "registry",
-      "source_file": "schema/schema.go",
-      "source_location": "L21"
-    },
-    {
-      "id": "schema_registry_types",
-      "label": ".Types()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": ".types()",
-      "source_file": "schema/schema.go",
-      "source_location": "L61"
-    },
-    {
-      "id": "schema_registry_validate",
-      "label": ".Validate()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": ".validate()",
-      "source_file": "schema/schema.go",
-      "source_location": "L95"
-    },
-    {
-      "id": "schema_schema_loaddirectory",
-      "label": "LoadDirectory()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": "loaddirectory()",
-      "source_file": "schema/schema.go",
-      "source_location": "L28"
-    },
-    {
-      "id": "schema_schema_test",
-      "label": "schema_test.go",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": "schema_test.go",
-      "source_file": "schema/schema_test.go",
+      "norm_label": "pseudoref.go",
+      "source_file": "pseudoref/pseudoref.go",
       "source_location": "L1"
     },
     {
-      "id": "schema_schema_test_testloaddirectory_compilesschemas",
-      "label": "TestLoadDirectory_CompilesSchemas()",
+      "id": "pseudoref_pseudoref_ref",
+      "label": "Ref()",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
+      "community": 4,
+      "community_name": "hmacsig.go",
       "file_type": "code",
-      "norm_label": "testloaddirectory_compilesschemas()",
-      "source_file": "schema/schema_test.go",
-      "source_location": "L15"
+      "norm_label": "ref()",
+      "source_file": "pseudoref/pseudoref.go",
+      "source_location": "L29"
     },
     {
-      "id": "schema_schema_test_testloaddirectory_missingdirectory",
-      "label": "TestLoadDirectory_MissingDirectory()",
+      "id": "pseudoref_pseudoref_test_testref",
+      "label": "TestRef()",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
+      "community": 4,
+      "community_name": "hmacsig.go",
       "file_type": "code",
-      "norm_label": "testloaddirectory_missingdirectory()",
-      "source_file": "schema/schema_test.go",
+      "norm_label": "testref()",
+      "source_file": "pseudoref/pseudoref_test.go",
       "source_location": "L8"
-    },
-    {
-      "id": "schema_schema_test_testvalidate_invalidpayloadreportsfailures",
-      "label": "TestValidate_InvalidPayloadReportsFailures()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": "testvalidate_invalidpayloadreportsfailures()",
-      "source_file": "schema/schema_test.go",
-      "source_location": "L52"
-    },
-    {
-      "id": "schema_schema_test_testvalidate_unknowntype",
-      "label": "TestValidate_UnknownType()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": "testvalidate_unknowntype()",
-      "source_file": "schema/schema_test.go",
-      "source_location": "L27"
-    },
-    {
-      "id": "schema_schema_test_testvalidate_validpayload",
-      "label": "TestValidate_ValidPayload()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "LoadDirectory",
-      "file_type": "code",
-      "norm_label": "testvalidate_validpayload()",
-      "source_file": "schema/schema_test.go",
-      "source_location": "L40"
     },
     {
       "id": "releasing",
@@ -1577,6 +1643,17 @@
       "source_location": "L25"
     },
     {
+      "id": "metering_commandoutcome",
+      "label": "CommandOutcome",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": "commandoutcome",
+      "source_file": "metering/metering.go",
+      "source_location": "L70"
+    },
+    {
       "id": "metering_ledgercommandevent",
       "label": "LedgerCommandEvent",
       "_origin": "ast",
@@ -1596,7 +1673,18 @@
       "file_type": "code",
       "norm_label": ".validate()",
       "source_file": "metering/metering.go",
-      "source_location": "L63"
+      "source_location": "L79"
+    },
+    {
+      "id": "metering_ledgercommandevent_validatetiming",
+      "label": ".validateTiming()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".validatetiming()",
+      "source_file": "metering/metering.go",
+      "source_location": "L236"
     },
     {
       "id": "metering_metering",
@@ -1610,70 +1698,26 @@
       "source_location": "L1"
     },
     {
-      "id": "metering_metering_test",
-      "label": "metering_test.go",
+      "id": "metering_metering_requirebaseunits",
+      "label": "requireBaseUnits()",
       "_origin": "ast",
       "community": 7,
       "community_name": "metering.go",
       "file_type": "code",
-      "norm_label": "metering_test.go",
-      "source_file": "metering/metering_test.go",
-      "source_location": "L1"
+      "norm_label": "requirebaseunits()",
+      "source_file": "metering/metering.go",
+      "source_location": "L217"
     },
     {
-      "id": "metering_metering_test_testledgercommandevent_validate",
-      "label": "TestLedgerCommandEvent_Validate()",
+      "id": "metering_metering_requiredecimal",
+      "label": "requireDecimal()",
       "_origin": "ast",
       "community": 7,
       "community_name": "metering.go",
       "file_type": "code",
-      "norm_label": "testledgercommandevent_validate()",
-      "source_file": "metering/metering_test.go",
-      "source_location": "L8"
-    },
-    {
-      "id": "metering_metering_test_testnetworkfeeevent_validate",
-      "label": "TestNetworkFeeEvent_Validate()",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "metering.go",
-      "file_type": "code",
-      "norm_label": "testnetworkfeeevent_validate()",
-      "source_file": "metering/metering_test.go",
-      "source_location": "L102"
-    },
-    {
-      "id": "metering_metering_test_testsettlementevent_networkfee",
-      "label": "TestSettlementEvent_NetworkFee()",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "metering.go",
-      "file_type": "code",
-      "norm_label": "testsettlementevent_networkfee()",
-      "source_file": "metering/metering_test.go",
-      "source_location": "L88"
-    },
-    {
-      "id": "metering_metering_test_testsettlementevent_validate",
-      "label": "TestSettlementEvent_Validate()",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "metering.go",
-      "file_type": "code",
-      "norm_label": "testsettlementevent_validate()",
-      "source_file": "metering/metering_test.go",
-      "source_location": "L39"
-    },
-    {
-      "id": "metering_metering_test_withfee",
-      "label": "withFee()",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "metering.go",
-      "file_type": "code",
-      "norm_label": "withfee()",
-      "source_file": "metering/metering_test.go",
-      "source_location": "L81"
+      "norm_label": "requiredecimal()",
+      "source_file": "metering/metering.go",
+      "source_location": "L201"
     },
     {
       "id": "metering_networkfeeevent",
@@ -1684,7 +1728,29 @@
       "file_type": "code",
       "norm_label": "networkfeeevent",
       "source_file": "metering/metering.go",
-      "source_location": "L124"
+      "source_location": "L141"
+    },
+    {
+      "id": "metering_networkfeeevent_validate",
+      "label": ".Validate()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".validate()",
+      "source_file": "metering/metering.go",
+      "source_location": "L165"
+    },
+    {
+      "id": "metering_networkfeeevent_validatespotprice",
+      "label": ".validateSpotPrice()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".validatespotprice()",
+      "source_file": "metering/metering.go",
+      "source_location": "L184"
     },
     {
       "id": "metering_networkfeepayer",
@@ -1695,7 +1761,7 @@
       "file_type": "code",
       "norm_label": "networkfeepayer",
       "source_file": "metering/metering.go",
-      "source_location": "L164"
+      "source_location": "L227"
     },
     {
       "id": "metering_rail",
@@ -1717,7 +1783,51 @@
       "file_type": "code",
       "norm_label": "settlementevent",
       "source_file": "metering/metering.go",
-      "source_location": "L79"
+      "source_location": "L96"
+    },
+    {
+      "id": "metering_settlementevent_validate",
+      "label": ".Validate()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".validate()",
+      "source_file": "metering/metering.go",
+      "source_location": "L255"
+    },
+    {
+      "id": "metering_settlementevent_validatenetworkfee",
+      "label": ".validateNetworkFee()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".validatenetworkfee()",
+      "source_file": "metering/metering.go",
+      "source_location": "L272"
+    },
+    {
+      "id": "validate_validate_requirenonempty",
+      "label": "RequireNonEmpty()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": "requirenonempty()",
+      "source_file": "validate/validate.go",
+      "source_location": "L42"
+    },
+    {
+      "id": "validate_validate_requireoneof",
+      "label": "RequireOneOf()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": "requireoneof()",
+      "source_file": "validate/validate.go",
+      "source_location": "L58"
     },
     {
       "id": "claude",
@@ -1880,11 +1990,23 @@
       "source_location": "L10"
     },
     {
+      "id": "go_pkg_strings",
+      "label": "go_pkg_strings",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "validate.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_strings",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "go_pkg_testing",
       "label": "go_pkg_testing",
       "_origin": "semantic",
       "community": 1,
-      "community_name": "RequireNonEmpty",
+      "community_name": "validate.go",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_testing",
@@ -1936,18 +2058,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_path_filepath",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_strings",
-      "label": "go_pkg_strings",
-      "_origin": "semantic",
-      "community": 14,
-      "community_name": "schema.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_strings",
       "source_file": "",
       "type": "external"
     },
@@ -2024,6 +2134,18 @@
       "type": "external"
     },
     {
+      "id": "go_pkg_time",
+      "label": "go_pkg_time",
+      "_origin": "semantic",
+      "community": 16,
+      "community_name": "testing.T",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_time",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "go_pkg_crypto_hmac",
       "label": "go_pkg_crypto_hmac",
       "_origin": "semantic",
@@ -2068,18 +2190,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_errors",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_time",
-      "label": "go_pkg_time",
-      "_origin": "semantic",
-      "community": 7,
-      "community_name": "metering.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_time",
       "source_file": "",
       "type": "external"
     }
@@ -2142,7 +2252,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L65",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_ledgercommandevent_validate",
+      "target": "metering_ledgercommandevent_validatetiming",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "metering/metering.go",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_ledgercommandevent_validatetiming",
+      "target": "validate_validate_requirenonempty",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "metering/metering.go",
+      "source_location": "L242",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_ledgercommandevent_validatetiming",
+      "target": "validate_validate_requireoneof",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "metering/metering.go",
+      "source_location": "L250",
       "weight": 1.0
     },
     {
@@ -2178,7 +2324,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L138",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -2190,7 +2336,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L143",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -2202,7 +2348,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L145",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_networkfeeevent_validate",
+      "target": "metering_networkfeeevent_validatespotprice",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "metering/metering.go",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_networkfeeevent_validatespotprice",
+      "target": "validate_validate_requirenonempty",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "metering/metering.go",
+      "source_location": "L189",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_networkfeeevent_validatespotprice",
+      "target": "metering_metering_requiredecimal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "metering/metering.go",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -2214,7 +2396,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L174",
+      "source_location": "L257",
       "weight": 1.0
     },
     {
@@ -2226,7 +2408,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L176",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -2238,7 +2420,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L178",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -2250,7 +2432,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L183",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -2262,7 +2444,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L194",
+      "source_location": "L277",
       "weight": 1.0
     },
     {
@@ -2274,7 +2456,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L196",
+      "source_location": "L279",
       "weight": 1.0
     },
     {
@@ -2286,7 +2468,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "metering/metering.go",
-      "source_location": "L197",
+      "source_location": "L280",
       "weight": 1.0
     },
     {
@@ -2346,7 +2528,19 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "metering/metering.go",
-      "source_location": "L58",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_ledgercommandevent",
+      "target": "metering_commandoutcome",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "metering/metering.go",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -2358,7 +2552,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "metering/metering.go",
-      "source_location": "L131",
+      "source_location": "L148",
       "weight": 1.0
     },
     {
@@ -2370,19 +2564,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "metering/metering.go",
-      "source_location": "L132",
-      "weight": 1.0
-    },
-    {
-      "source": "metering_settlementevent",
-      "target": "metering_networkfeepayer",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "field",
-      "source_file": "metering/metering.go",
-      "source_location": "L108",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -2394,7 +2576,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "metering/metering.go",
-      "source_location": "L84",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -2406,7 +2588,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "metering/metering.go",
-      "source_location": "L85",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -2418,7 +2600,19 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "metering/metering.go",
-      "source_location": "L86",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_settlementevent",
+      "target": "metering_networkfeepayer",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "metering/metering.go",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -2706,6 +2900,66 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "metering/metering_test.go",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "pseudoref_pseudoref",
+      "target": "go_pkg_crypto_hmac",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pseudoref/pseudoref.go",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "pseudoref_pseudoref",
+      "target": "go_pkg_crypto_sha256",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pseudoref/pseudoref.go",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "pseudoref_pseudoref",
+      "target": "go_pkg_encoding_hex",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pseudoref/pseudoref.go",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "pseudoref_pseudoref_test",
+      "target": "go_pkg_strings",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pseudoref/pseudoref_test.go",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "pseudoref_pseudoref_test",
+      "target": "go_pkg_testing",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "pseudoref/pseudoref_test.go",
       "source_location": "L5",
       "weight": 1.0
     },
@@ -3022,6 +3276,18 @@
       "weight": 1.0
     },
     {
+      "source": "metering_metering_test_testledgercommandevent_timing",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
       "source": "metering_metering_test_testledgercommandevent_validate",
       "target": "go_type_testing_t",
       "relation": "references",
@@ -3031,6 +3297,18 @@
       "context": "parameter_type",
       "source_file": "metering/metering_test.go",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_metering_test_testnetworkfeeevent_spotprice",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "metering/metering_test.go",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -3079,6 +3357,18 @@
       "context": "parameter_type",
       "source_file": "metering/metering_test.go",
       "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "pseudoref_pseudoref_test_testref",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "pseudoref/pseudoref_test.go",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -3900,7 +4190,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L124",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_metering",
+      "target": "metering_metering_requiredecimal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "metering/metering.go",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -3911,7 +4212,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L154",
+      "source_location": "L217",
       "weight": 1.0
     },
     {
@@ -3922,7 +4223,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L164",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -3960,13 +4261,24 @@
     },
     {
       "source": "metering_metering",
+      "target": "metering_commandoutcome",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "metering/metering.go",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_metering",
       "target": "metering_settlementevent",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L79",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -3978,6 +4290,28 @@
       "confidence_score": 1.0,
       "source_file": "metering/metering_test.go",
       "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_metering_test",
+      "target": "metering_metering_test_testledgercommandevent_timing",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "metering/metering_test.go",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_metering_test",
+      "target": "metering_metering_test_testnetworkfeeevent_spotprice",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "metering/metering_test.go",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -4025,6 +4359,28 @@
       "weight": 1.0
     },
     {
+      "source": "pseudoref_pseudoref",
+      "target": "pseudoref_pseudoref_ref",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pseudoref/pseudoref.go",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "pseudoref_pseudoref_test",
+      "target": "pseudoref_pseudoref_test_testref",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "pseudoref/pseudoref_test.go",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
       "source": "readme",
       "target": "readme_daml_escrow_commons",
       "relation": "contains",
@@ -4043,7 +4399,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -4054,7 +4410,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -4065,7 +4421,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -4653,13 +5009,24 @@
     },
     {
       "source": "metering_ledgercommandevent",
+      "target": "metering_ledgercommandevent_validatetiming",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "metering/metering.go",
+      "source_location": "L236",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_ledgercommandevent",
       "target": "metering_ledgercommandevent_validate",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L63",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -4670,7 +5037,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L136",
+      "source_location": "L165",
+      "weight": 1.0
+    },
+    {
+      "source": "metering_networkfeeevent",
+      "target": "metering_networkfeeevent_validatespotprice",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "metering/metering.go",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -4681,7 +5059,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L172",
+      "source_location": "L255",
       "weight": 1.0
     },
     {
@@ -4692,7 +5070,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "metering/metering.go",
-      "source_location": "L189",
+      "source_location": "L272",
       "weight": 1.0
     },
     {
@@ -4929,6 +5307,18 @@
       "weight": 1.0
     },
     {
+      "source": "pseudoref_pseudoref_test_testref",
+      "target": "pseudoref_pseudoref_ref",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "pseudoref/pseudoref_test.go",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
       "source": "schema_schema_test_testloaddirectory_compilesschemas",
       "target": "schema_schema_loaddirectory",
       "relation": "calls",
@@ -5074,5 +5464,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cdd653ee258f5a7ff7ede0cf76017a5d630465a9"
+  "built_at_commit": "7ab67d687cf1e01a1bdf96642d4ad451f2716baf"
 }
