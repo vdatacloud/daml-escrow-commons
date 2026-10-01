@@ -98,3 +98,35 @@ func TestSettlementEvent_NetworkFee(t *testing.T) {
 		}
 	}
 }
+
+func TestNetworkFeeEvent_Validate(t *testing.T) {
+	valid := NetworkFeeEvent{
+		TenantID: "ps-1", EscrowID: "escrow-1", Provider: "bitgo", TransferID: "w1:t1",
+		FeeBaseUnits: "123456789012345678901234567890", FeeAsset: "sepeth",
+		PaidFrom: NetworkFeePaidByGasTank, OccurredAt: time.Now(),
+	}
+	if err := valid.Validate(); err != nil {
+		t.Fatalf("expected valid event to pass, got %v", err)
+	}
+	mutate := func(f func(*NetworkFeeEvent)) NetworkFeeEvent { e := valid; f(&e); return e }
+	cases := map[string]NetworkFeeEvent{
+		"missing tenantId":   mutate(func(e *NetworkFeeEvent) { e.TenantID = "" }),
+		"missing escrowId":   mutate(func(e *NetworkFeeEvent) { e.EscrowID = "" }),
+		"missing provider":   mutate(func(e *NetworkFeeEvent) { e.Provider = "" }),
+		"missing transferId": mutate(func(e *NetworkFeeEvent) { e.TransferID = "" }),
+		"missing fee":        mutate(func(e *NetworkFeeEvent) { e.FeeBaseUnits = "" }),
+		"decimal fee":        mutate(func(e *NetworkFeeEvent) { e.FeeBaseUnits = "0.5" }),
+		"negative fee":       mutate(func(e *NetworkFeeEvent) { e.FeeBaseUnits = "-1" }),
+		"missing asset":      mutate(func(e *NetworkFeeEvent) { e.FeeAsset = "" }),
+		"bad payer":          mutate(func(e *NetworkFeeEvent) { e.PaidFrom = "BANK" }),
+		"zero occurredAt":    mutate(func(e *NetworkFeeEvent) { e.OccurredAt = time.Time{} }),
+	}
+	for name, e := range cases {
+		if err := e.Validate(); err == nil {
+			t.Errorf("%s: expected validation error", name)
+		}
+	}
+	if err := mutate(func(e *NetworkFeeEvent) { e.FeeBaseUnits = "0" }).Validate(); err != nil {
+		t.Errorf("zero fee should be valid (a sponsored or free transfer), got %v", err)
+	}
+}
