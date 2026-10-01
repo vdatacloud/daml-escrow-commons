@@ -15,7 +15,7 @@ jobs:
     # that bot's commits. Keep it out of PRs (see scripts/install-git-hooks.sh).
     name: graphify-out not modified
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -35,7 +35,7 @@ jobs:
 
   release-script:
     name: Release script tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -45,7 +45,7 @@ jobs:
 
   lint:
     name: Go Lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -63,7 +63,7 @@ jobs:
 
   unit-tests:
     name: Go Unit Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
