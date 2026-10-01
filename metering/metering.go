@@ -56,7 +56,23 @@ type LedgerCommandEvent struct {
 	CommandType     string    `json:"commandType"`
 	ParticipantNode string    `json:"participantNode"`
 	OccurredAt      time.Time `json:"occurredAt"`
+
+	// SubmittedAt/CompletedAt/Outcome (optional, v0.5.0; all set or all
+	// empty) time the command's submission to the ledger and its
+	// completion, as the emitter measured them (UTC), and whether it
+	// succeeded -- per-tenant timing facts (daml-escrow PLAN.md Phase 68).
+	SubmittedAt time.Time      `json:"submittedAt,omitempty"`
+	CompletedAt time.Time      `json:"completedAt,omitempty"`
+	Outcome     CommandOutcome `json:"outcome,omitempty"`
 }
+
+// CommandOutcome is how a timed ledger command ended.
+type CommandOutcome string
+
+const (
+	CommandOutcomeOK    CommandOutcome = "OK"
+	CommandOutcomeError CommandOutcome = "ERROR"
+)
 
 // Validate checks LedgerCommandEvent's required fields. OccurredAt is not
 // checked against wall-clock time (callers may legitimately backfill).
@@ -66,6 +82,7 @@ func (e LedgerCommandEvent) Validate() error {
 	errs.Add(validate.RequireNonEmpty("escrowId", e.EscrowID))
 	errs.Add(validate.RequireNonEmpty("commandType", e.CommandType))
 	errs.Add(validate.RequireNonEmpty("participantNode", e.ParticipantNode))
+	errs.Add(e.validateTiming())
 	if e.OccurredAt.IsZero() {
 		errs.Add(validate.RequireNonEmpty("occurredAt", ""))
 	}
@@ -130,6 +147,18 @@ type NetworkFeeEvent struct {
 	FeeAsset     string          `json:"feeAsset"`
 	PaidFrom     NetworkFeePayer `json:"paidFrom"`
 	OccurredAt   time.Time       `json:"occurredAt"`
+
+	// SpotPriceUSD/PriceSource/PricedAt (optional, v0.5.0; all set or all
+	// empty) record the fee asset's USD spot price at the transfer, as a
+	// raw fact: SpotPriceUSD is a non-negative decimal string (e.g.
+	// "2648.4051136778", USD per whole FeeAsset unit), PriceSource where it
+	// came from (e.g. "bitgo:usdRate"), PricedAt when it applied (UTC).
+	// Operational cost = FeeBaseUnits scaled to whole units x SpotPriceUSD;
+	// what a tenant is charged is the rating layer's job, never this
+	// event's -- the price here is history and is never adjusted.
+	SpotPriceUSD string    `json:"spotPriceUsd,omitempty"`
+	PriceSource  string    `json:"priceSource,omitempty"`
+	PricedAt     time.Time `json:"pricedAt,omitempty"`
 }
 
 // Validate checks NetworkFeeEvent's required fields.
@@ -146,7 +175,41 @@ func (e NetworkFeeEvent) Validate() error {
 	if e.OccurredAt.IsZero() {
 		errs.Add(validate.RequireNonEmpty("occurredAt", ""))
 	}
+	errs.Add(e.validateSpotPrice())
 	return errs.ErrIfAny()
+}
+
+// validateSpotPrice: SpotPriceUSD/PriceSource/PricedAt are all set or all
+// empty; the price is a non-negative decimal string.
+func (e NetworkFeeEvent) validateSpotPrice() error {
+	if e.SpotPriceUSD == "" && e.PriceSource == "" && e.PricedAt.IsZero() {
+		return nil
+	}
+	var errs validate.Errors
+	errs.Add(validate.RequireNonEmpty("spotPriceUsd", e.SpotPriceUSD))
+	errs.Add(requireDecimal("spotPriceUsd", e.SpotPriceUSD))
+	errs.Add(validate.RequireNonEmpty("priceSource", e.PriceSource))
+	if e.PricedAt.IsZero() {
+		errs.Add(validate.RequireNonEmpty("pricedAt", ""))
+	}
+	return errs.ErrIfAny()
+}
+
+// requireDecimal rejects anything but a non-negative base-10 decimal string
+// ("2648.41", "0", "1") -- no sign, exponent or thousands separators (empty
+// is left to RequireNonEmpty).
+func requireDecimal(field, v string) error {
+	dot := false
+	for i, c := range v {
+		switch {
+		case c >= '0' && c <= '9':
+		case c == '.' && !dot && i > 0 && i < len(v)-1:
+			dot = true
+		default:
+			return fmt.Errorf("%s must be a non-negative decimal string, got %q", field, v)
+		}
+	}
+	return nil
 }
 
 // requireBaseUnits rejects anything but a base-10 non-negative integer
@@ -167,6 +230,26 @@ const (
 	NetworkFeePaidBySenderWallet NetworkFeePayer = "SENDER_WALLET"
 	NetworkFeePaidByGasTank      NetworkFeePayer = "GAS_TANK"
 )
+
+// validateTiming: SubmittedAt/CompletedAt/Outcome are all set or all empty;
+// when set, completion is not before submission.
+func (e LedgerCommandEvent) validateTiming() error {
+	if e.SubmittedAt.IsZero() && e.CompletedAt.IsZero() && e.Outcome == "" {
+		return nil
+	}
+	var errs validate.Errors
+	if e.SubmittedAt.IsZero() {
+		errs.Add(validate.RequireNonEmpty("submittedAt", ""))
+	}
+	if e.CompletedAt.IsZero() {
+		errs.Add(validate.RequireNonEmpty("completedAt", ""))
+	}
+	if !e.SubmittedAt.IsZero() && !e.CompletedAt.IsZero() && e.CompletedAt.Before(e.SubmittedAt) {
+		errs.Add(fmt.Errorf("completedAt must not be before submittedAt"))
+	}
+	errs.Add(validate.RequireOneOf("outcome", string(e.Outcome), string(CommandOutcomeOK), string(CommandOutcomeError)))
+	return errs.ErrIfAny()
+}
 
 // Validate checks SettlementEvent's required fields.
 func (e SettlementEvent) Validate() error {
