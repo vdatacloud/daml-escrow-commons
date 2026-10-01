@@ -33,6 +33,16 @@ jobs:
             exit 1
           fi
 
+  release-script:
+    name: Release script tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Test scripts/next-version.sh
+        run: bash scripts/test-next-version.sh
+
   lint:
     name: Go Lint
     runs-on: ubuntu-latest

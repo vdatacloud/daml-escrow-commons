@@ -23,7 +23,10 @@ else
   IFS=. read -r MAJOR MINOR PATCH <<<"${LAST_TAG#v}"
 fi
 
-# Full messages (subject + body), NUL-separated, so footers are seen too.
+# Full messages (subject + body) so footers are seen too. -z separates
+# commits with NUL only -- a "%B%x00" format leaves git's own newline
+# between entries, so every message after the first started with a blank
+# line and its subject read as empty (missed the feat: under #8's merge).
 bump=none
 while IFS= read -r -d '' msg; do
   subject="${msg%%$'\n'*}"
@@ -34,7 +37,7 @@ while IFS= read -r -d '' msg; do
   elif [[ "$subject" =~ ^(fix|perf)(\([^\)]*\))?: ]] && [ "$bump" = none ]; then
     bump=patch
   fi
-done < <(git log --format='%B%x00' "$RANGE")
+done < <(git log -z --format='%B' "$RANGE")
 
 # Pre-1.0: a breaking change is a minor bump (RELEASING.md "Pre-1.0 note").
 if [ "$bump" = major ] && [ "$MAJOR" -eq 0 ]; then
