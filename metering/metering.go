@@ -89,6 +89,12 @@ type SettlementEvent struct {
 	// (gas) fee the settlement's transfer incurred, exactly as the custody
 	// provider reported it -- a raw fact, never converted or priced here
 	// (daml-escrow PLAN.md Phase 67: per-tenant gas attribution).
+	//
+	// Deprecated: emit a NetworkFeeEvent instead. A SettlementEvent is
+	// emitted when the ledger disbursement happens, before the custody
+	// provider's transfer that actually incurs the fee, so these fields can't
+	// be populated at emission time without double-counting the settlement.
+	// Kept (and still validated) so v0.3.0 emitters/consumers keep working.
 	// NetworkFeeBaseUnits is a non-negative integer in the fee asset's
 	// smallest unit (e.g. wei) as a decimal string, since such amounts
 	// overflow float64 precision. NetworkFeeAsset is that asset's ticker
@@ -102,7 +108,59 @@ type SettlementEvent struct {
 	NetworkFeePaidFrom  NetworkFeePayer `json:"networkFeePaidFrom,omitempty"`
 }
 
-// NetworkFeePayer identifies whose funds paid a settlement's network fee.
+// NetworkFeeEvent records the on-chain network (gas) fee one custody-
+// provider transfer incurred, emitted right after that transfer -- when the
+// fee is actually known -- rather than folded into the SettlementEvent that
+// precedes it (daml-escrow PLAN.md Phase 67: per-tenant gas attribution).
+// Also covers fees with no settlement attached (refunds, sweeps,
+// consolidation). A raw fact exactly as the provider reported it: no
+// conversion or pricing here.
+//
+// FeeBaseUnits is a non-negative integer in FeeAsset's smallest unit (e.g.
+// wei) as a decimal string -- such amounts overflow float64/int64.
+// TransferID is the provider's own transfer id; Provider names the custody
+// provider (e.g. "bitgo"); PaidFrom says whose funds paid it. OccurredAt in
+// UTC, as for the other event types.
+type NetworkFeeEvent struct {
+	TenantID     string          `json:"tenantId"`
+	EscrowID     string          `json:"escrowId"`
+	Provider     string          `json:"provider"`
+	TransferID   string          `json:"transferId"`
+	FeeBaseUnits string          `json:"feeBaseUnits"`
+	FeeAsset     string          `json:"feeAsset"`
+	PaidFrom     NetworkFeePayer `json:"paidFrom"`
+	OccurredAt   time.Time       `json:"occurredAt"`
+}
+
+// Validate checks NetworkFeeEvent's required fields.
+func (e NetworkFeeEvent) Validate() error {
+	var errs validate.Errors
+	errs.Add(validate.RequireNonEmpty("tenantId", e.TenantID))
+	errs.Add(validate.RequireNonEmpty("escrowId", e.EscrowID))
+	errs.Add(validate.RequireNonEmpty("provider", e.Provider))
+	errs.Add(validate.RequireNonEmpty("transferId", e.TransferID))
+	errs.Add(validate.RequireNonEmpty("feeBaseUnits", e.FeeBaseUnits))
+	errs.Add(requireBaseUnits("feeBaseUnits", e.FeeBaseUnits))
+	errs.Add(validate.RequireNonEmpty("feeAsset", e.FeeAsset))
+	errs.Add(validate.RequireOneOf("paidFrom", string(e.PaidFrom), string(NetworkFeePaidBySenderWallet), string(NetworkFeePaidByGasTank)))
+	if e.OccurredAt.IsZero() {
+		errs.Add(validate.RequireNonEmpty("occurredAt", ""))
+	}
+	return errs.ErrIfAny()
+}
+
+// requireBaseUnits rejects anything but a base-10 non-negative integer
+// string (empty is left to RequireNonEmpty).
+func requireBaseUnits(field, v string) error {
+	for _, c := range v {
+		if c < '0' || c > '9' {
+			return fmt.Errorf("%s must be a non-negative integer string, got %q", field, v)
+		}
+	}
+	return nil
+}
+
+// NetworkFeePayer identifies whose funds paid a network fee.
 type NetworkFeePayer string
 
 const (
@@ -136,11 +194,6 @@ func (e SettlementEvent) validateNetworkFee() error {
 	errs.Add(validate.RequireNonEmpty("networkFeeBaseUnits", e.NetworkFeeBaseUnits))
 	errs.Add(validate.RequireNonEmpty("networkFeeAsset", e.NetworkFeeAsset))
 	errs.Add(validate.RequireOneOf("networkFeePaidFrom", string(e.NetworkFeePaidFrom), string(NetworkFeePaidBySenderWallet), string(NetworkFeePaidByGasTank)))
-	for _, c := range e.NetworkFeeBaseUnits {
-		if c < '0' || c > '9' {
-			errs.Add(fmt.Errorf("networkFeeBaseUnits must be a non-negative integer string, got %q", e.NetworkFeeBaseUnits))
-			break
-		}
-	}
+	errs.Add(requireBaseUnits("networkFeeBaseUnits", e.NetworkFeeBaseUnits))
 	return errs.ErrIfAny()
 }
