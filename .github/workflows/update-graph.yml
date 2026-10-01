@@ -1,17 +1,22 @@
 name: Update Graphify Memory Map
 
+# Runs after Release finishes (any conclusion), not on the push itself: both
+# workflows push to this repo on a merge to main, and concurrent pushes can be
+# rejected by GitHub ("remote rejected ... Internal Server Error",
+# daml-escrow-commons #13). Chaining keeps the graphify commit strictly after
+# the release tag. Release runs on every push to main (except [skip ci]), so
+# this still runs once per merge.
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [Release]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: write
 
-# Shared with release.yml so the graphify commit and the release tag are
-# never pushed at the same moment (see the comment there).
 concurrency:
-  group: main-push
+  group: update-graph
   cancel-in-progress: false
 
 jobs:
@@ -22,6 +27,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v5

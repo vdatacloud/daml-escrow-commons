@@ -14,12 +14,13 @@ on:
 permissions:
   contents: write
 
-# Shared with update-graph.yml: both push to this repo on every merge to
-# main (the release tag, the graphify commit), and GitHub can reject one of
-# two concurrent pushes ("remote rejected ... Internal Server Error" --
-# daml-escrow-commons, merge of #13). Serialized, they never overlap.
+# Own group: a newer push's run may replace a pending one, which is harmless
+# -- the next run releases everything since the last tag. (Not shared with
+# update-graph.yml: a shared group let one workflow's pending run cancel the
+# other's -- daml-escrow-platform's v0.4.0 release was dropped that way.
+# update-graph.yml now runs after this workflow instead, via workflow_run.)
 concurrency:
-  group: main-push
+  group: release
   cancel-in-progress: false
 
 jobs:
