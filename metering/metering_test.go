@@ -180,3 +180,41 @@ func TestNetworkFeeEvent_SpotPrice(t *testing.T) {
 		t.Error("price without source/pricedAt: expected validation error")
 	}
 }
+
+// v0.6.0: traffic cost is optional and non-negative; its price fields are
+// all set or all empty, the price a plain decimal. Values from a real
+// LocalNet create (2704 bytes at Splice's 16.67 USD/MB).
+func TestLedgerCommandEvent_Traffic(t *testing.T) {
+	base := LedgerCommandEvent{TenantID: "t", EscrowID: "e", CommandType: "Create Probe", ParticipantNode: "app-provider", OccurredAt: time.Now()}
+
+	ok := base
+	ok.TrafficCostBytes = 2704
+	if err := ok.Validate(); err != nil {
+		t.Fatalf("bytes without a price must be valid: %v", err)
+	}
+	ok.TrafficPriceUSDPerMB, ok.TrafficPriceSource, ok.TrafficPricedAt = "16.67", "scan:extraTrafficPrice", time.Now()
+	if err := ok.Validate(); err != nil {
+		t.Fatalf("priced traffic must be valid: %v", err)
+	}
+
+	bad := map[string]func(e *LedgerCommandEvent){
+		"negative bytes":  func(e *LedgerCommandEvent) { e.TrafficCostBytes = -1 },
+		"price no source": func(e *LedgerCommandEvent) { e.TrafficPriceUSDPerMB, e.TrafficPricedAt = "16.67", time.Now() },
+		"price no time":   func(e *LedgerCommandEvent) { e.TrafficPriceUSDPerMB, e.TrafficPriceSource = "16.67", "scan" },
+		"bad price": func(e *LedgerCommandEvent) {
+			e.TrafficPriceUSDPerMB, e.TrafficPriceSource, e.TrafficPricedAt = "-1", "scan", time.Now()
+		},
+		"exponent price": func(e *LedgerCommandEvent) {
+			e.TrafficPriceUSDPerMB, e.TrafficPriceSource, e.TrafficPricedAt = "1e3", "scan", time.Now()
+		},
+	}
+	for name, mutate := range bad {
+		t.Run(name, func(t *testing.T) {
+			e := base
+			mutate(&e)
+			if err := e.Validate(); err == nil {
+				t.Fatalf("expected a validation error")
+			}
+		})
+	}
+}

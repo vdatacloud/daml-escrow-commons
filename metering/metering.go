@@ -64,6 +64,25 @@ type LedgerCommandEvent struct {
 	SubmittedAt time.Time      `json:"submittedAt,omitempty"`
 	CompletedAt time.Time      `json:"completedAt,omitempty"`
 	Outcome     CommandOutcome `json:"outcome,omitempty"`
+
+	// TrafficCostBytes (optional, v0.6.0) is the synchronizer traffic the
+	// participant paid to order this command's confirmation request, as
+	// Canton reports it on the command's completion (Ledger API v2
+	// Completion.paid_traffic_cost) -- daml-escrow PLAN.md Phase 68. 0 means
+	// none reported: a synchronizer without traffic fees, or a command
+	// rejected before ordering. It is traffic consumed; whether it was bought
+	// or covered by the free base rate is not this event's concern.
+	TrafficCostBytes int64 `json:"trafficCostBytes,omitempty"`
+	// TrafficPriceUSDPerMB/TrafficPriceSource/TrafficPricedAt (optional,
+	// v0.6.0; all set or all empty) record the synchronizer's published
+	// traffic price at the command, as a raw fact: USD per MB (10^6 bytes)
+	// as a non-negative decimal string (e.g. Splice's extraTrafficPrice
+	// "16.67"), where it came from (e.g. "scan:extraTrafficPrice"), and when
+	// it applied (UTC). Operational cost = TrafficCostBytes / 10^6 x price;
+	// what a tenant is charged is the rating layer's job.
+	TrafficPriceUSDPerMB string    `json:"trafficPriceUsdPerMb,omitempty"`
+	TrafficPriceSource   string    `json:"trafficPriceSource,omitempty"`
+	TrafficPricedAt      time.Time `json:"trafficPricedAt,omitempty"`
 }
 
 // CommandOutcome is how a timed ledger command ended.
@@ -83,6 +102,7 @@ func (e LedgerCommandEvent) Validate() error {
 	errs.Add(validate.RequireNonEmpty("commandType", e.CommandType))
 	errs.Add(validate.RequireNonEmpty("participantNode", e.ParticipantNode))
 	errs.Add(e.validateTiming())
+	errs.Add(e.validateTraffic())
 	if e.OccurredAt.IsZero() {
 		errs.Add(validate.RequireNonEmpty("occurredAt", ""))
 	}
@@ -248,6 +268,25 @@ func (e LedgerCommandEvent) validateTiming() error {
 		errs.Add(fmt.Errorf("completedAt must not be before submittedAt"))
 	}
 	errs.Add(validate.RequireOneOf("outcome", string(e.Outcome), string(CommandOutcomeOK), string(CommandOutcomeError)))
+	return errs.ErrIfAny()
+}
+
+// validateTraffic: TrafficCostBytes is non-negative; the traffic price
+// fields are all set or all empty, the price a non-negative decimal.
+func (e LedgerCommandEvent) validateTraffic() error {
+	var errs validate.Errors
+	if e.TrafficCostBytes < 0 {
+		errs.Add(fmt.Errorf("trafficCostBytes must not be negative"))
+	}
+	if e.TrafficPriceUSDPerMB == "" && e.TrafficPriceSource == "" && e.TrafficPricedAt.IsZero() {
+		return errs.ErrIfAny()
+	}
+	errs.Add(validate.RequireNonEmpty("trafficPriceUsdPerMb", e.TrafficPriceUSDPerMB))
+	errs.Add(requireDecimal("trafficPriceUsdPerMb", e.TrafficPriceUSDPerMB))
+	errs.Add(validate.RequireNonEmpty("trafficPriceSource", e.TrafficPriceSource))
+	if e.TrafficPricedAt.IsZero() {
+		errs.Add(validate.RequireNonEmpty("trafficPricedAt", ""))
+	}
 	return errs.ErrIfAny()
 }
 
