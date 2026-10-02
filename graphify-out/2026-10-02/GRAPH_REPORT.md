@@ -1,26 +1,26 @@
-# Graph Report - daml-escrow-commons  (2026-10-02)
+# Graph Report - daml-escrow-commons  (2026-10-01)
 
 ## Corpus Check
-- 24 files · ~11,945 words
+- 24 files · ~11,379 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 3)
 
 ## Summary
-- 190 nodes · 290 edges · 18 communities (13 shown, 5 thin omitted)
+- 188 nodes · 284 edges · 18 communities (13 shown, 5 thin omitted)
 - Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bffa730a`
+- Built from commit: `7ab67d68`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - GitHub & CI Workflow Skill
-- testing.T
+- validate.go
 - widget.json
 - Repository Guardrails
-- go_pkg_testing
+- hmacsig.go
 - Releasing
 - metering.go
 - CLAUDE.md
@@ -31,13 +31,13 @@
 - github.com/vdatacloud/daml-escrow-commons
 - schema.go
 - Client
-- identityclient_test.go
+- testing.T
 - next-version.sh
 - test-next-version.sh
 
 ## God Nodes (most connected - your core abstractions)
 1. `GitHub & CI Workflow Skill` - 12 edges
-2. `RequireNonEmpty()` - 11 edges
+2. `RequireNonEmpty()` - 10 edges
 3. `Client` - 9 edges
 4. `Releasing` - 9 edges
 5. `New()` - 8 edges
@@ -45,7 +45,7 @@
 7. `Repository Guardrails` - 8 edges
 8. `LoadDirectory()` - 7 edges
 9. `Identity` - 6 edges
-10. `LedgerCommandEvent` - 6 edges
+10. `RequireOneOf()` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `TestErrors_AggregatesAndReports()` --calls--> `RequireNonEmpty()`  [INFERRED]
@@ -68,9 +68,9 @@
 Cohesion: 0.11
 Nodes (17): 10. Useful Reference Commands, 11. References, 1. Pre-Commit Local Verification (MANDATORY — do this before every commit), 2. Branching Rules, 3. Commit Standards, 4. Staging & Pushing Changes, 5. Pull Request Creation, 6. CI Pipeline Overview (+9 more)
 
-### Community 1 - "testing.T"
-Cohesion: 0.19
-Nodes (16): TestLedgerCommandEvent_Timing(), TestLedgerCommandEvent_Traffic(), TestLedgerCommandEvent_Validate(), TestNetworkFeeEvent_SpotPrice(), TestNetworkFeeEvent_Validate(), TestSettlementEvent_NetworkFee(), TestSettlementEvent_Validate(), withFee() (+8 more)
+### Community 1 - "validate.go"
+Cohesion: 0.14
+Nodes (9): Errors, RequirePositive(), RequireValidEmail(), TestErrors_AggregatesAndReports(), TestErrors_ErrIfAny_NilWhenEmpty(), TestRequireNonEmpty(), TestRequireOneOf(), TestRequirePositive() (+1 more)
 
 ### Community 2 - "widget.json"
 Cohesion: 0.17
@@ -80,8 +80,8 @@ Nodes (11): minLength, type, properties, name, quantity, minimum, type, required
 Cohesion: 0.22
 Nodes (8): Branch Protection Strategy, Branching Strategy, CI Requirements, Code Review Requirements, Commit Standard, Pre-Commit Verification, Pull Request Rules, Repository Guardrails
 
-### Community 4 - "go_pkg_testing"
-Cohesion: 0.18
+### Community 4 - "hmacsig.go"
+Cohesion: 0.22
 Nodes (8): Sign(), TestSignAndVerify_RoundTrip(), TestVerify_MalformedHexFails(), TestVerify_TamperedMessageFails(), TestVerify_WrongSecretFails(), Verify(), Ref(), TestRef()
 
 ### Community 6 - "Releasing"
@@ -89,8 +89,8 @@ Cohesion: 0.20
 Nodes (9): 1. Prerequisites (one-time, per machine that will `go get` this module), 2. Decide the version bump, 3. Tag and push, 4. Publish the GitHub release, 5. Update consumers, Automated (default), Future automation, Manual It follows [Semantic Versioning](https://semver.org/) and (+1 more)
 
 ### Community 7 - "metering.go"
-Cohesion: 0.15
-Nodes (12): ChargeBearer, CommandOutcome, LedgerCommandEvent, requireBaseUnits(), requireDecimal(), NetworkFeeEvent, NetworkFeePayer, Rail (+4 more)
+Cohesion: 0.23
+Nodes (11): ChargeBearer, CommandOutcome, LedgerCommandEvent, requireBaseUnits(), requireDecimal(), NetworkFeeEvent, NetworkFeePayer, Rail (+3 more)
 
 ### Community 8 - "CLAUDE.md"
 Cohesion: 0.29
@@ -105,12 +105,12 @@ Cohesion: 0.33
 Nodes (5): daml-escrow-commons, Status, Using this module, What's here, What's NOT here, and won't be
 
 ### Community 14 - "schema.go"
-Cohesion: 0.13
-Nodes (9): ErrUnknownType, Registry, LoadDirectory(), TestLoadDirectory_CompilesSchemas(), TestLoadDirectory_MissingDirectory(), TestValidate_InvalidPayloadReportsFailures(), TestValidate_UnknownType(), TestValidate_ValidPayload() (+1 more)
+Cohesion: 0.15
+Nodes (3): ErrUnknownType, Registry, ValidationError
 
-### Community 16 - "identityclient_test.go"
-Cohesion: 0.21
-Nodes (7): New(), TestClient_GetByEmail_ServerError(), TestClient_GetByOktaSub_Found(), TestClient_GetByToken_NotFound(), TestClient_ManagesIdentity(), TestClient_ManagesIdentity_ServerError(), TestClient_Upsert_Success()
+### Community 16 - "testing.T"
+Cohesion: 0.12
+Nodes (20): New(), TestClient_GetByEmail_ServerError(), TestClient_GetByOktaSub_Found(), TestClient_GetByToken_NotFound(), TestClient_ManagesIdentity(), TestClient_ManagesIdentity_ServerError(), TestClient_Upsert_Success(), TestLedgerCommandEvent_Timing() (+12 more)
 
 ### Community 18 - "test-next-version.sh"
 Cohesion: 0.70
@@ -124,17 +124,17 @@ Nodes (4): c(), expect(), test-next-version.sh script, tg()
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Client` connect `Client` to `identityclient_test.go`?**
+- **Why does `Client` connect `Client` to `testing.T`?**
   _High betweenness centrality (0.040) - this node is a cross-community bridge._
-- **Why does `New()` connect `identityclient_test.go` to `Client`?**
+- **Why does `New()` connect `testing.T` to `Client`?**
   _High betweenness centrality (0.035) - this node is a cross-community bridge._
-- **Why does `RequireNonEmpty()` connect `metering.go` to `testing.T`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `LoadDirectory()` connect `testing.T` to `schema.go`?**
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `RequireNonEmpty()` (e.g. with `TestErrors_AggregatesAndReports()` and `TestErrors_ErrIfAny_NilWhenEmpty()`) actually correct?**
   _`RequireNonEmpty()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `github.com/vdatacloud/daml-escrow-commons`, `$schema`, `title` to the rest of the system?**
   _55 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `GitHub & CI Workflow Skill` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
-- **Should `schema.go` be split into smaller, more focused modules?**
-  _Cohesion score 0.13450292397660818 - nodes in this community are weakly interconnected._
+- **Should `validate.go` be split into smaller, more focused modules?**
+  _Cohesion score 0.13970588235294118 - nodes in this community are weakly interconnected._
