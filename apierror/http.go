@@ -45,7 +45,9 @@ func newRequestID() string {
 
 // Writer sends errors as HTTP responses.
 type Writer struct {
-	// Detail is the level responses carry (Full by default).
+	// Detail is the level responses carry. The zero value is Full: set it
+	// explicitly -- Summary outside developer environments (see "What an
+	// error may disclose" in the package doc).
 	Detail Detail
 	// Log, when set, is called with each error before it is written --
 	// log e.LogFields() there (short forms only).
