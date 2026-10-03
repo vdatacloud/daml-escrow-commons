@@ -63,7 +63,7 @@ var canonicalCases = map[string]*Error{
 	"minimal": New(http.StatusNotFound, CodeNotFound, "escrow not found"),
 	"full": New(http.StatusUnprocessableEntity, "LEDGER_SIGNATURE_REJECTED", "the participant found no valid signature from the party's key").
 		WithStage("execute").
-		WithHint("sign the prepared transaction's hash with key "+ShortID(party)+" <not the base64 text> & retry").
+		WithHint("sign the prepared transaction's hash with key " + ShortID(party) + " <not the base64 text> & retry").
 		WithUpstream(&Upstream{Service: "canton", Status: 400, Code: "FAILED_TO_EXECUTE_TRANSACTION", GRPCCode: "INVALID_ARGUMENT",
 			Cause: "Received 0 valid signatures. Transaction hash to be signed: 1220aa", TraceID: "009fa53edf07ce7f", Node: "app-provider"}).
 		WithDetails(signing{Party: party, SignatureReceived: strings.Repeat("3f", 64), ExpectedHash: "1220" + strings.Repeat("aa", 32), ActAs: []string{party}}),
@@ -217,8 +217,8 @@ func TestCodeForStatus(t *testing.T) {
 func TestShortID(t *testing.T) {
 	ns := "1220ebb7b95ec6e5cfa8dbf6aa11981e4e1645b1926e4a5afb2c46d7ef49f7ca4288"
 	for in, want := range map[string]string{
-		"relaytest::" + ns:      "relaytest::1220ebb7…4288",
-		ns:                      "1220ebb7…4288",
+		"relaytest::" + ns:       "relaytest::1220ebb7…4288",
+		ns:                       "1220ebb7…4288",
 		strings.Repeat("3f", 64): "3f3f3f3f…3f3f",
 		"VXDrn/op6YbtZHuSH+xdWUR8kW7+xMrP9w47KgxPZSE=": "VXDrn/op…ZSE=",
 		"Depositor":         "Depositor",

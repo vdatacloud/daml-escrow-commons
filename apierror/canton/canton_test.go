@@ -12,6 +12,7 @@ import (
 	"testing"
 
 	"github.com/vdatacloud/daml-escrow-commons/apierror"
+	"github.com/vdatacloud/daml-escrow-commons/cantonid"
 	"github.com/xeipuuv/gojsonschema"
 )
 
@@ -127,29 +128,36 @@ func TestLedgerError(t *testing.T) {
 }
 
 func TestSigningDetails(t *testing.T) {
-	party := "w::1220" + strings.Repeat("ab", 32)
-	if d := ForParty(party); d.PartyFingerprint != "1220"+strings.Repeat("ab", 32) || Namespace("Depositor") != "" {
+	party := cantonid.MustParsePartyID("w::1220" + strings.Repeat("ab", 32))
+	if d := ForParty(party); d.PartyFingerprint != party.Namespace || d.Party != party {
 		t.Fatalf("%+v", d)
 	}
-	if ExpectedHash("Transaction hash to be signed: 1220ff. Ensure") != "1220ff" || ExpectedHash("nothing") != "" {
-		t.Error("ExpectedHash")
+	if ExpectedHash("Transaction hash to be signed: 1220"+strings.Repeat("ff", 32)+". Ensure") != cantonid.Hash("1220"+strings.Repeat("ff", 32)) ||
+		ExpectedHash("nothing") != "" || ExpectedHash("Transaction hash to be signed: 1220ff.") != "" {
+		t.Error("ExpectedHash parses only a well-formed hash")
 	}
 
 	// Signing attaches to a classified refusal, keeping what's there.
-	e := FromLedgerError("execute", ParseLedgerError(400, []byte(`{"cause":"Transaction hash to be signed: 1220ff.","grpcCodeValue":3}`)))
+	cause := `{"cause":"Transaction hash to be signed: 1220` + strings.Repeat("ff", 32) + `.","grpcCodeValue":3}`
+	e := FromLedgerError("execute", ParseLedgerError(400, []byte(cause)))
 	d := Signing(e)
 	d.SignatureReceived = "abcd"
-	if got := Signing(e); got.ExpectedHash != "1220ff" || got.SignatureReceived != "abcd" {
+	if got := Signing(e); got.ExpectedHash.Short() != "1220ffff…ffff" || got.SignatureReceived != "abcd" {
 		t.Errorf("%+v", got)
 	}
-	// ...and to one with no details, or details parsed from JSON.
+	// ...and to one with no details, or details parsed from JSON: typed ids
+	// survive the canonical round trip as their full values.
 	plain := apierror.New(401, CodeInvalidSignature, "x")
 	Signing(plain).Party = party
-	if plain.Details.(*SigningDetails).Party != party {
-		t.Error("attach to none")
-	}
 	body, _ := plain.Canonical(apierror.Full)
+	if !strings.Contains(string(body), `"party":"`+party.String()+`"`) {
+		t.Errorf("details carry the full party: %s", body)
+	}
 	if parsed := apierror.Parse(401, body); Signing(parsed).Party != party {
 		t.Error("from parsed JSON")
+	}
+	// Zero typed ids are omitted.
+	if b, _ := json.Marshal(SigningDetails{LedgerUser: "w-1"}); string(b) != `{"ledgerUser":"w-1"}` {
+		t.Errorf("zero ids omitted: %s", b)
 	}
 }

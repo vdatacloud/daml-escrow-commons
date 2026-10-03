@@ -4,30 +4,18 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/vdatacloud/daml-escrow-commons/cantonid"
 )
 
 // ShortID is the one short form for long identifiers in messages, hints
-// and logs: an id with a "hint::namespace" shape (a Canton party) keeps its
-// hint and shortens its namespace ("relaytest::1220ebb7…4288"); any other
-// long value -- hash, fingerprint, key, signature -- keeps its first 8 and
-// last 4 characters ("3f9a0c1d…77e2"). Values short enough to read are
-// returned unchanged. Full values belong in Error.Details.
-func ShortID(s string) string {
-	if hint, ns, ok := strings.Cut(s, "::"); ok {
-		return hint + "::" + shorten(ns)
-	}
-	return shorten(s)
-}
-
-const shortHead, shortTail = 8, 4
-
-func shorten(s string) string {
-	r := []rune(s)
-	if len(r) <= shortHead+shortTail+4 {
-		return s
-	}
-	return string(r[:shortHead]) + "…" + string(r[len(r)-shortTail:])
-}
+// and logs -- cantonid.Short: a party id keeps its hint and shortens its
+// namespace ("relaytest::1220ebb7…4288"); a fingerprint or hash keeps its
+// first 8 and last 4 characters ("1220ebb7…4288"); any other long value
+// (a signature, an id echoed from input) the same. Typed values should use
+// their own Short methods (cantonid.PartyID.Short, ...). Full values
+// belong in Error.Details.
+func ShortID(s string) string { return cantonid.Short(s) }
 
 // ShortIDs applies ShortID to each id.
 func ShortIDs(ids []string) []string {

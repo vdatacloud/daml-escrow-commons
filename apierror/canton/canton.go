@@ -15,6 +15,7 @@ import (
 	"strings"
 
 	"github.com/vdatacloud/daml-escrow-commons/apierror"
+	"github.com/vdatacloud/daml-escrow-commons/cantonid"
 )
 
 // Service is Upstream.Service for a Canton participant.
@@ -95,46 +96,47 @@ func GRPCCodeName(code int) string {
 // SigningDetails are the full values behind a signing or authorization
 // refusal (apierror details for the LEDGER_SIGNATURE_REJECTED,
 // LEDGER_PERMISSION_DENIED, KEY_DOES_NOT_CONTROL_PARTY and
-// INVALID_SIGNATURE codes).
+// INVALID_SIGNATURE codes). Ids the service derived or vouches for are
+// typed (cantonid); values echoed from the request (ActAs) stay raw
+// strings, since they may not parse.
 type SigningDetails struct {
-	Party string `json:"party,omitempty"`
-	// PartyFingerprint is the party's namespace -- the fingerprint of the
-	// only key that can sign for an external party.
-	PartyFingerprint string `json:"partyFingerprint,omitempty"`
+	Party cantonid.PartyID `json:"party,omitzero"`
+	// PartyFingerprint is Party's namespace -- the only key that can sign
+	// for an external party (compare PublicKeyFingerprint).
+	PartyFingerprint cantonid.Fingerprint `json:"partyFingerprint,omitzero"`
 	// PublicKeyFingerprint is the fingerprint of the key presented.
-	PublicKeyFingerprint string `json:"publicKeyFingerprint,omitempty"`
+	PublicKeyFingerprint cantonid.Fingerprint `json:"publicKeyFingerprint,omitzero"`
 	// SignatureReceived is the signature as received (hex).
 	SignatureReceived string `json:"signatureReceived,omitempty"`
 	// SignedBy is the key fingerprint the signature was submitted under.
-	SignedBy string `json:"signedBy,omitempty"`
-	// SignedMessage is what the signature had to cover.
+	SignedBy cantonid.Fingerprint `json:"signedBy,omitzero"`
+	// SignedMessage is what the signature had to cover (a nonce, or a
+	// base64 multi-hash).
 	SignedMessage string `json:"signedMessage,omitempty"`
 	// ExpectedHash is the transaction hash the participant expected
-	// signed (hex, from its refusal).
-	ExpectedHash string   `json:"expectedHash,omitempty"`
-	ActAs        []string `json:"actAs,omitempty"`
+	// signed (from its refusal).
+	ExpectedHash cantonid.Hash `json:"expectedHash,omitzero"`
+	// ActAs is a refused command's actAs, as the caller sent it.
+	ActAs []string `json:"actAs,omitempty"`
 	// LedgerUser is the Ledger API user the request was submitted as.
 	LedgerUser string `json:"ledgerUser,omitempty"`
 }
 
 // ForParty is SigningDetails for party, with its namespace filled in.
-func ForParty(party string) *SigningDetails {
-	return &SigningDetails{Party: party, PartyFingerprint: Namespace(party)}
-}
-
-// Namespace is a party id's namespace (the part after "::"), "" if none.
-func Namespace(party string) string {
-	_, ns, _ := strings.Cut(party, "::")
-	return ns
+func ForParty(party cantonid.PartyID) *SigningDetails {
+	return &SigningDetails{Party: party, PartyFingerprint: party.Namespace}
 }
 
 var expectedHashRe = regexp.MustCompile(`hash to be signed: ([0-9a-fA-F]+)`)
 
 // ExpectedHash is the transaction hash a signature refusal's cause names
-// ("... Transaction hash to be signed: 1220ab... "), or "".
-func ExpectedHash(cause string) string {
+// ("... Transaction hash to be signed: 1220ab... "), or "" if it names
+// none (or not a well-formed one).
+func ExpectedHash(cause string) cantonid.Hash {
 	if m := expectedHashRe.FindStringSubmatch(cause); m != nil {
-		return m[1]
+		if h, err := cantonid.ParseHash(strings.ToLower(m[1])); err == nil {
+			return h
+		}
 	}
 	return ""
 }
@@ -201,7 +203,7 @@ func FromLedgerError(stage string, le *LedgerError) *apierror.Error {
 		status, code, msg = http.StatusUnprocessableEntity, CodeLedgerSignature, "the participant found no valid signature from the party's key"
 		hint = "sign the prepared transaction's hash, recomputed from the unmodified prepared transaction, with the party's key"
 		if expected != "" {
-			hint += "; the participant expected hash " + apierror.ShortID(expected) + " (details.expectedHash)"
+			hint += "; the participant expected hash " + expected.Short() + " (details.expectedHash)"
 		}
 	case le.GRPCCode == 3:
 		status, code, msg = http.StatusBadRequest, CodeLedgerInvalidArgument, "the ledger rejected the request's arguments"
