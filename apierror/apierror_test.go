@@ -73,6 +73,25 @@ var canonicalCases = map[string]*Error{
 
 func init() {
 	canonicalCases["full"].RequestID = "req-01HZX"
+	// String escaping is where Go's encoder and JSON.stringify differ
+	// (\b, \f, U+2028/9, other control characters) -- the canonical form
+	// is Go's, and the TypeScript mirror must match it byte for byte.
+	canonicalCases["escaping"] = New(http.StatusBadRequest, CodeInvalidRequest,
+		"quote \" backslash \\ tab\t nl\n cr\r bs\b ff\f nul\x00 esc\x1b ls\u2028 ps\u2029 <tag> & é 🔑").
+		WithDetails(map[string]any{"z": 1, "a": map[string]any{"y": true, "b": nil}, "m": []any{"x", 2.5}})
+}
+
+// TestLogFields_Golden pins LogFields' order and values for the TypeScript
+// mirror (logFields) to match.
+func TestLogFields_Golden(t *testing.T) {
+	for _, name := range []string{"full", "escaping", "minimal"} {
+		pairs := [][2]string{}
+		for _, f := range canonicalCases[name].LogFields() {
+			pairs = append(pairs, [2]string{f.Key, f.Value})
+		}
+		got, _ := encode(pairs)
+		golden(t, "logfields/"+name+".json", got)
+	}
 }
 
 func TestCanonical_Golden(t *testing.T) {
