@@ -17,6 +17,35 @@
 // object keys sorted, no HTML escaping, absent fields omitted. Go
 // (Canonical) and TypeScript (canonicalApiError) produce identical bytes;
 // testdata/canonical holds the fixtures both test against.
+//
+// # What an error may disclose
+//
+// Error bodies leave the service -- often from unauthenticated endpoints --
+// and get pasted into tickets, chats and logs. Before adding a field, a
+// detail or a word to a message, check it against these rules:
+//
+//   - May include: what the caller sent (echoed back); values derived only
+//     from the caller's own credentials (e.g. its key's fingerprint); and,
+//     once the caller is verified (an authenticated session, or a check it
+//     just passed), facts about its OWN resources and the upstream's account
+//     of its OWN request.
+//   - Must never include: data about another party or user the caller
+//     didn't send (no lookups on its behalf, no derived ids for unverified
+//     claims); anything that reveals whether something exists for someone
+//     else (an existence oracle -- checks before verification must not touch
+//     storage, and must answer the same for real and made-up values);
+//     identity data (names, emails, organizations); secrets (tokens, keys,
+//     passwords, nonces or signatures the caller didn't send); raw internal
+//     error text (database, network, hostnames) -- log it, return a generic
+//     message with the request id instead.
+//   - Details and upstream causes are Full-level only. Services must default
+//     to Summary and enable Full only for developer environments; a Writer's
+//     zero value is Full, so set Detail explicitly.
+//   - Logs get LogFields (short forms only), never the full details.
+//
+// Domain packages should encode the verified/unverified distinction in
+// types (see daml-escrow's verifiedParty) so a claim can't reach Details by
+// accident.
 package apierror
 
 import (

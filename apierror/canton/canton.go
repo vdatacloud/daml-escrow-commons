@@ -94,6 +94,11 @@ func GRPCCodeName(code int) string {
 }
 
 // SigningDetails are the full values behind a signing or authorization
+// refusal. Disclosure (apierror package doc): set Party, PartyFingerprint
+// and LedgerUser only for a party the caller is VERIFIED to act for -- for a
+// party it merely claimed, leave them empty (the claim can be echoed in the
+// message); PublicKeyFingerprint, SignatureReceived and SignedMessage are
+// the caller's own and always fine. This is the full detail of a
 // refusal (apierror details for the LEDGER_SIGNATURE_REJECTED,
 // LEDGER_PERMISSION_DENIED, KEY_DOES_NOT_CONTROL_PARTY and
 // INVALID_SIGNATURE codes). Ids the service derived or vouches for are
