@@ -43,11 +43,15 @@ public, so no auth/module-fetch setup is needed to consume a tagged version once
 
 ## Status
 
-Scaffolded 2026-08-07 with three packages, each with full unit test coverage (`go test ./...`). As of 2026-08-10,
-real dependencies of two sibling repos: `daml-escrow-cms` (`schema`, validating drafted `metadata`) and
-`daml-escrow-identity` (`hmacsig`, deriving its `identity_token`) — both via the local-dev `replace` shown above.
-`daml-escrow` itself has not migrated its own `schema_service.go`/`compliance.go` HMAC verification onto this
-module yet — see `../daml-escrow/plans/CMS_SEPARATION_PLAN.md`'s "Shared utilities" section.
+Scaffolded 2026-08-07 with `schema`, `hmacsig` and `validate`; since grown to the nine packages above, each with
+unit tests (`go test ./...`). Consumers: `daml-escrow-cms` (`schema`, `hmacsig`, `identityclient`),
+`daml-escrow-identity` (`hmacsig`) and `daml-escrow` (`apierror`, `apierror/canton`, `cantonid`, `hmacsig`,
+`identityclient`, `metering`, `pseudoref`). `apierror` and `cantonid` are also mirrored in TypeScript by
+`@vdatacloud/cx-commons`, tested against this repo's `testdata` fixtures -- change them here first.
+
+What an API error may disclose (caller-sent values, values from the caller's own credentials, and -- once verified --
+facts about its own resources; never another party's data or existence) is spelled out in the `apierror` package
+doc; every service emitting the envelope follows it.
 
 Made public 2026-08-10 (it already fit the bar: dependency-light, no domain logic, no ledger client code, no T2/T3
 identity) — this also resolved a CI cross-repo-checkout problem in `daml-escrow-cms`/`daml-escrow-identity` for
