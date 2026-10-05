@@ -7,13 +7,25 @@ Conventional Commits since the last `v*` tag (`scripts/next-version.sh`, rules i
 `go build`/`go vet`/`go test`, then pushes an annotated tag and publishes a GitHub release with generated
 notes. **Merging a PR is releasing it** — so the PR's commit prefixes decide the bump:
 
-- `feat!:` / `fix!:` / a `BREAKING CHANGE:` footer → major (pre-1.0: minor)
-- `feat:` → minor
-- `fix:` / `perf:` → patch
-- only `chore:` / `docs:` / `test:` / `ci:` / `refactor:` / `style:` / `build:` → **no release**
+| Commits since the last tag | Bump |
+|---|---|
+| `type!:` or a `BREAKING CHANGE:` footer (breaks a consumer: another repo, the website) | minor |
+| `feat:` (a substantial feature) or a `Deprecated:` footer | minor |
+| `fix:` / `perf:` / `refactor:` / `revert:` / `build:` / `chore(deps):` (small changes, bug fixes) | patch |
+| only `chore`/`docs`/`test`/`ci`/`style` | **no release** |
+
+Majors are never automatic -- see "Major releases" below.
 
 Preview what merging would release: `scripts/next-version.sh <branch>` (empty output = no release). Tags are
 made by `github-actions[bot]` (annotated, not GPG-signed). After a release, update consumers (section 5).
+
+## Major releases
+
+A major version is a **product release** (the website or the daml-escrow platform), decided deliberately, not
+triggered by a commit prefix. Until the first one, every repo stays at `v0.x`, where a minor bump is semver's
+signal for a breaking change -- mark breaks with `type!:` or a `BREAKING CHANGE:` footer anyway, so the release
+notes say so. To cut a major, tag it by hand (manual steps below) with the next major (`v1.0.0`), after
+`make verify`; automation then continues from that tag.
 
 The manual process below remains the fallback (e.g. a re-release, or if the workflow is unavailable).
 
@@ -56,17 +68,8 @@ root commit instead.)
 
 Read the commit prefixes in that range:
 
-| Prefix in range | Bump |
-|---|---|
-| any `feat!:` or a `BREAKING CHANGE:` footer | **major** (or, pre-1.0, treat as the next **minor** — see note below) |
-| `feat:` | **minor** |
-| `fix:` / `perf:` | **patch** |
-| `chore:`, `refactor:`, `test:`, `docs:`, `ci:` only | **no release** (nothing consumer-visible changed) |
-
-**Pre-1.0 note:** while this module is `v0.x.y`, semver treats the whole surface as unstable — conventionally,
-what would be a major bump becomes a minor bump instead (`v0.1.0 → v0.2.0`), and everything else maps to patch.
-Switch to real major bumps once something outside this repo actually depends on a released tag and stability
-matters. Until then, default to `v0.1.0` for the first release.
+Apply the same rules as the automated table above (majors only as a deliberate product release, see "Major
+releases"). Default to `v0.1.0` for the first release.
 
 ## 3. Tag and push
 
