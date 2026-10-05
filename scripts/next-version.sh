@@ -4,10 +4,16 @@
 # release is warranted. Used by .github/workflows/release.yml; run it locally
 # to preview what a merge to main would release. Rules (RELEASING.md):
 #
-#   feat!: / fix!: / any "BREAKING CHANGE:" footer -> major (pre-1.0: minor)
-#   feat:                                         -> minor
-#   fix: / perf:                                  -> patch
-#   only chore/docs/test/ci/refactor/style/build  -> no release
+#   type!: / any "BREAKING CHANGE:" footer   -> minor (breaks a consumer: another
+#                                               repo, the website); never major
+#   feat: / any "Deprecated:" footer         -> minor (substantial feature, deprecation)
+#   fix: / perf: / refactor: / revert: /     -> patch (small change or bug fix)
+#   build: / chore(deps):
+#   only chore/docs/test/ci/style            -> no release
+#
+#
+# Majors are never automatic: a major is a product release (the website or
+# the daml-escrow platform), cut by hand -- see RELEASING.md "Major releases".
 #
 # Usage: scripts/next-version.sh [range-end]   (default HEAD)
 set -euo pipefail
@@ -31,21 +37,15 @@ bump=none
 while IFS= read -r -d '' msg; do
   subject="${msg%%$'\n'*}"
   if [[ "$subject" =~ ^[a-z]+(\([^\)]*\))?!: ]] || grep -q '^BREAKING[ -]CHANGE:' <<<"$msg"; then
-    bump=major; break
-  elif [[ "$subject" =~ ^feat(\([^\)]*\))?: ]]; then
+    bump=minor; break
+  elif [[ "$subject" =~ ^feat(\([^\)]*\))?: ]] || grep -qi '^DEPRECATED:' <<<"$msg"; then
     bump=minor
-  elif [[ "$subject" =~ ^(fix|perf)(\([^\)]*\))?: ]] && [ "$bump" = none ]; then
+  elif [[ "$subject" =~ ^((fix|perf|refactor|revert|build)(\([^\)]*\))?|chore\(deps\)): ]] && [ "$bump" = none ]; then
     bump=patch
   fi
 done < <(git log -z --format='%B' "$RANGE")
 
-# Pre-1.0: a breaking change is a minor bump (RELEASING.md "Pre-1.0 note").
-if [ "$bump" = major ] && [ "$MAJOR" -eq 0 ]; then
-  bump=minor
-fi
-
 case "$bump" in
-  major) echo "v$((MAJOR + 1)).0.0" ;;
   minor) echo "v${MAJOR}.$((MINOR + 1)).0" ;;
   patch) echo "v${MAJOR}.${MINOR}.$((PATCH + 1))" ;;
   none)  : ;;
