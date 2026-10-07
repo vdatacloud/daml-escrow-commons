@@ -49,22 +49,13 @@ EOF
 chmod +x "$PRE_PUSH_HOOK"
 echo "Pre-push hook successfully installed at: .git/hooks/pre-push"
 
+# graphify-out/ is regenerated on main by .github/workflows/update-graph.yml
+# after every merge, and that copy is the one everyone uses -- no local hook
+# writes it (a local run just churns the tracked files, and CI refuses PRs
+# that touch them). Remove the graphify pre-commit hook earlier versions of
+# this script installed.
 PRE_COMMIT_HOOK="$HOOKS_DIR/pre-commit"
-
-echo "Installing git pre-commit hook..."
-
-# Regenerates graphify-out/ locally for this checkout's own queries, but
-# never stages it: .github/workflows/update-graph.yml regenerates and
-# commits it on main after merge. Staging it here put graphify-out/ churn in
-# every PR, which then conflicted with that bot's commits (same convention
-# as daml-escrow's hook). CI rejects PRs that touch graphify-out/.
-cat << 'EOF' > "$PRE_COMMIT_HOOK"
-#!/bin/sh
-echo "[pre-commit] Updating local Graphify memory map (not staged)..."
-graphify update . || { echo "Graphify update failed. Aborting commit."; exit 1; }
-exit 0
-EOF
-
-chmod +x "$PRE_COMMIT_HOOK"
-
-echo "Pre-commit hook successfully installed at: .git/hooks/pre-commit"
+if [ -f "$PRE_COMMIT_HOOK" ] && grep -q "graphify update" "$PRE_COMMIT_HOOK"; then
+    rm "$PRE_COMMIT_HOOK"
+    echo "Removed the old graphify pre-commit hook (graphify-out/ comes from CI on main)."
+fi

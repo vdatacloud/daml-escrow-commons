@@ -25,5 +25,5 @@ verify: build vet test ## Full local gate: build, vet, test (run before pushing)
 	@echo "All verification checks passed."
 
 .PHONY: install-hooks
-install-hooks: ## Install local git hooks (pre-commit: graphify, pre-push: make verify)
+install-hooks: ## Install local git hooks (pre-push: make verify)
 	./scripts/install-git-hooks.sh
