@@ -1,6 +1,6 @@
 # graphify
-- **graphify** (`.claude/skills/graphify/SKILL.md` if vendored, otherwise the globally installed skill) - any input to knowledge graph. Trigger: `/graphify`
-When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else. `graphify-out/graph.json` exists in this repo — prefer `graphify query "<question>"` over raw grep/read for codebase questions, per `daml-escrow/.claude/CLAUDE.md`'s convention. Run `graphify update .` after changes (the pre-commit hook installed via `scripts/install-git-hooks.sh` does this automatically and stages `graphify-out/`).
+- **graphify** (`.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
+When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else. `graphify-out/graph.json` exists in this repo — prefer `graphify query "<question>"` over raw grep/read for codebase questions, per `daml-escrow/.claude/CLAUDE.md`'s convention. Don't run `graphify update .` locally or commit `graphify-out/`: CI regenerates it on `main` after every merge (`.github/workflows/update-graph.yml`, pinned graphifyy version); pull for a current graph.
 
 # Cross-repo context
 
