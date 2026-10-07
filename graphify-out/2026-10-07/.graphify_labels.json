@@ -4,7 +4,7 @@
   "2": "widget.json",
   "3": "Repository Guardrails",
   "4": "hmacsig.go",
-  "5": "Fingerprint",
+  "5": "cantonid.go",
   "6": "Releasing",
   "7": "metering.go",
   "8": "CLAUDE.md",
@@ -13,13 +13,10 @@
   "11": ".claude/CLAUDE.md",
   "12": "install-git-hooks.sh",
   "13": "github.com/vdatacloud/daml-escrow-commons",
-  "14": "agreementsig_test.go",
+  "14": "http.go",
   "15": "Client",
   "16": "apierror_test.go",
   "17": "next-version.sh",
   "18": "test-next-version.sh",
-  "19": "agreement.go",
-  "20": "canonical.go",
-  "21": "apierror.go",
-  "22": "doc.go"
+  "21": "apierror.go"
 }
