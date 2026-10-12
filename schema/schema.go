@@ -8,6 +8,7 @@
 package schema
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -20,6 +21,7 @@ import (
 // filename without the .json extension, e.g. "escrow" for "escrow.json").
 type Registry struct {
 	schemas map[string]*gojsonschema.Schema
+	raw     map[string]map[string]any // the parsed schema documents, for Field
 }
 
 // LoadDirectory compiles every *.json file in dir into the Registry, keyed by
@@ -31,7 +33,7 @@ func LoadDirectory(dir string) (*Registry, error) {
 		return nil, fmt.Errorf("schema: failed to read directory %q: %w", dir, err)
 	}
 
-	r := &Registry{schemas: make(map[string]*gojsonschema.Schema)}
+	r := &Registry{schemas: make(map[string]*gojsonschema.Schema), raw: make(map[string]map[string]any)}
 
 	for _, file := range files {
 		if file.IsDir() || filepath.Ext(file.Name()) != ".json" {
@@ -51,6 +53,16 @@ func LoadDirectory(dir string) (*Registry, error) {
 		}
 
 		r.schemas[typeName] = compiled
+
+		data, err := os.ReadFile(absPath)
+		if err != nil {
+			return nil, fmt.Errorf("schema: failed to read %q: %w", file.Name(), err)
+		}
+		var doc map[string]any
+		if err := json.Unmarshal(data, &doc); err != nil {
+			return nil, fmt.Errorf("schema: failed to parse %q: %w", file.Name(), err)
+		}
+		r.raw[typeName] = doc
 	}
 
 	return r, nil
