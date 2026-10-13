@@ -120,3 +120,40 @@ func TestClient_ManagesIdentity_ServerError(t *testing.T) {
 		t.Fatal("expected error on 500")
 	}
 }
+
+func TestClient_CreatePendingInvitation(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/api/v1/pending-invitations" || r.Method != http.MethodPost {
+			t.Fatalf("unexpected request: %s %s", r.Method, r.URL.Path)
+		}
+		if got := r.Header.Get("Authorization"); got != "Bearer test-token" {
+			t.Fatalf("expected bearer token header, got %q", got)
+		}
+		var body map[string]string
+		_ = json.NewDecoder(r.Body).Decode(&body)
+		if body["email"] != "rev@example.com" || body["invitedByOktaSub"] != "sub-owner" || body["context"] != "cms:workspace/w1" {
+			t.Fatalf("unexpected body %v", body)
+		}
+		_ = json.NewEncoder(w).Encode(PendingInvitation{Email: "rev@example.com", InvitedByOktaSub: "sub-owner", Status: "PENDING"})
+	}))
+	defer server.Close()
+
+	inv, err := New(server.URL, "test-token").CreatePendingInvitation(context.Background(), "rev@example.com", "sub-owner", "cms:workspace/w1")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if inv.Status != "PENDING" || inv.Email != "rev@example.com" {
+		t.Fatalf("got %+v", inv)
+	}
+}
+
+func TestClient_CreatePendingInvitation_ServerError(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.Error(w, "nope", http.StatusForbidden)
+	}))
+	defer server.Close()
+
+	if _, err := New(server.URL, "").CreatePendingInvitation(context.Background(), "a@b.com", "sub", ""); err == nil {
+		t.Fatal("expected an error for a 403")
+	}
+}
