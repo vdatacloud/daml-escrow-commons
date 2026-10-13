@@ -63,8 +63,8 @@ jobs:
             echo "Tag $NEXT already exists -- nothing to do."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -a "$NEXT" -m "$NEXT"
-          git push origin "$NEXT"
-          gh release create "$NEXT" --title "$NEXT" --generate-notes --verify-tag
+          # The release API creates the tag server-side. A `git push` of the
+          # tag is refused whenever the release includes a workflow change
+          # ("refusing to allow a GitHub App to create or update workflow
+          # ... without `workflows` permission"), which GITHUB_TOKEN can't hold.
+          gh release create "$NEXT" --target "$GITHUB_SHA" --title "$NEXT" --generate-notes
