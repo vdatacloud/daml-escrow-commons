@@ -23,6 +23,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 type Client struct {
@@ -127,6 +128,55 @@ func (c *Client) ManagesIdentity(ctx context.Context, managerOktaSub, targetOkta
 		return false, fmt.Errorf("identityclient: decoding manages-identity response: %w", err)
 	}
 	return result.Manages, nil
+}
+
+// PendingInvitation is daml-escrow-identity's placeholder for someone
+// invited by email who has never signed in. It creates no credentials; it is
+// claimed when that email's owner first authenticates.
+type PendingInvitation struct {
+	Email            string     `json:"email"`
+	InvitedByOktaSub string     `json:"invitedByOktaSub"`
+	Context          string     `json:"context,omitempty"`
+	Status           string     `json:"status"`
+	ClaimedOktaSub   string     `json:"claimedOktaSub,omitempty"`
+	CreatedAt        time.Time  `json:"createdAt"`
+	ClaimedAt        *time.Time `json:"claimedAt,omitempty"`
+}
+
+// CreatePendingInvitation registers email as invited. It is idempotent: the
+// service keeps one invitation per email, so a second call returns the
+// existing one (its first inviter and context), not an error. It sends no
+// email; telling the invitee is the caller's business.
+func (c *Client) CreatePendingInvitation(ctx context.Context, email, invitedByOktaSub, invitationContext string) (*PendingInvitation, error) {
+	body, err := json.Marshal(map[string]string{
+		"email":            email,
+		"invitedByOktaSub": invitedByOktaSub,
+		"context":          invitationContext,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("identityclient: marshalling pending invitation request: %w", err)
+	}
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, c.baseURL+"/api/v1/pending-invitations", bytes.NewReader(body))
+	if err != nil {
+		return nil, fmt.Errorf("identityclient: building pending invitation request: %w", err)
+	}
+	if c.token != "" {
+		req.Header.Set("Authorization", "Bearer "+c.token)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	resp, err := c.httpClient.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("identityclient: calling daml-escrow-identity: %w", err)
+	}
+	defer func() { _ = resp.Body.Close() }()
+	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated {
+		return nil, fmt.Errorf("identityclient: daml-escrow-identity returned status %d", resp.StatusCode)
+	}
+	var inv PendingInvitation
+	if err := json.NewDecoder(resp.Body).Decode(&inv); err != nil {
+		return nil, fmt.Errorf("identityclient: decoding pending invitation response: %w", err)
+	}
+	return &inv, nil
 }
 
 // doIdentityRequest is unexported -- a composing client (e.g. daml-escrow's
