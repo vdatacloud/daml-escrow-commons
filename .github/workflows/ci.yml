@@ -53,12 +53,12 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
-          go-version: '1.25'
+          go-version: '1.27'
 
       - name: Run linter
         uses: golangci/golangci-lint-action@v7
         with:
-          version: v2.11.4
+          version: v2.14.0
           args: ./...
 
   unit-tests:
@@ -71,7 +71,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v6
         with:
-          go-version: '1.25'
+          go-version: '1.27'
 
       - name: Build
         run: go build ./...
