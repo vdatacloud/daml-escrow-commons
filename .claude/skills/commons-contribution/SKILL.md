@@ -17,6 +17,9 @@ All of these must be true, not just one:
    migrated to depend on this module's `schema`/`hmacsig` packages, because doing that migration wasn't the ask
    that created this repo. Promotion into commons and migration of the *consumer* are two separate steps — don't
    assume the second happened just because the first did.
+   A browser mirror in `@vdatacloud/cx-commons`, kept in step with the Go package by shared golden files in
+   `testdata/` (as `apierror`, `agreementsig` and `approval` are), counts as the second consumer: the rule then has
+   to give the same answer on the server and in the page, and commons is what keeps the two from drifting.
 2. **It's a pure utility, not domain logic.** No `EscrowContract`, `DraftEscrow`, `damlPartyId`, milestone/dispute
    rules, custody thresholds, or anything from `ESCROW-PROCESS.md`'s DIRECTIVEs. If you're writing an `import` for
    a domain type from either consumer repo, stop — it doesn't belong here.
