@@ -97,6 +97,9 @@ func TestScrubCore(t *testing.T) {
 		zap.String("escrowId", "e-1"),
 		zap.Int("status", 402),
 		zap.String("userID", "joey@depositor.devlocal"),
+		zap.Strings("parties", []string{"lcdepositor::122010b0cd20a42dd1e2f9b534a8e0ce774c2dcb11c0b268786063757c4b712d7248", "dep::1"}),
+		zap.Strings("wallets", []string{"0x52908400098527886E0F7030069857D2E4169EE7"}),
+		zap.Ints("codes", []int{1, 2}),
 		zap.NamedError("refusal", errors.New("CancelByConsent on 0070ea6f386ef66b0fb687142970203f402d7cdf74738dd5144318d539144ee376ca1212: locked")),
 	)
 	e := logs.All()[0]
@@ -110,6 +113,8 @@ func TestScrubCore(t *testing.T) {
 		"Authorization": redact.Redacted, "note": "pan …1111 on file", "error": "charge …0004 declined",
 		"physical_address": redact.Redacted, "cardNumber": "…1111", "escrowId": "e-1", "status": int64(402),
 		"userID": redact.Redacted, "refusal": "CancelByConsent on 0070ea6f…1212: locked",
+		"parties": []interface{}{"lcdepositor::122010b0…7248", "dep::1"}, "wallets": []interface{}{"0x529084…9EE7"},
+		"codes": []interface{}{1, 2},
 	}
 	for k, v := range want {
 		if fmt.Sprint(m[k]) != fmt.Sprint(v) {

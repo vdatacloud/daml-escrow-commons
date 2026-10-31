@@ -16,9 +16,10 @@ import (
 // isn't a string is replaced whole. It is the safety net under the call sites, which should
 // already log identities and short forms.
 //
-// Objects and arrays (zap.Object, zap.Array, zap.Any of a struct) can't be
-// looked into; under a marked key they are replaced, under any other key
-// they pass as logged -- don't log a struct that holds personal data.
+// An array of strings (zap.Strings) is scrubbed element by element. Objects
+// and other arrays (zap.Object, zap.Any of a struct) can't be looked into;
+// under a marked key they are replaced, under any other key they pass as
+// logged -- don't log a struct that holds personal data.
 func NewScrubCore(c zapcore.Core) zapcore.Core { return &scrubCore{c} }
 
 type scrubCore struct{ zapcore.Core }
@@ -71,6 +72,13 @@ func scrubField(f zapcore.Field) zapcore.Field {
 		return scrubNumber(f, kind, strconv.FormatInt(f.Integer, 10))
 	case zapcore.Uint64Type, zapcore.Uint32Type, zapcore.Uint16Type, zapcore.Uint8Type, zapcore.UintptrType:
 		return scrubNumber(f, kind, strconv.FormatUint(uint64(f.Integer), 10))
+	case zapcore.ArrayMarshalerType:
+		if ss, ok := stringArray(f); ok {
+			for i := range ss {
+				ss[i] = redact.Value(f.Key, ss[i])
+			}
+			return zap.Strings(f.Key, ss)
+		}
 	case zapcore.SkipType, zapcore.NamespaceType:
 		return f
 	}
@@ -88,4 +96,21 @@ func scrubNumber(f zapcore.Field, kind redact.Kind, digits string) zapcore.Field
 		return zap.String(f.Key, redact.Redacted)
 	}
 	return f
+}
+
+// stringArray is an array field's elements when every one is a string.
+func stringArray(f zapcore.Field) ([]string, bool) {
+	enc := zapcore.NewMapObjectEncoder()
+	f.AddTo(enc)
+	elems, ok := enc.Fields[f.Key].([]interface{})
+	if !ok {
+		return nil, false
+	}
+	out := make([]string, len(elems))
+	for i, e := range elems {
+		if out[i], ok = e.(string); !ok {
+			return nil, false
+		}
+	}
+	return out, true
 }
