@@ -11,9 +11,9 @@ import (
 
 // NewScrubCore wraps c so every entry is scrubbed before it is written
 // (logging rule L6): a field whose key marks it (redact.ForKey) is
-// shortened, masked or replaced, any card number in a string field or the
-// message is masked, and a field of a marked key that isn't a string is
-// replaced whole. It is the safety net under the call sites, which should
+// shortened, masked or replaced, any card number or email address in a
+// string field or the message is masked, and a field of a marked key that
+// isn't a string is replaced whole. It is the safety net under the call sites, which should
 // already log identities and short forms.
 //
 // Objects and arrays (zap.Object, zap.Array, zap.Any of a struct) can't be
@@ -35,7 +35,7 @@ func (c *scrubCore) Check(ent zapcore.Entry, ce *zapcore.CheckedEntry) *zapcore.
 }
 
 func (c *scrubCore) Write(ent zapcore.Entry, fields []zapcore.Field) error {
-	ent.Message = redact.MaskPANs(ent.Message)
+	ent.Message = redact.Text(ent.Message)
 	return c.Core.Write(ent, scrubFields(fields))
 }
 
@@ -62,7 +62,7 @@ func scrubField(f zapcore.Field) zapcore.Field {
 		}
 	case zapcore.ErrorType:
 		if err, ok := f.Interface.(error); ok && err != nil {
-			if msg := err.Error(); kind != redact.Plain || redact.MaskPANs(msg) != msg {
+			if msg := err.Error(); kind != redact.Plain || redact.Text(msg) != msg {
 				return zap.String(f.Key, redact.Value(f.Key, msg))
 			}
 		}

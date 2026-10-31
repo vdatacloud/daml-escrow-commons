@@ -96,6 +96,7 @@ func TestScrubCore(t *testing.T) {
 		zap.Stringer("cardNumber", stringer("4111111111111111")),
 		zap.String("escrowId", "e-1"),
 		zap.Int("status", 402),
+		zap.String("userID", "joey@depositor.devlocal"),
 	)
 	e := logs.All()[0]
 	if strings.Contains(e.Message, "4111111111111111") || !strings.Contains(e.Message, "…1111") {
@@ -107,6 +108,7 @@ func TestScrubCore(t *testing.T) {
 		"account_number": "…6789", "accountNumber": "…4321", "walletAddress": "0x529084…9EE7",
 		"Authorization": redact.Redacted, "note": "pan …1111 on file", "error": "charge …0004 declined",
 		"physical_address": redact.Redacted, "cardNumber": "…1111", "escrowId": "e-1", "status": int64(402),
+		"userID": redact.Redacted,
 	}
 	for k, v := range want {
 		if fmt.Sprint(m[k]) != fmt.Sprint(v) {

@@ -115,3 +115,20 @@ func TestValue(t *testing.T) {
 		t.Error("a card number in free text must not survive")
 	}
 }
+
+func TestText(t *testing.T) {
+	cases := []struct{ in, want string }{
+		{"identity joe.bloggs+x@depositor.devlocal not found", "identity " + Redacted + " not found"},
+		{"card 4111111111111111 for a@b.co", "card …1111 for " + Redacted},
+		{"user@host without a domain dot", "user@host without a domain dot"},
+		{"plain", "plain"},
+	}
+	for _, c := range cases {
+		if got := Text(c.in); got != c.want {
+			t.Errorf("Text(%q) = %q, want %q", c.in, got, c.want)
+		}
+	}
+	if Value("userID", "joey@depositor.devlocal") != Redacted {
+		t.Error("an email under any key is replaced")
+	}
+}

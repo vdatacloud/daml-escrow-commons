@@ -110,6 +110,22 @@ func luhn(digits string) bool {
 	return sum%10 == 0
 }
 
+// emailRe finds email addresses in free text.
+var emailRe = regexp.MustCompile(`[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}`)
+
+// MaskEmails replaces every email address in s: an email is personal data
+// (rule L2), wherever it turns up -- a dev user's subject, an error's text.
+func MaskEmails(s string) string {
+	if !strings.Contains(s, "@") {
+		return s
+	}
+	return emailRe.ReplaceAllString(s, Redacted)
+}
+
+// Text is free text fit for a log: card numbers masked to their last four
+// and email addresses replaced.
+func Text(s string) string { return MaskEmails(MaskPANs(s)) }
+
 // Path is a request path fit for a log: a segment that looks like an email
 // is redacted, and a long one (an id) takes ID's short form. Query strings
 // never belong in a log; Path drops one if present.

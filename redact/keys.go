@@ -7,7 +7,7 @@ type Kind int
 
 const (
 	// Plain: nothing in the key marks it; free text is still checked for
-	// card numbers (MaskPANs).
+	// card numbers and email addresses (Text).
 	Plain Kind = iota
 	// Identifier: shortened to ID's form (wallet and payout addresses).
 	Identifier
@@ -83,7 +83,8 @@ func ForKey(key string) Kind {
 }
 
 // Value is value as a log may carry it under key: shortened, masked or
-// replaced as ForKey says, and free text checked for card numbers.
+// replaced as ForKey says, and anything else passed through Text (card
+// numbers and email addresses).
 func Value(key, value string) string {
 	switch ForKey(key) {
 	case Identifier:
@@ -93,5 +94,5 @@ func Value(key, value string) string {
 	case Sensitive:
 		return Secret(value)
 	}
-	return MaskPANs(value)
+	return Text(value)
 }
