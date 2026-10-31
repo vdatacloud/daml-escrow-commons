@@ -88,3 +88,28 @@ func TestAllAndParse(t *testing.T) {
 		t.Error("no id, no refs")
 	}
 }
+
+// TestInstitution: institutions group logs, so they are in the clear by
+// default in every environment; InstitutionRefs references them too.
+func TestInstitution(t *testing.T) {
+	prod, _ := New(Config{Environment: "prod", Keys: keys, Current: "r1"})
+	dev, _ := New(Config{Environment: "dev"})
+	if prod.Institution("trust-co") != "trust-co" || dev.Institution("trust-co") != "trust-co" {
+		t.Error("institutions are in the clear by default")
+	}
+	refs, _ := New(Config{Environment: "prod", Keys: keys, Current: "r1", InstitutionRefs: true})
+	i := refs.Institution("trust-co")
+	if !strings.HasPrefix(i, "ref:r1:i:") || i != refs.Institution("trust-co") || i == refs.Institution("bank") {
+		t.Errorf("institution ref %q", i)
+	}
+	if _, k, err := Parse(i); err != nil || k != Institution {
+		t.Errorf("Parse = %q %v", k, err)
+	}
+	if _, err := New(Config{Environment: "dev", InstitutionRefs: true}); err == nil {
+		t.Error("institution refs need the key, in development too")
+	}
+	devRefs, _ := New(Config{Environment: "dev", Keys: keys, Current: "r1", InstitutionRefs: true})
+	if devRefs.User("u-joey") != "u-joey" || !strings.HasPrefix(devRefs.Institution("trust-co"), "ref:r1:i:") {
+		t.Error("the two switches are independent")
+	}
+}

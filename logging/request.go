@@ -45,11 +45,14 @@ func TraceFields(ctx context.Context) []zap.Field {
 // The actor slot: the access log runs before authentication (it must time
 // and record the whole request, refusals included), so it puts an empty slot
 // in the request's context and the auth middleware fills it once it knows
-// who is acting. The actor is an identity -- a ledger user id, or a
-// pseudoref reference -- never a name, an email or a raw OIDC subject (L2).
+// who is acting, and for which institution. The actor is an identity -- an
+// auditref reference, or in development the identifier itself -- never a
+// name, an email or a raw OIDC subject (L2). The institution is the
+// organization the actor acts for, so a request's lines group by it.
 type actorSlot struct {
-	mu sync.Mutex
-	id string
+	mu          sync.Mutex
+	id          string
+	institution string
 }
 
 type actorKey struct{}
@@ -79,6 +82,39 @@ func Actor(ctx context.Context) string {
 	return ""
 }
 
+// SetInstitution records the institution the request's actor acts for (an
+// auditref Institution value); a ctx without a slot ignores it.
+func SetInstitution(ctx context.Context, id string) {
+	if s, ok := ctx.Value(actorKey{}).(*actorSlot); ok {
+		s.mu.Lock()
+		s.institution = id
+		s.mu.Unlock()
+	}
+}
+
+// Institution is the institution SetInstitution recorded, or "".
+func Institution(ctx context.Context) string {
+	if s, ok := ctx.Value(actorKey{}).(*actorSlot); ok {
+		s.mu.Lock()
+		defer s.mu.Unlock()
+		return s.institution
+	}
+	return ""
+}
+
+// Attribution is the actor and institution fields, for a log line that
+// should group with its request's access line; empty ones are left out.
+func Attribution(ctx context.Context) []zap.Field {
+	var f []zap.Field
+	if a := Actor(ctx); a != "" {
+		f = append(f, zap.String("actor", a))
+	}
+	if i := Institution(ctx); i != "" {
+		f = append(f, zap.String("institution", i))
+	}
+	return f
+}
+
 // AccessLogOption configures AccessLog.
 type AccessLogOption func(*accessLog)
 
@@ -95,8 +131,8 @@ func WithRoute(f func(*http.Request) string) AccessLogOption {
 
 // AccessLog writes one audit line per request, after it is served: method,
 // route pattern, path (redact.Path: ids shortened, emails and the query
-// dropped), status, bytes, duration, request id, actor, and trace and span
-// ids. A 5xx is logged at error, anything else at info. Before serving, it
+// dropped), status, bytes, duration, request id, actor, institution, and
+// trace and span ids. A 5xx is logged at error, anything else at info. Before serving, it
 // puts the request's logger (with the request id) and an empty actor slot
 // in the context. Mount it after apierror.RequestID and the tracing
 // middleware, so both ids are known.
@@ -126,6 +162,7 @@ func AccessLog(logger *zap.Logger, opts ...AccessLogOption) func(http.Handler) h
 				zap.Int64("bytes", rec.bytes),
 				zap.Float64("duration_ms", float64(time.Since(start).Microseconds())/1000),
 				zap.String("actor", Actor(ctx)),
+				zap.String("institution", Institution(ctx)),
 			}, TraceFields(ctx)...)
 			if rec.status >= 500 {
 				reqLogger.Error("http_request", fields...)

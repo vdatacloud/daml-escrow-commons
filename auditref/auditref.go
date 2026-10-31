@@ -9,6 +9,10 @@
 // the party (p). The ledger user id and a party's hint derive from the email
 // address, so neither may appear in a production log as it is.
 //
+// An institution (i) is an organization, not a person: logs carry its id in
+// the clear, so they group by institution, unless Config.InstitutionRefs
+// asks for references too (a deployment whose logs leave the platform).
+//
 // In development (Config.Environment dev, local or test) a Refs shows the
 // identifiers in the clear, so a developer reads who did what. Anywhere else
 // it computes references, and New fails without a key: the switch fails
@@ -32,6 +36,8 @@ const (
 	Subject Kind = "s" // OIDC subject
 	User    Kind = "u" // ledger user id
 	Party   Kind = "p" // Canton party id
+	// Institution is an institution's id (its directory name or tenant).
+	Institution Kind = "i"
 )
 
 // Prefix starts every reference.
@@ -50,13 +56,17 @@ type Config struct {
 	// one new references use; the others stay for resolution.
 	Keys    map[string][]byte
 	Current string
+	// InstitutionRefs logs institutions by reference too; off, they are
+	// logged in the clear in every environment.
+	InstitutionRefs bool
 }
 
 // Refs computes the references a service logs.
 type Refs struct {
-	plain   bool
-	keys    map[string][]byte
-	current string
+	plain           bool
+	institutionRefs bool
+	keys            map[string][]byte
+	current         string
 }
 
 // Plain reports whether environment logs identifiers in the clear.
@@ -70,7 +80,7 @@ func Plain(environment string) bool {
 
 // New is the Refs for cfg. Outside development it needs the current key.
 func New(cfg Config) (*Refs, error) {
-	r := &Refs{plain: Plain(cfg.Environment), keys: map[string][]byte{}, current: cfg.Current}
+	r := &Refs{plain: Plain(cfg.Environment), institutionRefs: cfg.InstitutionRefs, keys: map[string][]byte{}, current: cfg.Current}
 	for v, k := range cfg.Keys {
 		if v == "" || strings.Contains(v, ":") {
 			return nil, fmt.Errorf("auditref: key version %q: want a name without ':'", v)
@@ -80,7 +90,7 @@ func New(cfg Config) (*Refs, error) {
 		}
 	}
 	if len(r.keys[r.current]) == 0 {
-		if !r.plain {
+		if !r.plain || r.institutionRefs {
 			return nil, fmt.Errorf("auditref: environment %q logs references and needs the current key (version %q)", cfg.Environment, cfg.Current)
 		}
 		r.current = ""
@@ -92,12 +102,18 @@ func New(cfg Config) (*Refs, error) {
 func (r *Refs) Plain() bool { return r.plain }
 
 // Of is what a log carries for id of kind: in development id itself,
-// anywhere else its reference under the current key. "" stays "".
+// anywhere else its reference under the current key. An institution is
+// carried in the clear unless InstitutionRefs, in every environment. ""
+// stays "".
 func (r *Refs) Of(kind Kind, id string) string {
 	if id == "" {
 		return ""
 	}
-	if r.plain {
+	if kind == Institution {
+		if !r.institutionRefs {
+			return id
+		}
+	} else if r.plain {
 		return id
 	}
 	return Compute(r.current, r.keys[r.current], kind, id)
@@ -107,6 +123,9 @@ func (r *Refs) Of(kind Kind, id string) string {
 func (r *Refs) Subject(sub string) string   { return r.Of(Subject, sub) }
 func (r *Refs) User(userID string) string   { return r.Of(User, userID) }
 func (r *Refs) Party(partyID string) string { return r.Of(Party, partyID) }
+
+// Institution is Of(Institution, id).
+func (r *Refs) Institution(id string) string { return r.Of(Institution, id) }
 
 // All is id's reference under every key version, newest-named first -- what
 // the identity service stores so a reference from any version resolves.
@@ -149,7 +168,7 @@ func Parse(ref string) (version string, kind Kind, err error) {
 		return "", "", ErrNotRef
 	}
 	switch k := Kind(parts[1]); k {
-	case Subject, User, Party:
+	case Subject, User, Party, Institution:
 		return parts[0], k, nil
 	}
 	return "", "", ErrNotRef

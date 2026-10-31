@@ -142,6 +142,14 @@ func TestActorSlot(t *testing.T) {
 	if Actor(ctx) != "u-joey" {
 		t.Errorf("actor = %q", Actor(ctx))
 	}
+	if len(Attribution(ctx)) != 1 {
+		t.Errorf("attribution leaves out an empty institution: %v", Attribution(ctx))
+	}
+	SetInstitution(ctx, "trust-co")
+	if Institution(ctx) != "trust-co" || len(Attribution(ctx)) != 2 {
+		t.Errorf("institution = %q", Institution(ctx))
+	}
+	SetInstitution(context.Background(), "nobody")
 	SetActor(context.Background(), "nobody") // no slot: ignored, no panic
 	if Actor(context.Background()) != "" {
 		t.Error("no slot, no actor")
@@ -172,6 +180,7 @@ func TestAccessLog(t *testing.T) {
 		r = r.WithContext(spanCtx(r.Context()))
 		AccessLog(l, WithRoute(func(*http.Request) string { return "/escrows/{id}/fund" }))(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			SetActor(r.Context(), "u-joey") // as the auth middleware would
+			SetInstitution(r.Context(), "trust-co")
 			FromContext(r.Context(), nil).Info("handler line")
 			w.WriteHeader(http.StatusCreated)
 			_, _ = w.Write([]byte("ok"))
@@ -192,7 +201,7 @@ func TestAccessLog(t *testing.T) {
 	m := fieldMap(access[0])
 	for k, v := range map[string]any{
 		"method": "POST", "route": "/escrows/{id}/fund", "path": "/escrows/00b34d9a…2f7d/fund", "status": int64(201),
-		"bytes": int64(2), "actor": "u-joey", "request_id": "req-12345678", "trace_id": "4bf92f3577b34da6a3ce929d0e0e4736",
+		"bytes": int64(2), "actor": "u-joey", "institution": "trust-co", "request_id": "req-12345678", "trace_id": "4bf92f3577b34da6a3ce929d0e0e4736",
 	} {
 		if m[k] != v {
 			t.Errorf("%s = %v, want %v", k, m[k], v)
