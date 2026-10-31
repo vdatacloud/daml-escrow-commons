@@ -1,17 +1,17 @@
-# Graph Report - daml-escrow-commons  (2026-10-28)
+# Graph Report - daml-escrow-commons  (2026-10-31)
 
 ## Corpus Check
-- 87 files · ~35,149 words
+- 97 files · ~41,467 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 9 file(s) not represented in the graph (top: .ttf 5, (none) 4)
 
 ## Summary
-- 476 nodes · 1043 edges · 28 communities (21 shown, 7 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 111 edges (avg confidence: 0.85)
+- 611 nodes · 1402 edges · 31 communities (22 shown, 9 thin omitted)
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 145 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bf98ceb3`
+- Built from commit: `4b5c6fdc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - testing.T
 - widget.json
 - Repository Guardrails
-- go_pkg_errors
+- redact.go
 - cantonid.go
 - Releasing
 - metering.go
@@ -31,17 +31,20 @@
 - install-git-hooks.sh
 - github.com/vdatacloud/daml-escrow-commons
 - agreementsig_test.go
-- render.go
-- apierror_test.go
+- go_pkg_fmt
+- telemetry_test.go
 - next-version.sh
 - test-next-version.sh
-- agreement.go
+- canonical.go
 - field.go
-- apierror.go
-- http.go
+- apierror_test.go
+- apierror/http.go
 - approval_test.go
-- context.Context
-- Registry
+- logging_test.go
+- telemetry.go
+- net/http.ResponseWriter
+- transport
+- attrs
 
 ## God Nodes (most connected - your core abstractions)
 1. `Fingerprint` - 13 edges
@@ -51,26 +54,26 @@
 5. `New()` - 11 edges
 6. `TestSigningDetails()` - 11 edges
 7. `Hash` - 11 edges
-8. `RequireNonEmpty()` - 11 edges
-9. `signatureCases()` - 10 edges
-10. `FromLedgerError()` - 10 edges
+8. `AccessLog()` - 11 edges
+9. `RequireNonEmpty()` - 11 edges
+10. `signatureCases()` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `TestAgreementVectors()` --calls--> `AgreementCanonical()`  [INFERRED]
-  agreementsig/agreementsig_test.go → agreementsig/agreement.go
-- `TestAgreementMessage_Refusals()` --calls--> `AgreementMessage()`  [INFERRED]
-  agreementsig/agreementsig_test.go → agreementsig/agreement.go
-- `TestAgreementVectors()` --calls--> `AgreementMessage()`  [INFERRED]
-  agreementsig/agreementsig_test.go → agreementsig/agreement.go
+- `TestAccessLog()` --calls--> `RequestID()`  [EXTRACTED]
+  logging/logging_test.go → apierror/http.go
+- `AccessLog()` --calls--> `Path()`  [EXTRACTED]
+  logging/request.go → redact/redact.go
+- `Middleware()` --calls--> `Path()`  [EXTRACTED]
+  telemetry/http.go → redact/redact.go
+- `AgreementCanonical()` --calls--> `writeCanonical()`  [INFERRED]
+  agreementsig/agreement.go → agreementsig/canonical.go
 - `TestDraftVectors()` --calls--> `DraftMessage()`  [INFERRED]
   agreementsig/agreementsig_test.go → agreementsig/draft.go
-- `DraftCanonical()` --calls--> `decodeJSON()`  [INFERRED]
-  agreementsig/draft.go → agreementsig/canonical.go
 
 ## Import Cycles
 - None detected.
 
-## Communities (28 total, 7 thin omitted)
+## Communities (31 total, 9 thin omitted)
 
 ### Community 0 - "GitHub & CI Workflow Skill"
 Cohesion: 0.11
@@ -78,7 +81,7 @@ Nodes (17): 10. Useful Reference Commands, 11. References, 1. Pre-Commit Local V
 
 ### Community 1 - "testing.T"
 Cohesion: 0.09
-Nodes (36): golden(), TestCanonical_Golden(), TestCanonical_Properties(), TestLogFields_Golden(), TestLogFields_ShortFormsOnly(), TestWriter(), validate(), New() (+28 more)
+Nodes (37): Sign(), TestSignAndVerify_RoundTrip(), TestVerify_MalformedHexFails(), TestVerify_TamperedMessageFails(), TestVerify_WrongSecretFails(), Verify(), New(), TestClient_CreatePendingInvitation() (+29 more)
 
 ### Community 2 - "widget.json"
 Cohesion: 0.17
@@ -88,21 +91,21 @@ Nodes (11): minLength, type, properties, name, quantity, minimum, type, required
 Cohesion: 0.22
 Nodes (8): Branch Protection Strategy, Branching Strategy, CI Requirements, Code Review Requirements, Commit Standard, Pre-Commit Verification, Pull Request Rules, Repository Guardrails
 
-### Community 4 - "go_pkg_errors"
-Cohesion: 0.23
-Nodes (8): Sign(), TestSignAndVerify_RoundTrip(), TestVerify_MalformedHexFails(), TestVerify_TamperedMessageFails(), TestVerify_WrongSecretFails(), Verify(), Ref(), TestRef()
+### Community 4 - "redact.go"
+Cohesion: 0.11
+Nodes (28): NewScrubCore(), scrubField(), scrubFields(), scrubNumber(), stringArray(), scrubCore, ForKey(), Kind (+20 more)
 
 ### Community 5 - "cantonid.go"
-Cohesion: 0.10
-Nodes (23): ExpectedHash(), ForParty(), Signing(), TestSigningDetails(), SigningDetails, Classify(), FingerprintOf(), Fingerprint (+15 more)
+Cohesion: 0.05
+Nodes (41): ExpectedHash(), ForParty(), FromError(), FromLedgerError(), GRPCCodeName(), ParseLedgerError(), Signing(), TestFromError() (+33 more)
 
 ### Community 6 - "Releasing"
 Cohesion: 0.18
 Nodes (10): 1. Prerequisites (one-time, per machine that will `go get` this module), 2. Decide the version bump, 3. Tag and push, 4. Publish the GitHub release, 5. Update consumers, Automated (default), Future automation, Major releases (+2 more)
 
 ### Community 7 - "metering.go"
-Cohesion: 0.14
-Nodes (20): PendingInvitation, ChargeBearer, CommandOutcome, LedgerCommandEvent, requireBaseUnits(), requireDecimal(), NetworkFeeEvent, NetworkFeePayer (+12 more)
+Cohesion: 0.11
+Nodes (21): PendingInvitation, ChargeBearer, CommandOutcome, LedgerCommandEvent, requireBaseUnits(), requireDecimal(), NetworkFeeEvent, NetworkFeePayer (+13 more)
 
 ### Community 8 - "CLAUDE.md"
 Cohesion: 0.29
@@ -117,64 +120,68 @@ Cohesion: 0.33
 Nodes (5): daml-escrow-commons, Status, Using this module, What's here, What's NOT here, and won't be
 
 ### Community 14 - "agreementsig_test.go"
-Cohesion: 0.09
-Nodes (33): AgreementHash(), agreementCases(), agreementJSON(), flipS(), readJSON(), sha256Sum(), signatureCases(), spki() (+25 more)
+Cohesion: 0.07
+Nodes (44): AgreementCanonical(), AgreementHash(), AgreementMessage(), checkID(), invalid(), agreementCases(), agreementJSON(), flipS() (+36 more)
 
-### Community 15 - "render.go"
+### Community 15 - "go_pkg_fmt"
 Cohesion: 0.08
-Nodes (22): Artifact, checkName(), Deliver(), artifacts(), TestDeliver_ManyIsDeterministicZip(), TestDeliver_One(), TestDeliver_RefusesBadNames(), Zip() (+14 more)
+Nodes (19): Artifact, checkName(), Deliver(), artifacts(), TestDeliver_ManyIsDeterministicZip(), TestDeliver_One(), TestDeliver_RefusesBadNames(), Zip() (+11 more)
 
-### Community 16 - "apierror_test.go"
-Cohesion: 0.08
-Nodes (18): TestSchemaIsACopy(), TestShortID(), GRPCCodeName(), ParseLedgerError(), TestFromError(), TestFromLedgerError_Golden(), TestFromLedgerError_Mapping(), TestLedgerError() (+10 more)
+### Community 16 - "telemetry_test.go"
+Cohesion: 0.20
+Nodes (8): failing, Middleware(), Transport(), recording(), TestMiddleware(), TestMiddlewareServerError(), TestTransportError(), TestTransportPropagates()
 
 ### Community 18 - "test-next-version.sh"
 Cohesion: 0.70
 Nodes (4): c(), expect(), test-next-version.sh script, tg()
 
-### Community 19 - "agreement.go"
-Cohesion: 0.17
-Nodes (14): AgreementCanonical(), AgreementMessage(), checkID(), invalid(), AgreementVersion, Amends, decodeJSON(), lessUTF16() (+6 more)
+### Community 19 - "canonical.go"
+Cohesion: 0.18
+Nodes (11): lessUTF16(), writeCanonical(), writeNumber(), writeString(), numberMode, TestShortID(), Field, Error (+3 more)
 
 ### Community 20 - "field.go"
 Cohesion: 0.24
 Nodes (10): ErrUnknownField, child(), contains(), Registry, lookupRef(), mergeProperty(), resolveNode(), splitPointer() (+2 more)
 
-### Community 21 - "apierror.go"
+### Community 21 - "apierror_test.go"
 Cohesion: 0.09
-Nodes (24): draftVector, CodeForStatus(), encode(), Error, New(), Newf(), Parse(), sortedJSON() (+16 more)
+Nodes (27): CodeForStatus(), encode(), Error, New(), Newf(), Parse(), sortedJSON(), golden() (+19 more)
 
-### Community 23 - "http.go"
-Cohesion: 0.18
-Nodes (8): TestFromResponse(), FromResponse(), newRequestID(), RequestID(), RequestIDFrom(), Write(), requestIDKey, Writer
+### Community 23 - "apierror/http.go"
+Cohesion: 0.22
+Nodes (8): TestFromResponse(), FromResponse(), newRequestID(), RequestID(), Write(), requestIDKey, Writer, accessLog
 
 ### Community 24 - "approval_test.go"
 Cohesion: 0.26
 Nodes (11): Check(), Decisions(), cases(), generate(), TestCheckRefusals(), TestDecisions(), TestDecisionsGolden(), Decision (+3 more)
 
-### Community 26 - "context.Context"
-Cohesion: 0.29
-Nodes (3): Client, Identity, Renderer
+### Community 26 - "logging_test.go"
+Cohesion: 0.08
+Nodes (31): RequestIDFrom(), Client, Identity, AccessLogOption, actorKey, actorSlot, Config, loggerKey (+23 more)
+
+### Community 27 - "telemetry.go"
+Cohesion: 0.15
+Nodes (8): Config, isURL(), metricOptions(), Propagator(), Setup(), TestSetup(), TestSetupSampleRatio(), traceOptions()
 
 ## Knowledge Gaps
-- **60 isolated node(s):** `signing`, `requestIDKey`, `Error`, `github.com/vdatacloud/daml-escrow-commons`, `Registry` (+55 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 116 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **62 isolated node(s):** `signing`, `requestIDKey`, `Error`, `github.com/vdatacloud/daml-escrow-commons`, `loggerKey` (+57 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 142 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Error` connect `apierror.go` to `cantonid.go`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `Error` connect `apierror_test.go` to `cantonid.go`?**
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **What connects `signing`, `requestIDKey`, `Error` to the rest of the system?**
-  _60 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _62 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `GitHub & CI Workflow Skill` be split into smaller, more focused modules?**
   _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Why does `TestCheckRefusals()` connect `approval_test.go` to `testing.T`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Should `testing.T` be split into smaller, more focused modules?**
-  _Cohesion score 0.0919661733615222 - nodes in this community are weakly interconnected._
-- **Why does `Client` connect `context.Context` to `apierror_test.go`, `testing.T`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+  _Cohesion score 0.09158186864014801 - nodes in this community are weakly interconnected._
+- **Should `redact.go` be split into smaller, more focused modules?**
+  _Cohesion score 0.10512820512820513 - nodes in this community are weakly interconnected._
 - **Should `cantonid.go` be split into smaller, more focused modules?**
-  _Cohesion score 0.10121457489878542 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.050957481337228175 - nodes in this community are weakly interconnected._
