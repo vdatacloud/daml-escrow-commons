@@ -122,6 +122,10 @@ func TestText(t *testing.T) {
 		{"card 4111111111111111 for a@b.co", "card …1111 for " + Redacted},
 		{"user@host without a domain dot", "user@host without a domain dot"},
 		{"plain", "plain"},
+		{"refused: " + party + " on 0070ea6f386ef66b0fb687142970203f402d7cdf74738dd5144318d539144ee376ca1212",
+			"refused: relaytest::1220ebb7…4288 on 0070ea6f…1212"},
+		{"wallet 0x52908400098527886E0F7030069857D2E4169EE7 paid", "wallet 0x529084…9EE7 paid"},
+		{"traceId 05d5463027b2dbccc8f0a51543eabe03 kept", "traceId 05d5463027b2dbccc8f0a51543eabe03 kept"},
 	}
 	for _, c := range cases {
 		if got := Text(c.in); got != c.want {

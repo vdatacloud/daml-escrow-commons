@@ -122,9 +122,24 @@ func MaskEmails(s string) string {
 	return emailRe.ReplaceAllString(s, Redacted)
 }
 
-// Text is free text fit for a log: card numbers masked to their last four
-// and email addresses replaced.
-func Text(s string) string { return MaskEmails(MaskPANs(s)) }
+// idRe finds the ids free text carries in full -- a party id ("hint::" and
+// its fingerprint), a contract id or hash (44+ hex digits: longer than a
+// trace id's 32, so log correlation ids stay whole) and an EVM address.
+var idRe = regexp.MustCompile(`(?:[A-Za-z0-9_.\-]+::)?\b[0-9a-f]{44,}\b|\b0x[0-9A-Fa-f]{40}\b`)
+
+// ShortenIDs gives every id in s ID's short form (rule L3) -- the safety
+// net for an error message that quotes a ledger refusal's contract and
+// party ids.
+func ShortenIDs(s string) string {
+	if len(s) < 42 {
+		return s
+	}
+	return idRe.ReplaceAllStringFunc(s, ID)
+}
+
+// Text is free text fit for a log: card numbers masked to their last four,
+// email addresses replaced and ids shortened.
+func Text(s string) string { return ShortenIDs(MaskEmails(MaskPANs(s))) }
 
 // Path is a request path fit for a log: a segment that looks like an email
 // is redacted, and a long one (an id) takes ID's short form. Query strings
