@@ -227,6 +227,116 @@
       "source_location": "L63"
     },
     {
+      "id": "apierror_apierror_test_golden",
+      "label": "golden()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "golden()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L22"
+    },
+    {
+      "id": "apierror_apierror_test_testcanonical_golden",
+      "label": "TestCanonical_Golden()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testcanonical_golden()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L97"
+    },
+    {
+      "id": "apierror_apierror_test_testcanonical_properties",
+      "label": "TestCanonical_Properties()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testcanonical_properties()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L117"
+    },
+    {
+      "id": "apierror_apierror_test_testlogfields_golden",
+      "label": "TestLogFields_Golden()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testlogfields_golden()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L86"
+    },
+    {
+      "id": "apierror_apierror_test_testlogfields_shortformsonly",
+      "label": "TestLogFields_ShortFormsOnly()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testlogfields_shortformsonly()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L237"
+    },
+    {
+      "id": "apierror_apierror_test_testschemaisacopy",
+      "label": "TestSchemaIsACopy()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testschemaisacopy()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L321"
+    },
+    {
+      "id": "apierror_apierror_test_testwriter",
+      "label": "TestWriter()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "testwriter()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L269"
+    },
+    {
+      "id": "apierror_apierror_test_validate",
+      "label": "validate()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "validate()",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L40"
+    },
+    {
+      "id": "apierror_schema_schema",
+      "label": "Schema()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "schema()",
+      "source_file": "apierror/schema.go",
+      "source_location": "L11"
+    },
+    {
+      "id": "go_type_github_com_xeipuuv_gojsonschema_schema",
+      "label": "github.com/xeipuuv/gojsonschema.Schema",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "github.com/xeipuuv/gojsonschema.schema",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "go_type_testing_t",
       "label": "testing.T",
       "_origin": "ast",
@@ -236,83 +346,6 @@
       "norm_label": "testing.t",
       "source_file": "",
       "source_location": ""
-    },
-    {
-      "id": "hmacsig_hmacsig_sign",
-      "label": "Sign()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "sign()",
-      "source_file": "hmacsig/hmacsig.go",
-      "source_location": "L23"
-    },
-    {
-      "id": "hmacsig_hmacsig_test",
-      "label": "hmacsig_test.go",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "hmacsig_test.go",
-      "source_file": "hmacsig/hmacsig_test.go",
-      "source_location": "L1"
-    },
-    {
-      "id": "hmacsig_hmacsig_test_testsignandverify_roundtrip",
-      "label": "TestSignAndVerify_RoundTrip()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "testsignandverify_roundtrip()",
-      "source_file": "hmacsig/hmacsig_test.go",
-      "source_location": "L8"
-    },
-    {
-      "id": "hmacsig_hmacsig_test_testverify_malformedhexfails",
-      "label": "TestVerify_MalformedHexFails()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "testverify_malformedhexfails()",
-      "source_file": "hmacsig/hmacsig_test.go",
-      "source_location": "L38"
-    },
-    {
-      "id": "hmacsig_hmacsig_test_testverify_tamperedmessagefails",
-      "label": "TestVerify_TamperedMessageFails()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "testverify_tamperedmessagefails()",
-      "source_file": "hmacsig/hmacsig_test.go",
-      "source_location": "L28"
-    },
-    {
-      "id": "hmacsig_hmacsig_test_testverify_wrongsecretfails",
-      "label": "TestVerify_WrongSecretFails()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "testverify_wrongsecretfails()",
-      "source_file": "hmacsig/hmacsig_test.go",
-      "source_location": "L18"
-    },
-    {
-      "id": "hmacsig_hmacsig_verify",
-      "label": "Verify()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "verify()",
-      "source_file": "hmacsig/hmacsig.go",
-      "source_location": "L34"
     },
     {
       "id": "identityclient_identityclient_new",
@@ -524,39 +557,6 @@
       "source_location": "L81"
     },
     {
-      "id": "pseudoref_pseudoref_ref",
-      "label": "Ref()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "ref()",
-      "source_file": "pseudoref/pseudoref.go",
-      "source_location": "L29"
-    },
-    {
-      "id": "pseudoref_pseudoref_test",
-      "label": "pseudoref_test.go",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "pseudoref_test.go",
-      "source_file": "pseudoref/pseudoref_test.go",
-      "source_location": "L1"
-    },
-    {
-      "id": "pseudoref_pseudoref_test_testref",
-      "label": "TestRef()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "testing.T",
-      "file_type": "code",
-      "norm_label": "testref()",
-      "source_file": "pseudoref/pseudoref_test.go",
-      "source_location": "L8"
-    },
-    {
       "id": "registry",
       "label": "Registry",
       "_origin": "ast",
@@ -643,6 +643,39 @@
       "norm_label": "testfield_root()",
       "source_file": "schema/field_test.go",
       "source_location": "L61"
+    },
+    {
+      "id": "schema_registry_types",
+      "label": ".Types()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": ".types()",
+      "source_file": "schema/schema.go",
+      "source_location": "L73"
+    },
+    {
+      "id": "schema_registry_validate",
+      "label": ".Validate()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": ".validate()",
+      "source_file": "schema/schema.go",
+      "source_location": "L107"
+    },
+    {
+      "id": "schema_schema_go_schema_registry",
+      "label": "Registry",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "testing.T",
+      "file_type": "code",
+      "norm_label": "registry",
+      "source_file": "schema/schema.go",
+      "source_location": "L22"
     },
     {
       "id": "schema_schema_loaddirectory",
@@ -755,7 +788,7 @@
       "node_kind": "heading",
       "norm_label": "status",
       "source_file": "README.md",
-      "source_location": "L50"
+      "source_location": "L51"
     },
     {
       "id": "readme_using_this_module",
@@ -767,7 +800,7 @@
       "node_kind": "heading",
       "norm_label": "using this module",
       "source_file": "README.md",
-      "source_location": "L34"
+      "source_location": "L35"
     },
     {
       "id": "readme_what_s_here",
@@ -791,7 +824,7 @@
       "node_kind": "heading",
       "norm_label": "what's not here, and won't be",
       "source_file": "README.md",
-      "source_location": "L27"
+      "source_location": "L28"
     },
     {
       "id": "claude_claude_cross_repo_context",
@@ -1478,44 +1511,11 @@
       "source_location": ""
     },
     {
-      "id": "hmacsig_hmacsig",
-      "label": "hmacsig.go",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "agreementsig_test.go",
-      "file_type": "code",
-      "norm_label": "hmacsig.go",
-      "source_file": "hmacsig/hmacsig.go",
-      "source_location": "L1"
-    },
-    {
-      "id": "pseudoref_pseudoref",
-      "label": "pseudoref.go",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "agreementsig_test.go",
-      "file_type": "code",
-      "norm_label": "pseudoref.go",
-      "source_file": "pseudoref/pseudoref.go",
-      "source_location": "L1"
-    },
-    {
-      "id": "go_type_sync_once",
-      "label": "sync.Once",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "file_type": "code",
-      "norm_label": "sync.once",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "identityclient_identityclient",
       "label": "identityclient.go",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "identityclient.go",
       "source_file": "identityclient/identityclient.go",
@@ -1526,7 +1526,7 @@
       "label": "Artifact",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "artifact",
       "source_file": "printing/deliver.go",
@@ -1537,7 +1537,7 @@
       "label": "deliver.go",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "deliver.go",
       "source_file": "printing/deliver.go",
@@ -1548,7 +1548,7 @@
       "label": "checkName()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "checkname()",
       "source_file": "printing/deliver.go",
@@ -1559,7 +1559,7 @@
       "label": "Deliver()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "deliver()",
       "source_file": "printing/deliver.go",
@@ -1570,7 +1570,7 @@
       "label": "deliver_test.go",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "deliver_test.go",
       "source_file": "printing/deliver_test.go",
@@ -1581,7 +1581,7 @@
       "label": "artifacts()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "artifacts()",
       "source_file": "printing/deliver_test.go",
@@ -1592,7 +1592,7 @@
       "label": "TestDeliver_ManyIsDeterministicZip()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testdeliver_manyisdeterministiczip()",
       "source_file": "printing/deliver_test.go",
@@ -1603,7 +1603,7 @@
       "label": "TestDeliver_One()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testdeliver_one()",
       "source_file": "printing/deliver_test.go",
@@ -1614,7 +1614,7 @@
       "label": "TestDeliver_RefusesBadNames()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testdeliver_refusesbadnames()",
       "source_file": "printing/deliver_test.go",
@@ -1625,7 +1625,7 @@
       "label": "Zip()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "zip()",
       "source_file": "printing/deliver.go",
@@ -1636,62 +1636,18 @@
       "label": "Delivery",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "delivery",
       "source_file": "printing/deliver.go",
       "source_location": "L30"
     },
     {
-      "id": "printing_fake",
-      "label": "Fake",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "file_type": "code",
-      "norm_label": "fake",
-      "source_file": "printing/render.go",
-      "source_location": "L161"
-    },
-    {
-      "id": "printing_fake_name",
-      "label": ".Name()",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "file_type": "code",
-      "norm_label": ".name()",
-      "source_file": "printing/render.go",
-      "source_location": "L163"
-    },
-    {
-      "id": "printing_fake_render",
-      "label": ".Render()",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "file_type": "code",
-      "norm_label": ".render()",
-      "source_file": "printing/render.go",
-      "source_location": "L165"
-    },
-    {
-      "id": "printing_render",
-      "label": "render.go",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "file_type": "code",
-      "norm_label": "render.go",
-      "source_file": "printing/render.go",
-      "source_location": "L1"
-    },
-    {
       "id": "printing_render_checkfonts",
       "label": "CheckFonts()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "checkfonts()",
       "source_file": "printing/render.go",
@@ -1702,7 +1658,7 @@
       "label": "NewTypst()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "newtypst()",
       "source_file": "printing/render.go",
@@ -1713,7 +1669,7 @@
       "label": "render_test.go",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "render_test.go",
       "source_file": "printing/render_test.go",
@@ -1724,7 +1680,7 @@
       "label": "TestCheckFonts()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testcheckfonts()",
       "source_file": "printing/render_test.go",
@@ -1735,95 +1691,73 @@
       "label": "TestFakeIsDeterministic()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testfakeisdeterministic()",
       "source_file": "printing/render_test.go",
       "source_location": "L33"
     },
     {
-      "id": "printing_renderer",
-      "label": "Renderer",
+      "id": "printing_render_test_teststr",
+      "label": "TestStr()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
-      "norm_label": "renderer",
-      "source_file": "printing/render.go",
-      "source_location": "L37"
+      "norm_label": "teststr()",
+      "source_file": "printing/render_test.go",
+      "source_location": "L16"
     },
     {
-      "id": "printing_renderer_name",
-      "label": ".Name()",
+      "id": "printing_source",
+      "label": "source.go",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
-      "norm_label": ".name()",
-      "source_file": "printing/render.go",
-      "source_location": "L40"
+      "norm_label": "source.go",
+      "source_file": "printing/source.go",
+      "source_location": "L1"
     },
     {
-      "id": "printing_renderer_render",
-      "label": ".Render()",
+      "id": "printing_source_content",
+      "label": "Content()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
-      "norm_label": ".render()",
-      "source_file": "printing/render.go",
-      "source_location": "L41"
+      "norm_label": "content()",
+      "source_file": "printing/source.go",
+      "source_location": "L36"
     },
     {
-      "id": "printing_typst",
-      "label": "Typst",
+      "id": "printing_source_lit",
+      "label": "Lit()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
-      "norm_label": "typst",
-      "source_file": "printing/render.go",
-      "source_location": "L86"
+      "norm_label": "lit()",
+      "source_file": "printing/source.go",
+      "source_location": "L13"
     },
     {
-      "id": "printing_typst_fonts",
-      "label": ".fonts()",
+      "id": "printing_source_str",
+      "label": "Str()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
-      "norm_label": ".fonts()",
-      "source_file": "printing/render.go",
-      "source_location": "L114"
-    },
-    {
-      "id": "printing_typst_name",
-      "label": ".Name()",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "file_type": "code",
-      "norm_label": ".name()",
-      "source_file": "printing/render.go",
-      "source_location": "L112"
-    },
-    {
-      "id": "printing_typst_render",
-      "label": ".Render()",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "file_type": "code",
-      "norm_label": ".render()",
-      "source_file": "printing/render.go",
-      "source_location": "L137"
+      "norm_label": "str()",
+      "source_file": "printing/source.go",
+      "source_location": "L9"
     },
     {
       "id": "printing_typst_test",
       "label": "typst_test.go",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "typst_test.go",
       "source_file": "printing/typst_test.go",
@@ -1834,7 +1768,7 @@
       "label": "TestTypst_ByteIdenticalAndEscaped()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testtypst_byteidenticalandescaped()",
       "source_file": "printing/typst_test.go",
@@ -1845,7 +1779,7 @@
       "label": "TestTypst_GoldenHashAcrossPlatforms()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testtypst_goldenhashacrossplatforms()",
       "source_file": "printing/typst_test.go",
@@ -1856,11 +1790,44 @@
       "label": "TestTypst_RefusesOtherVersion()",
       "_origin": "ast",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "file_type": "code",
       "norm_label": "testtypst_refusesotherversion()",
       "source_file": "printing/typst_test.go",
       "source_location": "L50"
+    },
+    {
+      "id": "go_type_go_opentelemetry_io_otel_attribute_key",
+      "label": "go.opentelemetry.io/otel/attribute.Key",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "file_type": "code",
+      "norm_label": "go.opentelemetry.io/otel/attribute.key",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "go_type_go_opentelemetry_io_otel_attribute_value",
+      "label": "go.opentelemetry.io/otel/attribute.Value",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "file_type": "code",
+      "norm_label": "go.opentelemetry.io/otel/attribute.value",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "go_type_go_opentelemetry_io_otel_sdk_trace_readonlyspan",
+      "label": "go.opentelemetry.io/otel/sdk/trace.ReadOnlySpan",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "file_type": "code",
+      "norm_label": "go.opentelemetry.io/otel/sdk/trace.readonlyspan",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "go_type_go_opentelemetry_io_otel_sdk_trace_tracetest_spanrecorder",
@@ -1938,6 +1905,17 @@
       "norm_label": "telemetry_test.go",
       "source_file": "telemetry/telemetry_test.go",
       "source_location": "L1"
+    },
+    {
+      "id": "telemetry_telemetry_test_attrs",
+      "label": "attrs()",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "file_type": "code",
+      "norm_label": "attrs()",
+      "source_file": "telemetry/telemetry_test.go",
+      "source_location": "L32"
     },
     {
       "id": "telemetry_telemetry_test_recording",
@@ -2555,7 +2533,7 @@
       "label": "apierror.go",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "apierror.go",
       "source_file": "apierror/apierror.go",
@@ -2566,7 +2544,7 @@
       "label": "CodeForStatus()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "codeforstatus()",
       "source_file": "apierror/apierror.go",
@@ -2577,7 +2555,7 @@
       "label": "encode()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "encode()",
       "source_file": "apierror/apierror.go",
@@ -2588,7 +2566,7 @@
       "label": "Error",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "error",
       "source_file": "apierror/apierror.go",
@@ -2599,7 +2577,7 @@
       "label": "New()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "new()",
       "source_file": "apierror/apierror.go",
@@ -2610,7 +2588,7 @@
       "label": "Newf()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "newf()",
       "source_file": "apierror/apierror.go",
@@ -2621,7 +2599,7 @@
       "label": "Parse()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "parse()",
       "source_file": "apierror/apierror.go",
@@ -2632,73 +2610,29 @@
       "label": "sortedJSON()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "sortedjson()",
       "source_file": "apierror/apierror.go",
       "source_location": "L269"
     },
     {
-      "id": "apierror_apierror_test",
-      "label": "apierror_test.go",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "apierror_test.go",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L1"
-    },
-    {
-      "id": "apierror_apierror_test_golden",
-      "label": "golden()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "golden()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L22"
-    },
-    {
       "id": "apierror_apierror_test_init",
       "label": "init()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "init()",
       "source_file": "apierror/apierror_test.go",
       "source_location": "L74"
     },
     {
-      "id": "apierror_apierror_test_testcanonical_golden",
-      "label": "TestCanonical_Golden()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "testcanonical_golden()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L97"
-    },
-    {
-      "id": "apierror_apierror_test_testcanonical_properties",
-      "label": "TestCanonical_Properties()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "testcanonical_properties()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L117"
-    },
-    {
       "id": "apierror_apierror_test_testcodeforstatus",
       "label": "TestCodeForStatus()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "testcodeforstatus()",
       "source_file": "apierror/apierror_test.go",
@@ -2709,7 +2643,7 @@
       "label": "TestDetailsInto()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "testdetailsinto()",
       "source_file": "apierror/apierror_test.go",
@@ -2720,106 +2654,194 @@
       "label": "TestError_IsAGoError()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "testerror_isagoerror()",
       "source_file": "apierror/apierror_test.go",
       "source_location": "L189"
     },
     {
-      "id": "apierror_apierror_test_testlogfields_golden",
-      "label": "TestLogFields_Golden()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "testlogfields_golden()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L86"
-    },
-    {
-      "id": "apierror_apierror_test_testlogfields_shortformsonly",
-      "label": "TestLogFields_ShortFormsOnly()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "testlogfields_shortformsonly()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L237"
-    },
-    {
       "id": "apierror_apierror_test_testparse",
       "label": "TestParse()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "testparse()",
       "source_file": "apierror/apierror_test.go",
       "source_location": "L152"
     },
     {
-      "id": "apierror_apierror_test_testschemaisacopy",
-      "label": "TestSchemaIsACopy()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "testschemaisacopy()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L321"
-    },
-    {
       "id": "apierror_apierror_test_testwithupstream_boundscause",
       "label": "TestWithUpstream_BoundsCause()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "testwithupstream_boundscause()",
       "source_file": "apierror/apierror_test.go",
       "source_location": "L197"
     },
     {
-      "id": "apierror_apierror_test_testwriter",
-      "label": "TestWriter()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "testwriter()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L269"
-    },
-    {
-      "id": "apierror_apierror_test_validate",
-      "label": "validate()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "validate()",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L40"
-    },
-    {
       "id": "apierror_apierror_validcode",
       "label": "ValidCode()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "validcode()",
       "source_file": "apierror/apierror.go",
       "source_location": "L153"
     },
     {
+      "id": "apierror_canton_canton",
+      "label": "canton.go",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "canton.go",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L1"
+    },
+    {
+      "id": "apierror_canton_canton_expectedhash",
+      "label": "ExpectedHash()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "expectedhash()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L140"
+    },
+    {
+      "id": "apierror_canton_canton_forparty",
+      "label": "ForParty()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "forparty()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L131"
+    },
+    {
+      "id": "apierror_canton_canton_fromerror",
+      "label": "FromError()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "fromerror()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L165"
+    },
+    {
+      "id": "apierror_canton_canton_fromledgererror",
+      "label": "FromLedgerError()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "fromledgererror()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L181"
+    },
+    {
+      "id": "apierror_canton_canton_grpccodename",
+      "label": "GRPCCodeName()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "grpccodename()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L89"
+    },
+    {
+      "id": "apierror_canton_canton_parseledgererror",
+      "label": "ParseLedgerError()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "parseledgererror()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L65"
+    },
+    {
+      "id": "apierror_canton_canton_signing",
+      "label": "Signing()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "signing()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L152"
+    },
+    {
+      "id": "apierror_canton_canton_test_testfromerror",
+      "label": "TestFromError()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "testfromerror()",
+      "source_file": "apierror/canton/canton_test.go",
+      "source_location": "L105"
+    },
+    {
+      "id": "apierror_canton_canton_test_testfromledgererror_golden",
+      "label": "TestFromLedgerError_Golden()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "testfromledgererror_golden()",
+      "source_file": "apierror/canton/canton_test.go",
+      "source_location": "L41"
+    },
+    {
+      "id": "apierror_canton_canton_test_testfromledgererror_mapping",
+      "label": "TestFromLedgerError_Mapping()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "testfromledgererror_mapping()",
+      "source_file": "apierror/canton/canton_test.go",
+      "source_location": "L78"
+    },
+    {
+      "id": "apierror_canton_canton_test_testledgererror",
+      "label": "TestLedgerError()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "testledgererror()",
+      "source_file": "apierror/canton/canton_test.go",
+      "source_location": "L116"
+    },
+    {
+      "id": "apierror_canton_canton_test_testsigningdetails",
+      "label": "TestSigningDetails()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "testsigningdetails()",
+      "source_file": "apierror/canton/canton_test.go",
+      "source_location": "L130"
+    },
+    {
       "id": "apierror_detail",
       "label": "Detail",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "detail",
       "source_file": "apierror/apierror.go",
@@ -2830,7 +2852,7 @@
       "label": ".At()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".at()",
       "source_file": "apierror/apierror.go",
@@ -2841,7 +2863,7 @@
       "label": ".Canonical()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".canonical()",
       "source_file": "apierror/apierror.go",
@@ -2852,7 +2874,7 @@
       "label": ".DetailsInto()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".detailsinto()",
       "source_file": "apierror/apierror.go",
@@ -2863,7 +2885,7 @@
       "label": ".Error()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".error()",
       "source_file": "apierror/apierror.go",
@@ -2874,7 +2896,7 @@
       "label": ".MarshalJSON()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".marshaljson()",
       "source_file": "apierror/apierror.go",
@@ -2885,7 +2907,7 @@
       "label": ".UnmarshalJSON()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".unmarshaljson()",
       "source_file": "apierror/apierror.go",
@@ -2896,7 +2918,7 @@
       "label": ".WithDetails()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".withdetails()",
       "source_file": "apierror/apierror.go",
@@ -2907,7 +2929,7 @@
       "label": ".WithHint()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".withhint()",
       "source_file": "apierror/apierror.go",
@@ -2918,7 +2940,7 @@
       "label": ".WithStage()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".withstage()",
       "source_file": "apierror/apierror.go",
@@ -2929,40 +2951,18 @@
       "label": ".WithUpstream()",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": ".withupstream()",
       "source_file": "apierror/apierror.go",
       "source_location": "L173"
     },
     {
-      "id": "apierror_schema_schema",
-      "label": "Schema()",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "schema()",
-      "source_file": "apierror/schema.go",
-      "source_location": "L11"
-    },
-    {
-      "id": "apierror_signing",
-      "label": "signing",
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "apierror_test.go",
-      "file_type": "code",
-      "norm_label": "signing",
-      "source_file": "apierror/apierror_test.go",
-      "source_location": "L53"
-    },
-    {
       "id": "apierror_upstream",
       "label": "Upstream",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "upstream",
       "source_file": "apierror/apierror.go",
@@ -2973,11 +2973,143 @@
       "label": "wire",
       "_origin": "ast",
       "community": 21,
-      "community_name": "apierror_test.go",
+      "community_name": "canton.go",
       "file_type": "code",
       "norm_label": "wire",
       "source_file": "apierror/apierror.go",
       "source_location": "L213"
+    },
+    {
+      "id": "canton_fixture",
+      "label": "fixture",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "fixture",
+      "source_file": "apierror/canton/canton_test.go",
+      "source_location": "L23"
+    },
+    {
+      "id": "canton_fixture_rawbody",
+      "label": ".rawBody()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": ".rawbody()",
+      "source_file": "apierror/canton/canton_test.go",
+      "source_location": "L29"
+    },
+    {
+      "id": "canton_ledgererror",
+      "label": "LedgerError",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "ledgererror",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L44"
+    },
+    {
+      "id": "canton_ledgererror_error",
+      "label": ".Error()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": ".error()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L57"
+    },
+    {
+      "id": "canton_ledgererror_grpccodename",
+      "label": ".GRPCCodeName()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": ".grpccodename()",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L62"
+    },
+    {
+      "id": "canton_signingdetails",
+      "label": "SigningDetails",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "signingdetails",
+      "source_file": "apierror/canton/canton.go",
+      "source_location": "L107"
+    },
+    {
+      "id": "cantonid_cantonid_go_cantonid_hash",
+      "label": "Hash",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "hash",
+      "source_file": "cantonid/cantonid.go",
+      "source_location": "L100"
+    },
+    {
+      "id": "cantonid_cantonid_parsehash",
+      "label": "ParseHash()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "parsehash()",
+      "source_file": "cantonid/cantonid.go",
+      "source_location": "L103"
+    },
+    {
+      "id": "cantonid_cantonid_test_testshortforms",
+      "label": "TestShortForms()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": "testshortforms()",
+      "source_file": "cantonid/cantonid_test.go",
+      "source_location": "L148"
+    },
+    {
+      "id": "cantonid_hash_iszero",
+      "label": ".IsZero()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": ".iszero()",
+      "source_file": "cantonid/cantonid.go",
+      "source_location": "L115"
+    },
+    {
+      "id": "cantonid_hash_string",
+      "label": ".String()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": ".string()",
+      "source_file": "cantonid/cantonid.go",
+      "source_location": "L110"
+    },
+    {
+      "id": "cantonid_hash_unmarshaljson",
+      "label": ".UnmarshalJSON()",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "canton.go",
+      "file_type": "code",
+      "norm_label": ".unmarshaljson()",
+      "source_file": "cantonid/cantonid.go",
+      "source_location": "L117"
     },
     {
       "id": "agreementsig_doc",
@@ -3123,6 +3255,17 @@
       "source_location": ""
     },
     {
+      "id": "go_type_net_http_response",
+      "label": "net/http.Response",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "apierror/http.go",
+      "file_type": "code",
+      "norm_label": "net/http.response",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "logging_accesslog",
       "label": "accessLog",
       "_origin": "ast",
@@ -3131,7 +3274,18 @@
       "file_type": "code",
       "norm_label": "accesslog",
       "source_file": "logging/request.go",
-      "source_location": "L85"
+      "source_location": "L121"
+    },
+    {
+      "id": "telemetry_transport_roundtrip",
+      "label": ".RoundTrip()",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "apierror/http.go",
+      "file_type": "code",
+      "norm_label": ".roundtrip()",
+      "source_file": "telemetry/http.go",
+      "source_location": "L72"
     },
     {
       "id": "approval_approval",
@@ -3322,6 +3476,17 @@
       "source_location": "L35"
     },
     {
+      "id": "apierror_schema",
+      "label": "apierror/schema.go",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "file_type": "code",
+      "norm_label": "apierror/schema.go",
+      "source_file": "apierror/schema.go",
+      "source_location": "L1"
+    },
+    {
       "id": "go_type_context_context",
       "label": "context.Context",
       "_origin": "ast",
@@ -3421,17 +3586,6 @@
       "source_location": "L29"
     },
     {
-      "id": "identityclient_client_creatependinginvitation",
-      "label": ".CreatePendingInvitation()",
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "logging_test.go",
-      "file_type": "code",
-      "norm_label": ".creatependinginvitation()",
-      "source_file": "identityclient/identityclient.go",
-      "source_location": "L150"
-    },
-    {
       "id": "identityclient_client_doidentityrequest",
       "label": ".doIdentityRequest()",
       "_origin": "ast",
@@ -3517,7 +3671,7 @@
       "file_type": "code",
       "norm_label": "accesslogoption",
       "source_file": "logging/request.go",
-      "source_location": "L83"
+      "source_location": "L119"
     },
     {
       "id": "logging_actorkey",
@@ -3528,7 +3682,7 @@
       "file_type": "code",
       "norm_label": "actorkey",
       "source_file": "logging/request.go",
-      "source_location": "L55"
+      "source_location": "L58"
     },
     {
       "id": "logging_actorslot",
@@ -3539,7 +3693,7 @@
       "file_type": "code",
       "norm_label": "actorslot",
       "source_file": "logging/request.go",
-      "source_location": "L50"
+      "source_location": "L52"
     },
     {
       "id": "logging_config",
@@ -3638,7 +3792,7 @@
       "file_type": "code",
       "norm_label": "spanctx()",
       "source_file": "logging/logging_test.go",
-      "source_location": "L151"
+      "source_location": "L159"
     },
     {
       "id": "logging_logging_test_testaccesslog",
@@ -3649,7 +3803,7 @@
       "file_type": "code",
       "norm_label": "testaccesslog()",
       "source_file": "logging/logging_test.go",
-      "source_location": "L167"
+      "source_location": "L175"
     },
     {
       "id": "logging_logging_test_testaccesslogservererror",
@@ -3660,7 +3814,7 @@
       "file_type": "code",
       "norm_label": "testaccesslogservererror()",
       "source_file": "logging/logging_test.go",
-      "source_location": "L213"
+      "source_location": "L222"
     },
     {
       "id": "logging_logging_test_testactorslot",
@@ -3682,7 +3836,7 @@
       "file_type": "code",
       "norm_label": "testfromcontext()",
       "source_file": "logging/logging_test.go",
-      "source_location": "L157"
+      "source_location": "L165"
     },
     {
       "id": "logging_logging_test_testnew",
@@ -3759,7 +3913,7 @@
       "file_type": "code",
       "norm_label": "accesslog()",
       "source_file": "logging/request.go",
-      "source_location": "L103"
+      "source_location": "L139"
     },
     {
       "id": "logging_request_actor",
@@ -3770,7 +3924,18 @@
       "file_type": "code",
       "norm_label": "actor()",
       "source_file": "logging/request.go",
-      "source_location": "L73"
+      "source_location": "L76"
+    },
+    {
+      "id": "logging_request_attribution",
+      "label": "Attribution()",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "file_type": "code",
+      "norm_label": "attribution()",
+      "source_file": "logging/request.go",
+      "source_location": "L107"
     },
     {
       "id": "logging_request_fromcontext",
@@ -3784,6 +3949,17 @@
       "source_location": "L25"
     },
     {
+      "id": "logging_request_institution",
+      "label": "Institution()",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "file_type": "code",
+      "norm_label": "institution()",
+      "source_file": "logging/request.go",
+      "source_location": "L96"
+    },
+    {
       "id": "logging_request_setactor",
       "label": "SetActor()",
       "_origin": "ast",
@@ -3792,7 +3968,18 @@
       "file_type": "code",
       "norm_label": "setactor()",
       "source_file": "logging/request.go",
-      "source_location": "L64"
+      "source_location": "L67"
+    },
+    {
+      "id": "logging_request_setinstitution",
+      "label": "SetInstitution()",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "file_type": "code",
+      "norm_label": "setinstitution()",
+      "source_file": "logging/request.go",
+      "source_location": "L87"
     },
     {
       "id": "logging_request_tracefields",
@@ -3814,7 +4001,7 @@
       "file_type": "code",
       "norm_label": "withactorslot()",
       "source_file": "logging/request.go",
-      "source_location": "L58"
+      "source_location": "L61"
     },
     {
       "id": "logging_request_withlogger",
@@ -3836,7 +4023,18 @@
       "file_type": "code",
       "norm_label": "withroute()",
       "source_file": "logging/request.go",
-      "source_location": "L92"
+      "source_location": "L128"
+    },
+    {
+      "id": "logging_scrub_newscrubcore",
+      "label": "NewScrubCore()",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "file_type": "code",
+      "norm_label": "newscrubcore()",
+      "source_file": "logging/scrub.go",
+      "source_location": "L23"
     },
     {
       "id": "logging_stringer",
@@ -4023,7 +4221,7 @@
       "file_type": "code",
       "norm_label": "recorder",
       "source_file": "logging/request.go",
-      "source_location": "L140"
+      "source_location": "L177"
     },
     {
       "id": "logging_recorder_flush",
@@ -4034,7 +4232,7 @@
       "file_type": "code",
       "norm_label": ".flush()",
       "source_file": "logging/request.go",
-      "source_location": "L166"
+      "source_location": "L203"
     },
     {
       "id": "logging_recorder_unwrap",
@@ -4045,7 +4243,7 @@
       "file_type": "code",
       "norm_label": ".unwrap()",
       "source_file": "logging/request.go",
-      "source_location": "L163"
+      "source_location": "L200"
     },
     {
       "id": "logging_recorder_write",
@@ -4056,7 +4254,7 @@
       "file_type": "code",
       "norm_label": ".write()",
       "source_file": "logging/request.go",
-      "source_location": "L154"
+      "source_location": "L191"
     },
     {
       "id": "logging_recorder_writeheader",
@@ -4067,7 +4265,7 @@
       "file_type": "code",
       "norm_label": ".writeheader()",
       "source_file": "logging/request.go",
-      "source_location": "L147"
+      "source_location": "L184"
     },
     {
       "id": "telemetry_statusrecorder",
@@ -4136,17 +4334,6 @@
       "source_location": ""
     },
     {
-      "id": "go_type_net_http_response",
-      "label": "net/http.Response",
-      "_origin": "ast",
-      "community": 29,
-      "community_name": "transport",
-      "file_type": "code",
-      "norm_label": "net/http.response",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "go_type_net_http_roundtripper",
       "label": "net/http.RoundTripper",
       "_origin": "ast",
@@ -4167,17 +4354,6 @@
       "norm_label": "transport",
       "source_file": "telemetry/http.go",
       "source_location": "L67"
-    },
-    {
-      "id": "telemetry_transport_roundtrip",
-      "label": ".RoundTrip()",
-      "_origin": "ast",
-      "community": 29,
-      "community_name": "transport",
-      "file_type": "code",
-      "norm_label": ".roundtrip()",
-      "source_file": "telemetry/http.go",
-      "source_location": "L72"
     },
     {
       "id": "gemini_repo_rules",
@@ -4288,48 +4464,356 @@
       "source_location": "L1"
     },
     {
-      "id": "go_type_go_opentelemetry_io_otel_attribute_key",
-      "label": "go.opentelemetry.io/otel/attribute.Key",
+      "id": "auditref_auditref",
+      "label": "auditref.go",
       "_origin": "ast",
       "community": 30,
-      "community_name": "attrs",
+      "community_name": "auditref.go",
       "file_type": "code",
-      "norm_label": "go.opentelemetry.io/otel/attribute.key",
-      "source_file": "",
-      "source_location": ""
+      "norm_label": "auditref.go",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L1"
     },
     {
-      "id": "go_type_go_opentelemetry_io_otel_attribute_value",
-      "label": "go.opentelemetry.io/otel/attribute.Value",
+      "id": "auditref_auditref_compute",
+      "label": "Compute()",
       "_origin": "ast",
       "community": 30,
-      "community_name": "attrs",
+      "community_name": "auditref.go",
       "file_type": "code",
-      "norm_label": "go.opentelemetry.io/otel/attribute.value",
-      "source_file": "",
-      "source_location": ""
+      "norm_label": "compute()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L151"
     },
     {
-      "id": "go_type_go_opentelemetry_io_otel_sdk_trace_readonlyspan",
-      "label": "go.opentelemetry.io/otel/sdk/trace.ReadOnlySpan",
+      "id": "auditref_auditref_new",
+      "label": "New()",
       "_origin": "ast",
       "community": 30,
-      "community_name": "attrs",
+      "community_name": "auditref.go",
       "file_type": "code",
-      "norm_label": "go.opentelemetry.io/otel/sdk/trace.readonlyspan",
-      "source_file": "",
-      "source_location": ""
+      "norm_label": "new()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L82"
     },
     {
-      "id": "telemetry_telemetry_test_attrs",
-      "label": "attrs()",
+      "id": "auditref_auditref_parse",
+      "label": "Parse()",
       "_origin": "ast",
       "community": 30,
-      "community_name": "attrs",
+      "community_name": "auditref.go",
       "file_type": "code",
-      "norm_label": "attrs()",
-      "source_file": "telemetry/telemetry_test.go",
-      "source_location": "L32"
+      "norm_label": "parse()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L161"
+    },
+    {
+      "id": "auditref_auditref_plain",
+      "label": "Plain()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "plain()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L73"
+    },
+    {
+      "id": "auditref_auditref_test",
+      "label": "auditref_test.go",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "auditref_test.go",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L1"
+    },
+    {
+      "id": "auditref_auditref_test_testallandparse",
+      "label": "TestAllAndParse()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testallandparse()",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L65"
+    },
+    {
+      "id": "auditref_auditref_test_testinstitution",
+      "label": "TestInstitution()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testinstitution()",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L94"
+    },
+    {
+      "id": "auditref_auditref_test_testkeyed",
+      "label": "TestKeyed()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testkeyed()",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L40"
+    },
+    {
+      "id": "auditref_auditref_test_testkeyedfailsclosed",
+      "label": "TestKeyedFailsClosed()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testkeyedfailsclosed()",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L26"
+    },
+    {
+      "id": "auditref_auditref_test_testplainindevelopment",
+      "label": "TestPlainInDevelopment()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testplainindevelopment()",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L12"
+    },
+    {
+      "id": "auditref_config",
+      "label": "Config",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L51"
+    },
+    {
+      "id": "auditref_kind",
+      "label": "Kind",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "kind",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L33"
+    },
+    {
+      "id": "auditref_refs",
+      "label": "Refs",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "refs",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L65"
+    },
+    {
+      "id": "auditref_refs_all",
+      "label": ".All()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": ".all()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L133"
+    },
+    {
+      "id": "auditref_refs_institution",
+      "label": ".Institution()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": ".institution()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L128"
+    },
+    {
+      "id": "auditref_refs_of",
+      "label": ".Of()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": ".of()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L108"
+    },
+    {
+      "id": "auditref_refs_party",
+      "label": ".Party()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": ".party()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L125"
+    },
+    {
+      "id": "auditref_refs_plain",
+      "label": ".Plain()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": ".plain()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L102"
+    },
+    {
+      "id": "auditref_refs_subject",
+      "label": ".Subject()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": ".subject()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L123"
+    },
+    {
+      "id": "auditref_refs_user",
+      "label": ".User()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": ".user()",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L124"
+    },
+    {
+      "id": "hmacsig_hmacsig",
+      "label": "hmacsig.go",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "hmacsig.go",
+      "source_file": "hmacsig/hmacsig.go",
+      "source_location": "L1"
+    },
+    {
+      "id": "hmacsig_hmacsig_sign",
+      "label": "Sign()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "sign()",
+      "source_file": "hmacsig/hmacsig.go",
+      "source_location": "L23"
+    },
+    {
+      "id": "hmacsig_hmacsig_test",
+      "label": "hmacsig_test.go",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "hmacsig_test.go",
+      "source_file": "hmacsig/hmacsig_test.go",
+      "source_location": "L1"
+    },
+    {
+      "id": "hmacsig_hmacsig_test_testsignandverify_roundtrip",
+      "label": "TestSignAndVerify_RoundTrip()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testsignandverify_roundtrip()",
+      "source_file": "hmacsig/hmacsig_test.go",
+      "source_location": "L8"
+    },
+    {
+      "id": "hmacsig_hmacsig_test_testverify_malformedhexfails",
+      "label": "TestVerify_MalformedHexFails()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testverify_malformedhexfails()",
+      "source_file": "hmacsig/hmacsig_test.go",
+      "source_location": "L38"
+    },
+    {
+      "id": "hmacsig_hmacsig_test_testverify_tamperedmessagefails",
+      "label": "TestVerify_TamperedMessageFails()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testverify_tamperedmessagefails()",
+      "source_file": "hmacsig/hmacsig_test.go",
+      "source_location": "L28"
+    },
+    {
+      "id": "hmacsig_hmacsig_test_testverify_wrongsecretfails",
+      "label": "TestVerify_WrongSecretFails()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testverify_wrongsecretfails()",
+      "source_file": "hmacsig/hmacsig_test.go",
+      "source_location": "L18"
+    },
+    {
+      "id": "hmacsig_hmacsig_verify",
+      "label": "Verify()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "verify()",
+      "source_file": "hmacsig/hmacsig.go",
+      "source_location": "L34"
+    },
+    {
+      "id": "pseudoref_pseudoref",
+      "label": "pseudoref.go",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "pseudoref.go",
+      "source_file": "pseudoref/pseudoref.go",
+      "source_location": "L1"
+    },
+    {
+      "id": "pseudoref_pseudoref_ref",
+      "label": "Ref()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "ref()",
+      "source_file": "pseudoref/pseudoref.go",
+      "source_location": "L29"
+    },
+    {
+      "id": "pseudoref_pseudoref_test_testref",
+      "label": "TestRef()",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "auditref.go",
+      "file_type": "code",
+      "norm_label": "testref()",
+      "source_file": "pseudoref/pseudoref_test.go",
+      "source_location": "L8"
     },
     {
       "id": "go_type_go_uber_org_zap_zapcore_checkedentry",
@@ -4385,17 +4869,6 @@
       "norm_label": "scrub.go",
       "source_file": "logging/scrub.go",
       "source_location": "L1"
-    },
-    {
-      "id": "logging_scrub_newscrubcore",
-      "label": "NewScrubCore()",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "redact.go",
-      "file_type": "code",
-      "norm_label": "newscrubcore()",
-      "source_file": "logging/scrub.go",
-      "source_location": "L23"
     },
     {
       "id": "logging_scrub_scrubfield",
@@ -4761,242 +5234,44 @@
       "source_location": "L142"
     },
     {
-      "id": "apierror_canton_canton",
-      "label": "canton.go",
+      "id": "apierror_apierror_test",
+      "label": "apierror_test.go",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
-      "norm_label": "canton.go",
-      "source_file": "apierror/canton/canton.go",
+      "norm_label": "apierror_test.go",
+      "source_file": "apierror/apierror_test.go",
       "source_location": "L1"
-    },
-    {
-      "id": "apierror_canton_canton_expectedhash",
-      "label": "ExpectedHash()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "expectedhash()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L140"
-    },
-    {
-      "id": "apierror_canton_canton_forparty",
-      "label": "ForParty()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "forparty()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L131"
-    },
-    {
-      "id": "apierror_canton_canton_fromerror",
-      "label": "FromError()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "fromerror()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L165"
-    },
-    {
-      "id": "apierror_canton_canton_fromledgererror",
-      "label": "FromLedgerError()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "fromledgererror()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L181"
-    },
-    {
-      "id": "apierror_canton_canton_grpccodename",
-      "label": "GRPCCodeName()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "grpccodename()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L89"
-    },
-    {
-      "id": "apierror_canton_canton_parseledgererror",
-      "label": "ParseLedgerError()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "parseledgererror()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L65"
-    },
-    {
-      "id": "apierror_canton_canton_signing",
-      "label": "Signing()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "signing()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L152"
     },
     {
       "id": "apierror_canton_canton_test",
       "label": "canton_test.go",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "canton_test.go",
       "source_file": "apierror/canton/canton_test.go",
       "source_location": "L1"
     },
     {
-      "id": "apierror_canton_canton_test_testfromerror",
-      "label": "TestFromError()",
+      "id": "apierror_signing",
+      "label": "signing",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
-      "norm_label": "testfromerror()",
-      "source_file": "apierror/canton/canton_test.go",
-      "source_location": "L105"
-    },
-    {
-      "id": "apierror_canton_canton_test_testfromledgererror_golden",
-      "label": "TestFromLedgerError_Golden()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "testfromledgererror_golden()",
-      "source_file": "apierror/canton/canton_test.go",
-      "source_location": "L41"
-    },
-    {
-      "id": "apierror_canton_canton_test_testfromledgererror_mapping",
-      "label": "TestFromLedgerError_Mapping()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "testfromledgererror_mapping()",
-      "source_file": "apierror/canton/canton_test.go",
-      "source_location": "L78"
-    },
-    {
-      "id": "apierror_canton_canton_test_testledgererror",
-      "label": "TestLedgerError()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "testledgererror()",
-      "source_file": "apierror/canton/canton_test.go",
-      "source_location": "L116"
-    },
-    {
-      "id": "apierror_canton_canton_test_testsigningdetails",
-      "label": "TestSigningDetails()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "testsigningdetails()",
-      "source_file": "apierror/canton/canton_test.go",
-      "source_location": "L130"
-    },
-    {
-      "id": "apierror_schema",
-      "label": "apierror/schema.go",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "apierror/schema.go",
-      "source_file": "apierror/schema.go",
-      "source_location": "L1"
-    },
-    {
-      "id": "canton_fixture",
-      "label": "fixture",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "fixture",
-      "source_file": "apierror/canton/canton_test.go",
-      "source_location": "L23"
-    },
-    {
-      "id": "canton_fixture_rawbody",
-      "label": ".rawBody()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".rawbody()",
-      "source_file": "apierror/canton/canton_test.go",
-      "source_location": "L29"
-    },
-    {
-      "id": "canton_ledgererror",
-      "label": "LedgerError",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "ledgererror",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L44"
-    },
-    {
-      "id": "canton_ledgererror_error",
-      "label": ".Error()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".error()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L57"
-    },
-    {
-      "id": "canton_ledgererror_grpccodename",
-      "label": ".GRPCCodeName()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".grpccodename()",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L62"
-    },
-    {
-      "id": "canton_signingdetails",
-      "label": "SigningDetails",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "signingdetails",
-      "source_file": "apierror/canton/canton.go",
-      "source_location": "L107"
+      "norm_label": "signing",
+      "source_file": "apierror/apierror_test.go",
+      "source_location": "L53"
     },
     {
       "id": "cantonid_cantonid",
       "label": "cantonid.go",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "cantonid.go",
       "source_file": "cantonid/cantonid.go",
@@ -5007,7 +5282,7 @@
       "label": "Classify()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "classify()",
       "source_file": "cantonid/cantonid.go",
@@ -5018,7 +5293,7 @@
       "label": "FingerprintOf()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "fingerprintof()",
       "source_file": "cantonid/cantonid.go",
@@ -5029,29 +5304,18 @@
       "label": "Fingerprint",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "fingerprint",
       "source_file": "cantonid/cantonid.go",
       "source_location": "L54"
     },
     {
-      "id": "cantonid_cantonid_go_cantonid_hash",
-      "label": "Hash",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "hash",
-      "source_file": "cantonid/cantonid.go",
-      "source_location": "L100"
-    },
-    {
       "id": "cantonid_cantonid_go_cantonid_partyid",
       "label": "PartyID",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "partyid",
       "source_file": "cantonid/cantonid.go",
@@ -5062,7 +5326,7 @@
       "label": "MustParsePartyID()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "mustparsepartyid()",
       "source_file": "cantonid/cantonid.go",
@@ -5073,29 +5337,18 @@
       "label": "ParseFingerprint()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "parsefingerprint()",
       "source_file": "cantonid/cantonid.go",
       "source_location": "L57"
     },
     {
-      "id": "cantonid_cantonid_parsehash",
-      "label": "ParseHash()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "parsehash()",
-      "source_file": "cantonid/cantonid.go",
-      "source_location": "L103"
-    },
-    {
       "id": "cantonid_cantonid_parsepartyid",
       "label": "ParsePartyID()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "parsepartyid()",
       "source_file": "cantonid/cantonid.go",
@@ -5106,7 +5359,7 @@
       "label": "Short()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "short()",
       "source_file": "cantonid/cantonid.go",
@@ -5117,7 +5370,7 @@
       "label": "shortHex()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "shorthex()",
       "source_file": "cantonid/cantonid.go",
@@ -5128,7 +5381,7 @@
       "label": "shortRunes()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "shortrunes()",
       "source_file": "cantonid/cantonid.go",
@@ -5139,7 +5392,7 @@
       "label": "cantonid_test.go",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "cantonid_test.go",
       "source_file": "cantonid/cantonid_test.go",
@@ -5150,7 +5403,7 @@
       "label": "TestFingerprintOf_ControlsExternalParty()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "testfingerprintof_controlsexternalparty()",
       "source_file": "cantonid/cantonid_test.go",
@@ -5161,7 +5414,7 @@
       "label": "TestJSON()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "testjson()",
       "source_file": "cantonid/cantonid_test.go",
@@ -5172,7 +5425,7 @@
       "label": "TestParse_Golden()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "testparse_golden()",
       "source_file": "cantonid/cantonid_test.go",
@@ -5183,29 +5436,18 @@
       "label": "TestPartyID()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "testpartyid()",
       "source_file": "cantonid/cantonid_test.go",
       "source_location": "L76"
     },
     {
-      "id": "cantonid_cantonid_test_testshortforms",
-      "label": "TestShortForms()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "testshortforms()",
-      "source_file": "cantonid/cantonid_test.go",
-      "source_location": "L148"
-    },
-    {
       "id": "cantonid_fingerprint_iszero",
       "label": ".IsZero()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".iszero()",
       "source_file": "cantonid/cantonid.go",
@@ -5216,7 +5458,7 @@
       "label": ".Short()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".short()",
       "source_file": "cantonid/cantonid.go",
@@ -5227,7 +5469,7 @@
       "label": ".String()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".string()",
       "source_file": "cantonid/cantonid.go",
@@ -5238,62 +5480,29 @@
       "label": ".UnmarshalJSON()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".unmarshaljson()",
       "source_file": "cantonid/cantonid.go",
       "source_location": "L80"
     },
     {
-      "id": "cantonid_hash_iszero",
-      "label": ".IsZero()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".iszero()",
-      "source_file": "cantonid/cantonid.go",
-      "source_location": "L115"
-    },
-    {
       "id": "cantonid_hash_short",
       "label": ".Short()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".short()",
       "source_file": "cantonid/cantonid.go",
       "source_location": "L113"
     },
     {
-      "id": "cantonid_hash_string",
-      "label": ".String()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".string()",
-      "source_file": "cantonid/cantonid.go",
-      "source_location": "L110"
-    },
-    {
-      "id": "cantonid_hash_unmarshaljson",
-      "label": ".UnmarshalJSON()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".unmarshaljson()",
-      "source_file": "cantonid/cantonid.go",
-      "source_location": "L117"
-    },
-    {
       "id": "cantonid_kind",
       "label": "Kind",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "kind",
       "source_file": "cantonid/cantonid.go",
@@ -5304,7 +5513,7 @@
       "label": "parseCase",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "parsecase",
       "source_file": "cantonid/cantonid_test.go",
@@ -5315,7 +5524,7 @@
       "label": ".ControlledBy()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".controlledby()",
       "source_file": "cantonid/cantonid.go",
@@ -5326,7 +5535,7 @@
       "label": ".IsZero()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".iszero()",
       "source_file": "cantonid/cantonid.go",
@@ -5337,7 +5546,7 @@
       "label": ".MarshalJSON()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".marshaljson()",
       "source_file": "cantonid/cantonid.go",
@@ -5348,7 +5557,7 @@
       "label": ".Short()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".short()",
       "source_file": "cantonid/cantonid.go",
@@ -5359,7 +5568,7 @@
       "label": ".String()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".string()",
       "source_file": "cantonid/cantonid.go",
@@ -5370,95 +5579,51 @@
       "label": ".UnmarshalJSON()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".unmarshaljson()",
       "source_file": "cantonid/cantonid.go",
       "source_location": "L195"
     },
     {
-      "id": "go_type_github_com_xeipuuv_gojsonschema_schema",
-      "label": "github.com/xeipuuv/gojsonschema.Schema",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "github.com/xeipuuv/gojsonschema.schema",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "kind",
       "label": "Kind",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "kind",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "printing_render_test_teststr",
-      "label": "TestStr()",
+      "id": "printing_render",
+      "label": "render.go",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
-      "norm_label": "teststr()",
-      "source_file": "printing/render_test.go",
-      "source_location": "L16"
-    },
-    {
-      "id": "printing_source",
-      "label": "source.go",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "source.go",
-      "source_file": "printing/source.go",
+      "norm_label": "render.go",
+      "source_file": "printing/render.go",
       "source_location": "L1"
     },
     {
-      "id": "printing_source_content",
-      "label": "Content()",
+      "id": "pseudoref_pseudoref_test",
+      "label": "pseudoref_test.go",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
-      "norm_label": "content()",
-      "source_file": "printing/source.go",
-      "source_location": "L36"
-    },
-    {
-      "id": "printing_source_lit",
-      "label": "Lit()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "lit()",
-      "source_file": "printing/source.go",
-      "source_location": "L13"
-    },
-    {
-      "id": "printing_source_str",
-      "label": "Str()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "str()",
-      "source_file": "printing/source.go",
-      "source_location": "L9"
+      "norm_label": "pseudoref_test.go",
+      "source_file": "pseudoref/pseudoref_test.go",
+      "source_location": "L1"
     },
     {
       "id": "schema_errunknowntype",
       "label": "ErrUnknownType",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "errunknowntype",
       "source_file": "schema/schema.go",
@@ -5469,62 +5634,29 @@
       "label": ".Error()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".error()",
       "source_file": "schema/schema.go",
       "source_location": "L98"
     },
     {
-      "id": "schema_registry_types",
-      "label": ".Types()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".types()",
-      "source_file": "schema/schema.go",
-      "source_location": "L73"
-    },
-    {
-      "id": "schema_registry_validate",
-      "label": ".Validate()",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": ".validate()",
-      "source_file": "schema/schema.go",
-      "source_location": "L107"
-    },
-    {
       "id": "schema_schema",
       "label": "schema/schema.go",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "schema/schema.go",
       "source_file": "schema/schema.go",
       "source_location": "L1"
     },
     {
-      "id": "schema_schema_go_schema_registry",
-      "label": "Registry",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "file_type": "code",
-      "norm_label": "registry",
-      "source_file": "schema/schema.go",
-      "source_location": "L22"
-    },
-    {
       "id": "schema_validationerror",
       "label": "ValidationError",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": "validationerror",
       "source_file": "schema/schema.go",
@@ -5535,11 +5667,66 @@
       "label": ".Error()",
       "_origin": "ast",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "file_type": "code",
       "norm_label": ".error()",
       "source_file": "schema/schema.go",
       "source_location": "L89"
+    },
+    {
+      "id": "validate_errors",
+      "label": "Errors",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "file_type": "code",
+      "norm_label": "errors",
+      "source_file": "validate/validate.go",
+      "source_location": "L17"
+    },
+    {
+      "id": "validate_errors_add",
+      "label": ".Add()",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "file_type": "code",
+      "norm_label": ".add()",
+      "source_file": "validate/validate.go",
+      "source_location": "L26"
+    },
+    {
+      "id": "validate_errors_errifany",
+      "label": ".ErrIfAny()",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "file_type": "code",
+      "norm_label": ".errifany()",
+      "source_file": "validate/validate.go",
+      "source_location": "L34"
+    },
+    {
+      "id": "validate_errors_error",
+      "label": ".Error()",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "file_type": "code",
+      "norm_label": ".error()",
+      "source_file": "validate/validate.go",
+      "source_location": "L19"
+    },
+    {
+      "id": "validate_validate",
+      "label": "validate.go",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "file_type": "code",
+      "norm_label": "validate.go",
+      "source_file": "validate/validate.go",
+      "source_location": "L1"
     },
     {
       "id": "releasing",
@@ -5674,6 +5861,17 @@
       "source_location": "L1"
     },
     {
+      "id": "go_type_sync_once",
+      "label": "sync.Once",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": "sync.once",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "go_type_time_time",
       "label": "time.Time",
       "_origin": "ast",
@@ -5683,6 +5881,17 @@
       "norm_label": "time.time",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "identityclient_client_creatependinginvitation",
+      "label": ".CreatePendingInvitation()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".creatependinginvitation()",
+      "source_file": "identityclient/identityclient.go",
+      "source_location": "L150"
     },
     {
       "id": "identityclient_pendinginvitation",
@@ -5883,59 +6092,114 @@
       "source_location": "L311"
     },
     {
-      "id": "validate_errors",
-      "label": "Errors",
+      "id": "printing_fake",
+      "label": "Fake",
       "_origin": "ast",
       "community": 7,
       "community_name": "metering.go",
       "file_type": "code",
-      "norm_label": "errors",
-      "source_file": "validate/validate.go",
-      "source_location": "L17"
+      "norm_label": "fake",
+      "source_file": "printing/render.go",
+      "source_location": "L161"
     },
     {
-      "id": "validate_errors_add",
-      "label": ".Add()",
+      "id": "printing_fake_name",
+      "label": ".Name()",
       "_origin": "ast",
       "community": 7,
       "community_name": "metering.go",
       "file_type": "code",
-      "norm_label": ".add()",
-      "source_file": "validate/validate.go",
-      "source_location": "L26"
+      "norm_label": ".name()",
+      "source_file": "printing/render.go",
+      "source_location": "L163"
     },
     {
-      "id": "validate_errors_errifany",
-      "label": ".ErrIfAny()",
+      "id": "printing_fake_render",
+      "label": ".Render()",
       "_origin": "ast",
       "community": 7,
       "community_name": "metering.go",
       "file_type": "code",
-      "norm_label": ".errifany()",
-      "source_file": "validate/validate.go",
-      "source_location": "L34"
+      "norm_label": ".render()",
+      "source_file": "printing/render.go",
+      "source_location": "L165"
     },
     {
-      "id": "validate_errors_error",
-      "label": ".Error()",
+      "id": "printing_renderer",
+      "label": "Renderer",
       "_origin": "ast",
       "community": 7,
       "community_name": "metering.go",
       "file_type": "code",
-      "norm_label": ".error()",
-      "source_file": "validate/validate.go",
-      "source_location": "L19"
+      "norm_label": "renderer",
+      "source_file": "printing/render.go",
+      "source_location": "L37"
     },
     {
-      "id": "validate_validate",
-      "label": "validate.go",
+      "id": "printing_renderer_name",
+      "label": ".Name()",
       "_origin": "ast",
       "community": 7,
       "community_name": "metering.go",
       "file_type": "code",
-      "norm_label": "validate.go",
-      "source_file": "validate/validate.go",
-      "source_location": "L1"
+      "norm_label": ".name()",
+      "source_file": "printing/render.go",
+      "source_location": "L40"
+    },
+    {
+      "id": "printing_renderer_render",
+      "label": ".Render()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".render()",
+      "source_file": "printing/render.go",
+      "source_location": "L41"
+    },
+    {
+      "id": "printing_typst",
+      "label": "Typst",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": "typst",
+      "source_file": "printing/render.go",
+      "source_location": "L86"
+    },
+    {
+      "id": "printing_typst_fonts",
+      "label": ".fonts()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".fonts()",
+      "source_file": "printing/render.go",
+      "source_location": "L114"
+    },
+    {
+      "id": "printing_typst_name",
+      "label": ".Name()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".name()",
+      "source_file": "printing/render.go",
+      "source_location": "L112"
+    },
+    {
+      "id": "printing_typst_render",
+      "label": ".Render()",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "metering.go",
+      "file_type": "code",
+      "norm_label": ".render()",
+      "source_file": "printing/render.go",
+      "source_location": "L137"
     },
     {
       "id": "validate_validate_requirenonempty",
@@ -6231,18 +6495,6 @@
       "type": "external"
     },
     {
-      "id": "go_pkg_testing",
-      "label": "go_pkg_testing",
-      "_origin": "semantic",
-      "community": 1,
-      "community_name": "testing.T",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_testing",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "go_pkg_crypto_ecdsa",
       "label": "go_pkg_crypto_ecdsa",
       "_origin": "semantic",
@@ -6275,30 +6527,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_crypto_elliptic",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_crypto_hmac",
-      "label": "go_pkg_crypto_hmac",
-      "_origin": "semantic",
-      "community": 14,
-      "community_name": "agreementsig_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_crypto_hmac",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_crypto_sha256",
-      "label": "go_pkg_crypto_sha256",
-      "_origin": "semantic",
-      "community": 14,
-      "community_name": "agreementsig_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_crypto_sha256",
       "source_file": "",
       "type": "external"
     },
@@ -6339,30 +6567,6 @@
       "type": "external"
     },
     {
-      "id": "go_pkg_encoding_hex",
-      "label": "go_pkg_encoding_hex",
-      "_origin": "semantic",
-      "community": 14,
-      "community_name": "agreementsig_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_encoding_hex",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_errors",
-      "label": "go_pkg_errors",
-      "_origin": "semantic",
-      "community": 14,
-      "community_name": "agreementsig_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_errors",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "go_pkg_math_big",
       "label": "go_pkg_math_big",
       "_origin": "semantic",
@@ -6379,22 +6583,10 @@
       "label": "go_pkg_archive_zip",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_archive_zip",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_bufio",
-      "label": "go_pkg_bufio",
-      "_origin": "semantic",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_bufio",
       "source_file": "",
       "type": "external"
     },
@@ -6403,7 +6595,7 @@
       "label": "go_pkg_bytes",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_bytes",
@@ -6415,22 +6607,10 @@
       "label": "go_pkg_context",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_context",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_fmt",
-      "label": "go_pkg_fmt",
-      "_origin": "semantic",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_fmt",
       "source_file": "",
       "type": "external"
     },
@@ -6439,7 +6619,7 @@
       "label": "go_pkg_io",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_io",
@@ -6451,22 +6631,10 @@
       "label": "go_pkg_net_url",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_net_url",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_os_exec",
-      "label": "go_pkg_os_exec",
-      "_origin": "semantic",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_os_exec",
       "source_file": "",
       "type": "external"
     },
@@ -6475,34 +6643,10 @@
       "label": "go_pkg_path",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_path",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_path_filepath",
-      "label": "go_pkg_path_filepath",
-      "_origin": "semantic",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_path_filepath",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_sync",
-      "label": "go_pkg_sync",
-      "_origin": "semantic",
-      "community": 15,
-      "community_name": "go_pkg_fmt",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_sync",
       "source_file": "",
       "type": "external"
     },
@@ -6511,10 +6655,70 @@
       "label": "go_pkg_time",
       "_origin": "semantic",
       "community": 15,
-      "community_name": "go_pkg_fmt",
+      "community_name": "go_pkg_time",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_time",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel",
+      "label": "go_pkg_go_opentelemetry_io_otel",
+      "_origin": "semantic",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_attribute",
+      "label": "go_pkg_go_opentelemetry_io_otel_attribute",
+      "_origin": "semantic",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_attribute",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_codes",
+      "label": "go_pkg_go_opentelemetry_io_otel_codes",
+      "_origin": "semantic",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_codes",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_sdk_trace_tracetest",
+      "label": "go_pkg_go_opentelemetry_io_otel_sdk_trace_tracetest",
+      "_origin": "semantic",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_trace_tracetest",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_trace",
+      "label": "go_pkg_go_opentelemetry_io_otel_trace",
+      "_origin": "semantic",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_trace",
       "source_file": "",
       "type": "external"
     },
@@ -6531,6 +6735,18 @@
       "type": "external"
     },
     {
+      "id": "go_pkg_net_http_httptest",
+      "label": "go_pkg_net_http_httptest",
+      "_origin": "semantic",
+      "community": 16,
+      "community_name": "telemetry_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_net_http_httptest",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "go_pkg_math",
       "label": "go_pkg_math",
       "_origin": "semantic",
@@ -6539,18 +6755,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_math",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_sort",
-      "label": "go_pkg_sort",
-      "_origin": "semantic",
-      "community": 19,
-      "community_name": "canonical.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_sort",
       "source_file": "",
       "type": "external"
     },
@@ -6579,14 +6783,14 @@
       "type": "external"
     },
     {
-      "id": "go_pkg_net_http_httptest",
-      "label": "go_pkg_net_http_httptest",
+      "id": "go_pkg_crypto_rand",
+      "label": "go_pkg_crypto_rand",
       "_origin": "semantic",
-      "community": 21,
-      "community_name": "apierror_test.go",
+      "community": 23,
+      "community_name": "apierror/http.go",
       "external": true,
       "file_type": "concept",
-      "norm_label": "go_pkg_net_http_httptest",
+      "norm_label": "go_pkg_crypto_rand",
       "source_file": "",
       "type": "external"
     },
@@ -6615,6 +6819,186 @@
       "type": "external"
     },
     {
+      "id": "go_pkg_embed",
+      "label": "go_pkg_embed",
+      "_origin": "semantic",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_embed",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_uber_org_zap",
+      "label": "go_pkg_go_uber_org_zap",
+      "_origin": "semantic",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_uber_org_zap",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_uber_org_zap_zapcore",
+      "label": "go_pkg_go_uber_org_zap_zapcore",
+      "_origin": "semantic",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_uber_org_zap_zapcore",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_uber_org_zap_zaptest_observer",
+      "label": "go_pkg_go_uber_org_zap_zaptest_observer",
+      "_origin": "semantic",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_uber_org_zap_zaptest_observer",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_sync",
+      "label": "go_pkg_sync",
+      "_origin": "semantic",
+      "community": 26,
+      "community_name": "logging_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_sync",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlpmetric_otlpmetrichttp",
+      "label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlpmetric_otlpmetrichttp",
+      "_origin": "semantic",
+      "community": 27,
+      "community_name": "telemetry.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlpmetric_otlpmetrichttp",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlptrace_otlptracehttp",
+      "label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlptrace_otlptracehttp",
+      "_origin": "semantic",
+      "community": 27,
+      "community_name": "telemetry.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlptrace_otlptracehttp",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_propagation",
+      "label": "go_pkg_go_opentelemetry_io_otel_propagation",
+      "_origin": "semantic",
+      "community": 27,
+      "community_name": "telemetry.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_propagation",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_sdk_metric",
+      "label": "go_pkg_go_opentelemetry_io_otel_sdk_metric",
+      "_origin": "semantic",
+      "community": 27,
+      "community_name": "telemetry.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_metric",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_sdk_resource",
+      "label": "go_pkg_go_opentelemetry_io_otel_sdk_resource",
+      "_origin": "semantic",
+      "community": 27,
+      "community_name": "telemetry.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_resource",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_go_opentelemetry_io_otel_sdk_trace",
+      "label": "go_pkg_go_opentelemetry_io_otel_sdk_trace",
+      "_origin": "semantic",
+      "community": 27,
+      "community_name": "telemetry.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_trace",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_crypto_hmac",
+      "label": "go_pkg_crypto_hmac",
+      "_origin": "semantic",
+      "community": 30,
+      "community_name": "auditref.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_crypto_hmac",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_crypto_sha256",
+      "label": "go_pkg_crypto_sha256",
+      "_origin": "semantic",
+      "community": 30,
+      "community_name": "auditref.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_crypto_sha256",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_encoding_hex",
+      "label": "go_pkg_encoding_hex",
+      "_origin": "semantic",
+      "community": 30,
+      "community_name": "auditref.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_encoding_hex",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_sort",
+      "label": "go_pkg_sort",
+      "_origin": "semantic",
+      "community": 30,
+      "community_name": "auditref.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_sort",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "go_pkg_unicode",
       "label": "go_pkg_unicode",
       "_origin": "semantic",
@@ -6627,26 +7011,14 @@
       "type": "external"
     },
     {
-      "id": "go_pkg_crypto_rand",
-      "label": "go_pkg_crypto_rand",
+      "id": "go_pkg_bufio",
+      "label": "go_pkg_bufio",
       "_origin": "semantic",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
-      "norm_label": "go_pkg_crypto_rand",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_embed",
-      "label": "go_pkg_embed",
-      "_origin": "semantic",
-      "community": 5,
-      "community_name": "cantonid.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_embed",
+      "norm_label": "go_pkg_bufio",
       "source_file": "",
       "type": "external"
     },
@@ -6655,7 +7027,7 @@
       "label": "go_pkg_encoding_binary",
       "_origin": "semantic",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_encoding_binary",
@@ -6667,10 +7039,22 @@
       "label": "go_pkg_encoding_json",
       "_origin": "semantic",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_encoding_json",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_errors",
+      "label": "go_pkg_errors",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_errors",
       "source_file": "",
       "type": "external"
     },
@@ -6679,10 +7063,22 @@
       "label": "go_pkg_flag",
       "_origin": "semantic",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_flag",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_fmt",
+      "label": "go_pkg_fmt",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_fmt",
       "source_file": "",
       "type": "external"
     },
@@ -6691,7 +7087,7 @@
       "label": "go_pkg_github_com_xeipuuv_gojsonschema",
       "_origin": "semantic",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_github_com_xeipuuv_gojsonschema",
@@ -6703,10 +7099,34 @@
       "label": "go_pkg_os",
       "_origin": "semantic",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_os",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_os_exec",
+      "label": "go_pkg_os_exec",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_os_exec",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "go_pkg_path_filepath",
+      "label": "go_pkg_path_filepath",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "apierror_test.go",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "go_pkg_path_filepath",
       "source_file": "",
       "type": "external"
     },
@@ -6715,7 +7135,7 @@
       "label": "go_pkg_strings",
       "_origin": "semantic",
       "community": 5,
-      "community_name": "cantonid.go",
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
       "norm_label": "go_pkg_strings",
@@ -6723,156 +7143,14 @@
       "type": "external"
     },
     {
-      "id": "go_pkg_go_opentelemetry_io_otel",
-      "label": "go_pkg_go_opentelemetry_io_otel",
-      "community": 16,
-      "community_name": "telemetry_test.go",
+      "id": "go_pkg_testing",
+      "label": "go_pkg_testing",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "apierror_test.go",
       "external": true,
       "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_attribute",
-      "label": "go_pkg_go_opentelemetry_io_otel_attribute",
-      "community": 16,
-      "community_name": "telemetry_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_attribute",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_codes",
-      "label": "go_pkg_go_opentelemetry_io_otel_codes",
-      "community": 16,
-      "community_name": "telemetry_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_codes",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_sdk_trace_tracetest",
-      "label": "go_pkg_go_opentelemetry_io_otel_sdk_trace_tracetest",
-      "community": 16,
-      "community_name": "telemetry_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_trace_tracetest",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_trace",
-      "label": "go_pkg_go_opentelemetry_io_otel_trace",
-      "community": 16,
-      "community_name": "telemetry_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_trace",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_uber_org_zap",
-      "label": "go_pkg_go_uber_org_zap",
-      "community": 26,
-      "community_name": "logging_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_uber_org_zap",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_uber_org_zap_zapcore",
-      "label": "go_pkg_go_uber_org_zap_zapcore",
-      "community": 26,
-      "community_name": "logging_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_uber_org_zap_zapcore",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_uber_org_zap_zaptest_observer",
-      "label": "go_pkg_go_uber_org_zap_zaptest_observer",
-      "community": 26,
-      "community_name": "logging_test.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_uber_org_zap_zaptest_observer",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlpmetric_otlpmetrichttp",
-      "label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlpmetric_otlpmetrichttp",
-      "community": 27,
-      "community_name": "telemetry.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlpmetric_otlpmetrichttp",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlptrace_otlptracehttp",
-      "label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlptrace_otlptracehttp",
-      "community": 27,
-      "community_name": "telemetry.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_exporters_otlp_otlptrace_otlptracehttp",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_propagation",
-      "label": "go_pkg_go_opentelemetry_io_otel_propagation",
-      "community": 27,
-      "community_name": "telemetry.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_propagation",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_sdk_metric",
-      "label": "go_pkg_go_opentelemetry_io_otel_sdk_metric",
-      "community": 27,
-      "community_name": "telemetry.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_metric",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_sdk_resource",
-      "label": "go_pkg_go_opentelemetry_io_otel_sdk_resource",
-      "community": 27,
-      "community_name": "telemetry.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_resource",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "go_pkg_go_opentelemetry_io_otel_sdk_trace",
-      "label": "go_pkg_go_opentelemetry_io_otel_sdk_trace",
-      "community": 27,
-      "community_name": "telemetry.go",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "go_pkg_go_opentelemetry_io_otel_sdk_trace",
+      "norm_label": "go_pkg_testing",
       "source_file": "",
       "type": "external"
     }
@@ -7779,6 +8057,102 @@
       "weight": 1.0
     },
     {
+      "source": "auditref_auditref_new",
+      "target": "auditref_refs_plain",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_parse",
+      "target": "auditref_kind",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_all",
+      "target": "auditref_auditref_compute",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_institution",
+      "target": "auditref_refs_of",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_of",
+      "target": "auditref_auditref_compute",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_party",
+      "target": "auditref_refs_of",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_subject",
+      "target": "auditref_refs_of",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_user",
+      "target": "auditref_refs_of",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
       "source": "canton_ledgererror_grpccodename",
       "target": "apierror_canton_canton_grpccodename",
       "relation": "calls",
@@ -8075,7 +8449,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L168",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -8087,7 +8461,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L171",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
@@ -8099,7 +8473,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L172",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -8111,7 +8485,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L185",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -8123,7 +8497,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L214",
+      "source_location": "L223",
       "weight": 1.0
     },
     {
@@ -8135,7 +8509,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L219",
+      "source_location": "L228",
       "weight": 1.0
     },
     {
@@ -8147,7 +8521,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L158",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -8159,7 +8533,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L159",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -8171,7 +8545,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L160",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -8243,7 +8617,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/request.go",
-      "source_location": "L113",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -8255,7 +8629,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/request.go",
-      "source_location": "L116",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -8267,7 +8641,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/request.go",
-      "source_location": "L116",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -8279,7 +8653,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/request.go",
-      "source_location": "L124",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -8291,7 +8665,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/request.go",
-      "source_location": "L128",
+      "source_location": "L164",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request_accesslog",
+      "target": "logging_request_institution",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "logging/request.go",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -8303,7 +8689,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "logging/request.go",
-      "source_location": "L129",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request_attribution",
+      "target": "logging_request_actor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "logging/request.go",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request_attribution",
+      "target": "logging_request_institution",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "logging/request.go",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -9611,7 +10021,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "logging/request.go",
-      "source_location": "L86",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -9623,7 +10033,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "logging/request.go",
-      "source_location": "L51",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -11100,6 +11510,114 @@
       "context": "import",
       "source_file": "approval/approval_test.go",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "go_pkg_crypto_hmac",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "go_pkg_crypto_sha256",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "go_pkg_encoding_hex",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "go_pkg_errors",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "go_pkg_fmt",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "go_pkg_sort",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "go_pkg_strings",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test",
+      "target": "go_pkg_strings",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test",
+      "target": "go_pkg_testing",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -14223,6 +14741,114 @@
       "weight": 1.0
     },
     {
+      "source": "auditref_auditref_compute",
+      "target": "auditref_kind",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L151",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_new",
+      "target": "auditref_config",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testallandparse",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testinstitution",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testkeyed",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testkeyedfailsclosed",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testplainindevelopment",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_all",
+      "target": "auditref_kind",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L133",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs_of",
+      "target": "auditref_kind",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
       "source": "cantonid_cantonid_fingerprintof",
       "target": "go_type_crypto_ed25519_publickey",
       "relation": "references",
@@ -14579,7 +15205,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "logging/logging_test.go",
-      "source_location": "L167",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -14591,7 +15217,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "logging/logging_test.go",
-      "source_location": "L213",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -14615,7 +15241,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "logging/logging_test.go",
-      "source_location": "L157",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -14687,7 +15313,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "logging/request.go",
-      "source_location": "L103",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -14699,7 +15325,19 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "logging/request.go",
-      "source_location": "L73",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request_attribution",
+      "target": "go_type_context_context",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "logging/request.go",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -14715,6 +15353,18 @@
       "weight": 1.0
     },
     {
+      "source": "logging_request_institution",
+      "target": "go_type_context_context",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "logging/request.go",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
       "source": "logging_request_setactor",
       "target": "go_type_context_context",
       "relation": "references",
@@ -14723,7 +15373,19 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "logging/request.go",
-      "source_location": "L64",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request_setinstitution",
+      "target": "go_type_context_context",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "logging/request.go",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -14759,7 +15421,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "logging/request.go",
-      "source_location": "L92",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -15903,6 +16565,18 @@
       "weight": 1.0
     },
     {
+      "source": "auditref_auditref_new",
+      "target": "auditref_refs",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "auditref/auditref.go",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
       "source": "cantonid_cantonid_classify",
       "target": "cantonid_kind",
       "relation": "references",
@@ -16079,7 +16753,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "logging/logging_test.go",
-      "source_location": "L151",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -16103,7 +16777,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "logging/request.go",
-      "source_location": "L163",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -16115,7 +16789,19 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "logging/request.go",
-      "source_location": "L103",
+      "source_location": "L139",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request_attribution",
+      "target": "go_type_go_uber_org_zap_field",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "logging/request.go",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -16151,7 +16837,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "logging/request.go",
-      "source_location": "L58",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -16175,7 +16861,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "logging/request.go",
-      "source_location": "L92",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -17943,6 +18629,138 @@
       "weight": 1.0
     },
     {
+      "source": "auditref_auditref",
+      "target": "auditref_auditref_compute",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L151",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "auditref_auditref_parse",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "auditref_kind",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "auditref_config",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "auditref_refs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "auditref_auditref_plain",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref",
+      "target": "auditref_auditref_new",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test",
+      "target": "auditref_auditref_test_testplainindevelopment",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test",
+      "target": "auditref_auditref_test_testkeyedfailsclosed",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test",
+      "target": "auditref_auditref_test_testkeyed",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test",
+      "target": "auditref_auditref_test_testallandparse",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test",
+      "target": "auditref_auditref_test_testinstitution",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
       "source": "cantonid_cantonid",
       "target": "cantonid_cantonid_go_cantonid_hash",
       "relation": "contains",
@@ -18665,7 +19483,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/logging_test.go",
-      "source_location": "L151",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -18676,7 +19494,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/logging_test.go",
-      "source_location": "L157",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -18687,7 +19505,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/logging_test.go",
-      "source_location": "L167",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -18698,7 +19516,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/logging_test.go",
-      "source_location": "L213",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -18758,24 +19576,57 @@
     },
     {
       "source": "logging_request",
+      "target": "logging_request_attribution",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "logging/request.go",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request",
+      "target": "logging_accesslogoption",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "logging/request.go",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request",
+      "target": "logging_accesslog",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "logging/request.go",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request",
+      "target": "logging_request_withroute",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "logging/request.go",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request",
       "target": "logging_request_accesslog",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L103",
-      "weight": 1.0
-    },
-    {
-      "source": "logging_request",
-      "target": "logging_recorder",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "logging/request.go",
-      "source_location": "L140",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -18787,6 +19638,17 @@
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
       "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_request",
+      "target": "logging_recorder",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "logging/request.go",
+      "source_location": "L177",
       "weight": 1.0
     },
     {
@@ -18830,7 +19692,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L50",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -18841,7 +19703,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L55",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -18852,7 +19714,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L58",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -18863,7 +19725,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L64",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -18874,40 +19736,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L73",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
       "source": "logging_request",
-      "target": "logging_accesslogoption",
+      "target": "logging_request_setinstitution",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L83",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
       "source": "logging_request",
-      "target": "logging_accesslog",
+      "target": "logging_request_institution",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L85",
-      "weight": 1.0
-    },
-    {
-      "source": "logging_request",
-      "target": "logging_request_withroute",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "logging/request.go",
-      "source_location": "L92",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -19457,7 +20308,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -19468,7 +20319,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L34",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -19479,7 +20330,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -20634,7 +21485,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L141",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -20822,6 +21673,83 @@
       "confidence_score": 1.0,
       "source_file": "approval/approval.go",
       "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs",
+      "target": "auditref_refs_plain",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs",
+      "target": "auditref_refs_of",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs",
+      "target": "auditref_refs_subject",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs",
+      "target": "auditref_refs_user",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs",
+      "target": "auditref_refs_party",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs",
+      "target": "auditref_refs_institution",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_refs",
+      "target": "auditref_refs_all",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "auditref/auditref.go",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -21096,7 +22024,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L147",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -21107,7 +22035,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L154",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -21118,7 +22046,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L163",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -21129,7 +22057,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "logging/request.go",
-      "source_location": "L166",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -22227,6 +23155,90 @@
       "weight": 1.0
     },
     {
+      "source": "auditref_auditref_test_testallandparse",
+      "target": "auditref_auditref_new",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testallandparse",
+      "target": "auditref_auditref_parse",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testinstitution",
+      "target": "auditref_auditref_parse",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testinstitution",
+      "target": "auditref_auditref_new",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testkeyed",
+      "target": "auditref_auditref_new",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testkeyedfailsclosed",
+      "target": "auditref_auditref_new",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "auditref_auditref_test_testplainindevelopment",
+      "target": "auditref_auditref_new",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "auditref/auditref_test.go",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
       "source": "cantonid_cantonid_test_testfingerprintof_controlsexternalparty",
       "target": "cantonid_cantonid_fingerprintof",
       "relation": "calls",
@@ -22583,7 +23595,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L173",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -22595,7 +23607,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L173",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -22607,7 +23619,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L174",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_logging_test_testaccesslog",
+      "target": "logging_request_setinstitution",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "logging/logging_test.go",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -22619,7 +23643,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L175",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -22631,7 +23655,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L215",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -22671,6 +23695,42 @@
       "weight": 1.0
     },
     {
+      "source": "logging_logging_test_testactorslot",
+      "target": "logging_request_attribution",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "logging/logging_test.go",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_logging_test_testactorslot",
+      "target": "logging_request_setinstitution",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "logging/logging_test.go",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "logging_logging_test_testactorslot",
+      "target": "logging_request_institution",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "logging/logging_test.go",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
       "source": "logging_logging_test_testfromcontext",
       "target": "logging_request_fromcontext",
       "relation": "calls",
@@ -22679,7 +23739,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "logging/logging_test.go",
-      "source_location": "L159",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -23248,5 +24308,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4b5c6fdc0546ca1e1968ca38f949d4ccab801cb7"
+  "built_at_commit": "6c981fee0ddd7d14d377a2119ca904b8ed286e7d"
 }
