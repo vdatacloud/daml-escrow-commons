@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/vdatacloud/daml-escrow-commons/auditref"
 	"github.com/vdatacloud/daml-escrow-commons/redact"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -20,12 +21,22 @@ import (
 // and other arrays (zap.Object, zap.Any of a struct) can't be looked into;
 // under a marked key they are replaced, under any other key they pass as
 // logged -- don't log a struct that holds personal data.
-func NewScrubCore(c zapcore.Core) zapcore.Core { return &scrubCore{c} }
+func NewScrubCore(c zapcore.Core) zapcore.Core { return &scrubCore{Core: c} }
 
-type scrubCore struct{ zapcore.Core }
+// NewRefScrubCore is NewScrubCore that also logs each field naming a person
+// (personKind: a subject, ledger user or party) as its audit reference
+// under refs -- in development the identifier itself, still scrubbed.
+func NewRefScrubCore(c zapcore.Core, refs *auditref.Refs) zapcore.Core {
+	return &scrubCore{Core: c, refs: refs}
+}
+
+type scrubCore struct {
+	zapcore.Core
+	refs *auditref.Refs
+}
 
 func (c *scrubCore) With(fields []zapcore.Field) zapcore.Core {
-	return &scrubCore{c.Core.With(scrubFields(fields))}
+	return &scrubCore{Core: c.Core.With(c.scrubFields(fields)), refs: c.refs}
 }
 
 func (c *scrubCore) Check(ent zapcore.Entry, ce *zapcore.CheckedEntry) *zapcore.CheckedEntry {
@@ -37,15 +48,58 @@ func (c *scrubCore) Check(ent zapcore.Entry, ce *zapcore.CheckedEntry) *zapcore.
 
 func (c *scrubCore) Write(ent zapcore.Entry, fields []zapcore.Field) error {
 	ent.Message = redact.Text(ent.Message)
-	return c.Core.Write(ent, scrubFields(fields))
+	return c.Core.Write(ent, c.scrubFields(fields))
 }
 
-func scrubFields(fields []zapcore.Field) []zapcore.Field {
+func (c *scrubCore) scrubFields(fields []zapcore.Field) []zapcore.Field {
 	out := make([]zapcore.Field, len(fields))
 	for i, f := range fields {
+		if c.refs != nil {
+			if kind, ok := personKind(f.Key); ok {
+				if rf, ok := c.refField(f, kind); ok {
+					out[i] = rf
+					continue
+				}
+			}
+		}
 		out[i] = scrubField(f)
 	}
 	return out
+}
+
+// refField is f, a string or string-array field naming a person, as its
+// audit reference(s); false for any other type, which scrubField handles.
+func (c *scrubCore) refField(f zapcore.Field, kind auditref.Kind) (zapcore.Field, bool) {
+	switch f.Type {
+	case zapcore.StringType:
+		return zap.String(f.Key, c.ref(kind, f.String)), true
+	case zapcore.StringerType:
+		if s, ok := f.Interface.(fmt.Stringer); ok {
+			return zap.String(f.Key, c.ref(kind, s.String())), true
+		}
+	case zapcore.ArrayMarshalerType:
+		if ss, ok := stringArray(f); ok {
+			for i := range ss {
+				ss[i] = c.ref(kind, ss[i])
+			}
+			return zap.Strings(f.Key, ss), true
+		}
+	}
+	return f, false
+}
+
+// ref is id's audit reference. A value that already is a reference (an
+// access log's actor, a caller's own refs.User) passes unchanged; in
+// development the identifier itself is still scrubbed (emails masked, long
+// ids shortened).
+func (c *scrubCore) ref(kind auditref.Kind, id string) string {
+	if _, _, err := auditref.Parse(id); err == nil {
+		return id
+	}
+	if c.refs.Plain() {
+		return redact.Text(id)
+	}
+	return c.refs.Of(kind, id)
 }
 
 func scrubField(f zapcore.Field) zapcore.Field {
