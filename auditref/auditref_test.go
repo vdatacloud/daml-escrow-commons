@@ -113,3 +113,28 @@ func TestInstitution(t *testing.T) {
 		t.Error("the two switches are independent")
 	}
 }
+
+// TestSetClear: an institution's own ledger users and parties are not a
+// person, so they are logged in the clear like the institution -- and
+// referenced with it under InstitutionRefs. Everyone else keeps a ref.
+func TestSetClear(t *testing.T) {
+	isClear := func(kind Kind, id string) bool {
+		return (kind == User && id == "Custodian") || (kind == Party && id == "Bank::1220aa")
+	}
+	prod, _ := New(Config{Environment: "prod", Keys: keys, Current: "r1"})
+	if !strings.HasPrefix(prod.User("Custodian"), "ref:") {
+		t.Error("before SetClear, every user is referenced")
+	}
+	prod.SetClear(isClear)
+	if prod.User("Custodian") != "Custodian" || prod.Party("Bank::1220aa") != "Bank::1220aa" {
+		t.Error("institution accounts are in the clear")
+	}
+	if !strings.HasPrefix(prod.User("u-joey"), "ref:r1:u:") || !strings.HasPrefix(prod.Subject("Custodian"), "ref:r1:s:") {
+		t.Error("people, and kinds the hook doesn't clear, keep refs")
+	}
+	hidden, _ := New(Config{Environment: "prod", Keys: keys, Current: "r1", InstitutionRefs: true})
+	hidden.SetClear(isClear)
+	if !strings.HasPrefix(hidden.User("Custodian"), "ref:r1:u:") {
+		t.Error("InstitutionRefs references institution accounts too")
+	}
+}

@@ -27,6 +27,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"sync/atomic"
 )
 
 // Kind is the identifier a reference is computed from.
@@ -61,12 +62,27 @@ type Config struct {
 	InstitutionRefs bool
 }
 
-// Refs computes the references a service logs.
+// Refs computes the references a service logs. It is safe for concurrent
+// use.
 type Refs struct {
 	plain           bool
 	institutionRefs bool
 	keys            map[string][]byte
 	current         string
+	clear           atomic.Pointer[func(Kind, string) bool]
+}
+
+// SetClear names the identifiers that are not a person -- an institution's
+// own ledger users and parties -- which are logged in the clear like an
+// institution (and referenced only with InstitutionRefs). A service sets it
+// once it knows its institutions, which may be after its logger is built.
+func (r *Refs) SetClear(isClear func(kind Kind, id string) bool) {
+	r.clear.Store(&isClear)
+}
+
+func (r *Refs) isClear(kind Kind, id string) bool {
+	f := r.clear.Load()
+	return f != nil && (*f)(kind, id)
 }
 
 // Plain reports whether environment logs identifiers in the clear.
@@ -109,7 +125,7 @@ func (r *Refs) Of(kind Kind, id string) string {
 	if id == "" {
 		return ""
 	}
-	if kind == Institution {
+	if kind == Institution || r.isClear(kind, id) {
 		if !r.institutionRefs {
 			return id
 		}

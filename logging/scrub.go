@@ -89,17 +89,17 @@ func (c *scrubCore) refField(f zapcore.Field, kind auditref.Kind) (zapcore.Field
 }
 
 // ref is id's audit reference. A value that already is a reference (an
-// access log's actor, a caller's own refs.User) passes unchanged; in
-// development the identifier itself is still scrubbed (emails masked, long
-// ids shortened).
+// access log's actor, a caller's own refs.User) passes unchanged; an
+// identifier logged in the clear (development, or not a person:
+// Refs.SetClear) is still scrubbed (emails masked, long ids shortened).
 func (c *scrubCore) ref(kind auditref.Kind, id string) string {
 	if _, _, err := auditref.Parse(id); err == nil {
 		return id
 	}
-	if c.refs.Plain() {
-		return redact.Text(id)
+	if out := c.refs.Of(kind, id); out != id {
+		return out
 	}
-	return c.refs.Of(kind, id)
+	return redact.Text(id)
 }
 
 func scrubField(f zapcore.Field) zapcore.Field {

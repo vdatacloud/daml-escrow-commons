@@ -108,3 +108,19 @@ func TestNewWithRefs(t *testing.T) {
 		t.Errorf("log = %s", b)
 	}
 }
+
+// TestRefScrubCoreClear: an institution account (Refs.SetClear) is logged in
+// the clear, its party id still shortened.
+func TestRefScrubCoreClear(t *testing.T) {
+	l, logs, refs := refLogger(t, "production")
+	refs.SetClear(func(kind auditref.Kind, id string) bool { return id == "Custodian" || strings.HasPrefix(id, "Bank::") })
+	party := "Bank::1220" + strings.Repeat("ab", 32)
+	l.Info("acted", zap.String("userID", "Custodian"), zap.String("party", party), zap.String("beneficiaryParty", "u-joey::1220aa"))
+	m := fieldMap(logs.All()[0])
+	if m["userID"] != "Custodian" || m["beneficiaryParty"] != refs.Party("u-joey::1220aa") {
+		t.Errorf("fields = %v", m)
+	}
+	if p, _ := m["party"].(string); p == party || !strings.HasPrefix(p, "Bank::") {
+		t.Errorf("party = %q, want the clear id shortened", p)
+	}
+}
