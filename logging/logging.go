@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/vdatacloud/daml-escrow-commons/auditref"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -26,6 +27,10 @@ type Config struct {
 	Service     string
 	Environment string
 	Version     string
+	// Refs, when set, logs every field naming a person (a subject, ledger
+	// user or party: userID, oktaSub, depositorParty, actor, ...) as its
+	// audit reference -- in development the identifier itself.
+	Refs *auditref.Refs
 }
 
 // New builds the logger cfg describes: unsampled, scrubbed, and tagged with
@@ -37,7 +42,7 @@ func build(cfg Config, output string) (*zap.Logger, error) {
 	if err != nil {
 		return nil, err
 	}
-	logger, err := zc.Build(zap.WrapCore(func(c zapcore.Core) zapcore.Core { return NewScrubCore(c) }))
+	logger, err := zc.Build(zap.WrapCore(func(c zapcore.Core) zapcore.Core { return NewRefScrubCore(c, cfg.Refs) }))
 	if err != nil {
 		return nil, fmt.Errorf("logging: building the logger: %w", err)
 	}
