@@ -8,9 +8,9 @@ import (
 
 // Keys that name a person, normalized (lowercase, letters and digits only),
 // and the audit-reference kind each takes (daml-escrow docs/AUDIT_LOGGING.md
-// §A.1). Whole keys first; then suffixes, so "depositorParty" and
-// "custodianUserId" match but "username" (a person's name: redacted) does
-// not.
+// §A.1). Whole keys first; then suffixes, so "depositorParty",
+// "custodianUser" and "approverUserId" match but "username" (a person's
+// name: redacted) and "userAgent" do not.
 var (
 	personKeys = map[string]auditref.Kind{
 		"sub": auditref.Subject, "subject": auditref.Subject, "oktasub": auditref.Subject,
@@ -22,7 +22,7 @@ var (
 		kind   auditref.Kind
 	}{
 		{"oktasub", auditref.Subject},
-		{"userid", auditref.User}, {"ledgeruser", auditref.User},
+		{"userid", auditref.User}, {"user", auditref.User},
 		{"partyid", auditref.Party}, {"partyids", auditref.Party}, {"party", auditref.Party}, {"parties", auditref.Party},
 	}
 )

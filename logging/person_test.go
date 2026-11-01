@@ -29,7 +29,7 @@ func TestPersonKind(t *testing.T) {
 	for key, want := range map[string]auditref.Kind{
 		"oktaSub": auditref.Subject, "sub": auditref.Subject, "callerOktaSub": auditref.Subject,
 		"userID": auditref.User, "user": auditref.User, "actor": auditref.User, "custodianUserId": auditref.User,
-		"agent_ledger_user": auditref.User,
+		"agent_ledger_user": auditref.User, "custodianUser": auditref.User, "mediatorUser": auditref.User,
 		"party": auditref.Party, "resolvedParty": auditref.Party, "depositor_party_id": auditref.Party,
 		"parties": auditref.Party, "observerParties": auditref.Party,
 	} {
