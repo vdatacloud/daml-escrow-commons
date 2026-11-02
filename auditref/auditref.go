@@ -27,6 +27,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"sync"
 	"sync/atomic"
 )
 
@@ -70,7 +71,20 @@ type Refs struct {
 	keys            map[string][]byte
 	current         string
 	clear           atomic.Pointer[func(Kind, string) bool]
+
+	// cache holds computed references (TD-4: a log line names the same few
+	// people again and again). Bounded; emptied when full or by SetClear.
+	mu    sync.RWMutex
+	cache map[cacheKey]string
 }
+
+type cacheKey struct {
+	kind Kind
+	id   string
+}
+
+// maxCachedRefs bounds Refs' cache of computed references.
+const maxCachedRefs = 8192
 
 // SetClear names the identifiers that are not a person -- an institution's
 // own ledger users and parties -- which are logged in the clear like an
@@ -78,6 +92,9 @@ type Refs struct {
 // once it knows its institutions, which may be after its logger is built.
 func (r *Refs) SetClear(isClear func(kind Kind, id string) bool) {
 	r.clear.Store(&isClear)
+	r.mu.Lock()
+	r.cache = nil
+	r.mu.Unlock()
 }
 
 func (r *Refs) isClear(kind Kind, id string) bool {
@@ -132,7 +149,26 @@ func (r *Refs) Of(kind Kind, id string) string {
 	} else if r.plain {
 		return id
 	}
-	return Compute(r.current, r.keys[r.current], kind, id)
+	return r.cached(kind, id)
+}
+
+// cached is Compute under the current key, from the cache when it can.
+func (r *Refs) cached(kind Kind, id string) string {
+	k := cacheKey{kind, id}
+	r.mu.RLock()
+	ref, ok := r.cache[k]
+	r.mu.RUnlock()
+	if ok {
+		return ref
+	}
+	ref = Compute(r.current, r.keys[r.current], kind, id)
+	r.mu.Lock()
+	if r.cache == nil || len(r.cache) >= maxCachedRefs {
+		r.cache = make(map[cacheKey]string, 256)
+	}
+	r.cache[k] = ref
+	r.mu.Unlock()
+	return ref
 }
 
 // Subject, User and Party are Of for each kind.

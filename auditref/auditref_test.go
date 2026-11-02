@@ -138,3 +138,20 @@ func TestSetClear(t *testing.T) {
 		t.Error("InstitutionRefs references institution accounts too")
 	}
 }
+
+// TestRefsCache (TD-4): a cached reference is the computed one, and
+// SetClear empties the cache so a newly clear id is logged in the clear.
+func TestRefsCache(t *testing.T) {
+	r, err := New(Config{Environment: "production", Keys: map[string][]byte{"r1": []byte("k")}, Current: "r1"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := Compute("r1", []byte("k"), User, "Custodian")
+	if a, b := r.User("Custodian"), r.User("Custodian"); a != want || b != want {
+		t.Fatalf("refs = %q %q, want %q", a, b, want)
+	}
+	r.SetClear(func(k Kind, id string) bool { return id == "Custodian" })
+	if got := r.User("Custodian"); got != "Custodian" {
+		t.Errorf("after SetClear = %q", got)
+	}
+}
