@@ -89,7 +89,8 @@ const maxCachedRefs = 8192
 // SetClear names the identifiers that are not a person -- an institution's
 // own ledger users and parties -- which are logged in the clear like an
 // institution (and referenced only with InstitutionRefs). A service sets it
-// once it knows its institutions, which may be after its logger is built.
+// once it knows its institutions, which may be after its logger is built,
+// and sets it again when they change: decisions are cached until then.
 func (r *Refs) SetClear(isClear func(kind Kind, id string) bool) {
 	r.clear.Store(&isClear)
 	r.mu.Lock()
@@ -139,20 +140,14 @@ func (r *Refs) Plain() bool { return r.plain }
 // carried in the clear unless InstitutionRefs, in every environment. ""
 // stays "".
 func (r *Refs) Of(kind Kind, id string) string {
-	if id == "" {
-		return ""
-	}
-	if kind == Institution || r.isClear(kind, id) {
-		if !r.institutionRefs {
-			return id
-		}
-	} else if r.plain {
+	if id == "" || (r.plain && !r.institutionRefs) {
 		return id
 	}
 	return r.cached(kind, id)
 }
 
-// cached is Compute under the current key, from the cache when it can.
+// cached is Of's decision for id, from the cache when it can: the clear
+// check (SetClear) and the HMAC run once per id.
 func (r *Refs) cached(kind Kind, id string) string {
 	k := cacheKey{kind, id}
 	r.mu.RLock()
@@ -161,7 +156,17 @@ func (r *Refs) cached(kind Kind, id string) string {
 	if ok {
 		return ref
 	}
-	ref = Compute(r.current, r.keys[r.current], kind, id)
+	switch {
+	case kind == Institution || r.isClear(kind, id):
+		ref = id
+		if r.institutionRefs {
+			ref = Compute(r.current, r.keys[r.current], kind, id)
+		}
+	case r.plain:
+		ref = id
+	default:
+		ref = Compute(r.current, r.keys[r.current], kind, id)
+	}
 	r.mu.Lock()
 	if r.cache == nil || len(r.cache) >= maxCachedRefs {
 		r.cache = make(map[cacheKey]string, 256)
