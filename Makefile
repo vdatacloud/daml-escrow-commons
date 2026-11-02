@@ -27,3 +27,10 @@ verify: build vet test ## Full local gate: build, vet, test (run before pushing)
 .PHONY: install-hooks
 install-hooks: ## Install local git hooks (pre-push: make verify)
 	./scripts/install-git-hooks.sh
+
+# PLAN.md TD-5 in daml-escrow: the vulnerability gate, as in its Makefile.
+GOVULNCHECK_VERSION ?= v1.9.0
+
+.PHONY: vuln-check
+vuln-check: ## Fail on Go code that calls a known-vulnerable function (govulncheck; needs network)
+	go run golang.org/x/vuln/cmd/govulncheck@$(GOVULNCHECK_VERSION) ./...
