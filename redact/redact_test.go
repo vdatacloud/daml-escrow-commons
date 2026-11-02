@@ -136,3 +136,14 @@ func TestText(t *testing.T) {
 		t.Error("an email under any key is replaced")
 	}
 }
+
+func TestHasDigitRun(t *testing.T) {
+	for s, want := range map[string]bool{
+		"4111 1111 1111 1111": true, "4111-1111-1111-1111": true, "4111111111111": true,
+		"411111111111": false, "4111 - 1111 1111 1111": false, "00a1b2c3d4e5f6": false, "": false,
+	} {
+		if got := hasDigitRun(s, 13); got != want {
+			t.Errorf("hasDigitRun(%q) = %v", s, got)
+		}
+	}
+}

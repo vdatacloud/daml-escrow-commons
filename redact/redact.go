@@ -77,7 +77,7 @@ var panRe = regexp.MustCompile(`\b\d(?:[ -]?\d){12,18}\b`)
 // MaskPANs masks every Luhn-valid 13-19 digit run in s to its last four, the
 // safety net for a card number that reached free text (a message, an error).
 func MaskPANs(s string) string {
-	if !strings.ContainsAny(s, "0123456789") {
+	if !hasDigitRun(s, 13) {
 		return s
 	}
 	return panRe.ReplaceAllStringFunc(s, func(m string) string {
@@ -92,6 +92,28 @@ func MaskPANs(s string) string {
 		}
 		return Account(digits)
 	})
+}
+
+// hasDigitRun reports whether s holds n digits in a row, single spaces or
+// dashes between them allowed -- the shape panRe looks for, found without
+// a regex (most strings have none).
+func hasDigitRun(s string, n int) bool {
+	run, sep := 0, false
+	for i := 0; i < len(s); i++ {
+		switch c := s[i]; {
+		case c >= '0' && c <= '9':
+			run++
+			sep = false
+			if run >= n {
+				return true
+			}
+		case (c == ' ' || c == '-') && run > 0 && !sep:
+			sep = true
+		default:
+			run, sep = 0, false
+		}
+	}
+	return false
 }
 
 func luhn(digits string) bool {

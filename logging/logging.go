@@ -31,6 +31,10 @@ type Config struct {
 	// user or party: userID, oktaSub, depositorParty, actor, ...) as its
 	// audit reference -- in development the identifier itself.
 	Refs *auditref.Refs
+	// Rules are the service's own shaping rules (TD-4). They run before
+	// DefaultRules, so a rule can decide a field first; a field it handles
+	// is written as it returns it.
+	Rules []Rule
 }
 
 // New builds the logger cfg describes: unsampled, scrubbed, and tagged with
@@ -42,7 +46,9 @@ func build(cfg Config, output string) (*zap.Logger, error) {
 	if err != nil {
 		return nil, err
 	}
-	logger, err := zc.Build(zap.WrapCore(func(c zapcore.Core) zapcore.Core { return NewRefScrubCore(c, cfg.Refs) }))
+	logger, err := zc.Build(zap.WrapCore(func(c zapcore.Core) zapcore.Core {
+		return NewShapingCore(c, append(append([]Rule{}, cfg.Rules...), DefaultRules(cfg.Refs)...)...)
+	}))
 	if err != nil {
 		return nil, fmt.Errorf("logging: building the logger: %w", err)
 	}
