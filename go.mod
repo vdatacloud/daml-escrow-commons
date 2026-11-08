@@ -6,6 +6,7 @@ toolchain go1.27.2
 
 require (
 	github.com/coreos/go-oidc/v3 v3.21.0
+	github.com/go-chi/chi/v5 v5.5.0
 	github.com/go-jose/go-jose/v4 v4.1.4
 	github.com/xeipuuv/gojsonschema v1.2.0
 	go.opentelemetry.io/otel v1.47.0
