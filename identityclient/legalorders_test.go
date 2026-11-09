@@ -51,3 +51,10 @@ func TestErasureRequestWireNames(t *testing.T) {
 		t.Errorf("verify %s", b)
 	}
 }
+
+func TestSigninWireNames(t *testing.T) {
+	b, _ := json.Marshal(SigninActionRequest{Email: "a@b", Case: "c", Action: SigninUnlock, Method: "m"})
+	if string(b) != `{"email":"a@b","case":"c","action":"unlock","method":"m"}` {
+		t.Fatalf("%s", b)
+	}
+}
