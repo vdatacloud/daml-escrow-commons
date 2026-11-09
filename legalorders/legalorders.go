@@ -173,9 +173,10 @@ type RecordedEvent struct {
 // Lifted is what lifting did: identity's holds released, and the objects
 // whose legal holds were lifted or are still held for another open order.
 // ObjectsError, when set, says the order is lifted but its objects aren't
-// released yet.
+// released yet: lift again, which only releases them (AlreadyLifted).
 type Lifted struct {
 	Case            string `json:"case" validate:"required"`
+	AlreadyLifted   bool   `json:"alreadyLifted,omitempty"`
 	HoldsReleased   int    `json:"holdsReleased" validate:"required"`
 	ObjectsReleased int    `json:"objectsReleased" validate:"required"`
 	ObjectsKept     int    `json:"objectsKept" validate:"required"`
