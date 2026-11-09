@@ -32,6 +32,10 @@ func WithLogger(l *zap.Logger) Option { return func(o *options) { o.logger = l }
 // (from its environment) whether to pass it, and must never in production.
 // The client policy applies to a bypass request only when it names a client
 // (X-Dev-Client), so dev flows keep working and the guard can still be tried.
+// A request that carries a JWT bearer token and no X-Dev-User is not a bypass
+// request: when the middleware has a verifier, the token is verified and its
+// own scopes apply, so a real sign-in is never silently widened to the dev
+// scopes (daml-escrow PLAN.md Phase 104).
 func WithDevBypass(scopes ...string) Option {
 	return func(o *options) { o.devBypass, o.devScopes = true, scopes }
 }
@@ -47,11 +51,12 @@ func Middleware(verifier TokenVerifier, opts ...Option) func(http.Handler) http.
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			var p Principal
-			if o.devBypass {
+			raw, hasBearer := strings.CutPrefix(r.Header.Get("Authorization"), "Bearer ")
+			hasBearer = hasBearer && raw != ""
+			if o.devBypass && (r.Header.Get("X-Dev-User") != "" || !hasBearer || verifier == nil || !looksLikeJWT(raw)) {
 				p = devPrincipal(r, o.devScopes)
 			} else {
-				raw, ok := strings.CutPrefix(r.Header.Get("Authorization"), "Bearer ")
-				if !ok || raw == "" {
+				if !hasBearer {
 					apierror.Write(w, r, apierror.New(http.StatusUnauthorized, apierror.CodeUnauthenticated, "sign-in required"))
 					return
 				}
@@ -73,6 +78,10 @@ func Middleware(verifier TokenVerifier, opts ...Option) func(http.Handler) http.
 		})
 	}
 }
+
+// looksLikeJWT: a signed JWT's three dot-separated parts. Dev callers' static
+// tokens (dev-identity-token, bypass-token-<email>) aren't, and stay dev.
+func looksLikeJWT(raw string) bool { return strings.Count(raw, ".") == 2 }
 
 func devPrincipal(r *http.Request, scopes []string) Principal {
 	email := r.Header.Get("X-Dev-User")

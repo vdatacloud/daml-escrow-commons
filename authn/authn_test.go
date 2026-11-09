@@ -152,6 +152,7 @@ func TestMiddleware(t *testing.T) {
 	policy, _ := NewClientPolicy(map[string][]string{"platform:admin": {console}})
 	person := Principal{Subject: "00uPerson", Scopes: []string{"openid", "platform:admin"}}
 	bearer := map[string]string{"Authorization": "Bearer x"}
+	jwt := map[string]string{"Authorization": "Bearer h.p.s"}
 
 	run := func(v TokenVerifier, hdr map[string]string, opts ...Option) (*httptest.ResponseRecorder, Principal) {
 		var seen Principal
@@ -204,6 +205,33 @@ func TestMiddleware(t *testing.T) {
 		_, seen := run(nil, map[string]string{"X-Dev-User": "Op@Example.com"}, WithDevBypass("platform:admin"), WithClientPolicy(policy))
 		if !seen.DevBypass || !seen.HasScope("platform:admin") || seen.Subject != "dev-op-example-com" {
 			t.Fatalf("%+v", seen)
+		}
+	})
+	t.Run("dev bypass verifies a real token sent without X-Dev-User", func(t *testing.T) {
+		signedIn := Principal{Subject: "00uPerson", ClientID: console, Scopes: []string{"platform:admin"}}
+		_, seen := run(fakeVerifier{p: signedIn}, jwt, WithDevBypass("platform:admin", "system:admin"), WithClientPolicy(policy))
+		if seen.DevBypass || seen.Subject != "00uPerson" || seen.HasScope("system:admin") || !seen.HasScope("platform:admin") {
+			t.Fatalf("%+v", seen)
+		}
+		rec, _ := run(fakeVerifier{err: errors.New("bad")}, jwt, WithDevBypass("platform:admin"))
+		if rec.Code != http.StatusUnauthorized {
+			t.Fatalf("an invalid real token under bypass: %d", rec.Code)
+		}
+	})
+	t.Run("dev bypass without a verifier, or with X-Dev-User, stays dev", func(t *testing.T) {
+		_, seen := run(nil, bearer, WithDevBypass("platform:admin"))
+		if !seen.DevBypass || !seen.HasScope("platform:admin") {
+			t.Fatalf("no verifier: %+v", seen)
+		}
+		_, seen = run(fakeVerifier{err: errors.New("not a JWT")}, map[string]string{"Authorization": "Bearer dev-identity-token"},
+			WithDevBypass("platform:admin"))
+		if !seen.DevBypass || !seen.HasScope("platform:admin") {
+			t.Fatalf("static dev token: %+v", seen)
+		}
+		_, seen = run(fakeVerifier{p: person}, map[string]string{"Authorization": "Bearer h.p.s", "X-Dev-User": "op@example.com"},
+			WithDevBypass("platform:admin"))
+		if !seen.DevBypass || seen.Subject != "dev-op-example-com" {
+			t.Fatalf("X-Dev-User: %+v", seen)
 		}
 	})
 	t.Run("dev bypass naming a client is guarded", func(t *testing.T) {
