@@ -39,3 +39,15 @@ func TestLegalOrderWireNames(t *testing.T) {
 		t.Fatalf("decoded %+v", o)
 	}
 }
+
+// PLAN.md Phase 104.8: the erasure queue's JSON names are identity's.
+func TestErasureRequestWireNames(t *testing.T) {
+	b, _ := json.Marshal(SubmitErasureRequest{Email: "e", Channel: "email", ReceivedOn: "2026-11-09", Case: "c"})
+	if string(b) != `{"email":"e","channel":"email","receivedOn":"2026-11-09","case":"c"}` {
+		t.Errorf("submit %s", b)
+	}
+	b, _ = json.Marshal(VerifyErasureRequest{ID: 7, Method: "m"})
+	if string(b) != `{"id":7,"method":"m"}` {
+		t.Errorf("verify %s", b)
+	}
+}
