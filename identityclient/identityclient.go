@@ -29,11 +29,49 @@ import (
 type Client struct {
 	baseURL    string
 	token      string
+	tokens     TokenSource
 	httpClient *http.Client
 }
 
-func New(baseURL, token string) *Client {
-	return &Client{baseURL: baseURL, token: token, httpClient: &http.Client{}}
+// TokenSource returns the bearer token for a request: a service's OAuth2
+// client-credentials token, fetched and refreshed by the caller's source.
+type TokenSource func(ctx context.Context) (string, error)
+
+// Option configures a Client.
+type Option func(*Client)
+
+// WithTokenSource asks src for the bearer token on every request, in place of
+// New's fixed token: a deployed service's tokens are short-lived, so a fixed
+// one would expire under it. An error from src fails the request.
+func WithTokenSource(src TokenSource) Option {
+	return func(c *Client) { c.tokens = src }
+}
+
+// New is a client for the identity service at baseURL that sends token as its
+// bearer token (none when empty), unless an option says otherwise.
+func New(baseURL, token string, opts ...Option) *Client {
+	c := &Client{baseURL: baseURL, token: token, httpClient: &http.Client{}}
+	for _, opt := range opts {
+		opt(c)
+	}
+	return c
+}
+
+// authorize sets req's bearer token: the token source's when there is one,
+// else the fixed token, else none.
+func (c *Client) authorize(req *http.Request) error {
+	token := c.token
+	if c.tokens != nil {
+		t, err := c.tokens(req.Context())
+		if err != nil {
+			return fmt.Errorf("identityclient: getting a service token: %w", err)
+		}
+		token = t
+	}
+	if token != "" {
+		req.Header.Set("Authorization", "Bearer "+token)
+	}
+	return nil
 }
 
 // Identity mirrors daml-escrow-identity's response shape. DamlUserID/
@@ -110,8 +148,8 @@ func (c *Client) ManagesIdentity(ctx context.Context, managerOktaSub, targetOkta
 	if err != nil {
 		return false, fmt.Errorf("identityclient: building manages-identity request: %w", err)
 	}
-	if c.token != "" {
-		req.Header.Set("Authorization", "Bearer "+c.token)
+	if err := c.authorize(req); err != nil {
+		return false, err
 	}
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
@@ -160,8 +198,8 @@ func (c *Client) CreatePendingInvitation(ctx context.Context, email, invitedByOk
 	if err != nil {
 		return nil, fmt.Errorf("identityclient: building pending invitation request: %w", err)
 	}
-	if c.token != "" {
-		req.Header.Set("Authorization", "Bearer "+c.token)
+	if err := c.authorize(req); err != nil {
+		return nil, err
 	}
 	req.Header.Set("Content-Type", "application/json")
 	resp, err := c.httpClient.Do(req)
@@ -183,8 +221,8 @@ func (c *Client) CreatePendingInvitation(ctx context.Context, email, invitedByOk
 // local wrapper) reaches identity responses through the public methods
 // above, not by calling this directly.
 func (c *Client) doIdentityRequest(req *http.Request) (*Identity, error) {
-	if c.token != "" {
-		req.Header.Set("Authorization", "Bearer "+c.token)
+	if err := c.authorize(req); err != nil {
+		return nil, err
 	}
 	req.Header.Set("Content-Type", "application/json")
 
