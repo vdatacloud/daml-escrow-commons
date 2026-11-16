@@ -218,3 +218,27 @@ func TestLedgerCommandEvent_Traffic(t *testing.T) {
 		})
 	}
 }
+
+func TestRetentionEvent_Validate(t *testing.T) {
+	closed := time.Date(2026, 11, 16, 0, 0, 0, 0, time.UTC)
+	ok := RetentionEvent{TenantID: "t", EscrowID: "e", Institution: "demo-bank", Tier: RetentionTierCold, Bytes: 250000,
+		Period: RetentionPeriod(closed), ClosedAt: closed, RetainUntil: closed.AddDate(7, 0, 0), OccurredAt: closed}
+	if err := ok.Validate(); err != nil {
+		t.Fatalf("valid event refused: %v", err)
+	}
+	for name, mut := range map[string]func(*RetentionEvent){
+		"no tenant":            func(e *RetentionEvent) { e.TenantID = "" },
+		"no institution":       func(e *RetentionEvent) { e.Institution = "" },
+		"unknown tier":         func(e *RetentionEvent) { e.Tier = "glacier" },
+		"negative bytes":       func(e *RetentionEvent) { e.Bytes = -1 },
+		"period not a month":   func(e *RetentionEvent) { e.Period = "2026-11-16" },
+		"no closedAt":          func(e *RetentionEvent) { e.ClosedAt = time.Time{} },
+		"retainUntil at close": func(e *RetentionEvent) { e.RetainUntil = e.ClosedAt },
+	} {
+		e := ok
+		mut(&e)
+		if e.Validate() == nil {
+			t.Errorf("%s: accepted", name)
+		}
+	}
+}

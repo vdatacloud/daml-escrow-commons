@@ -319,3 +319,66 @@ func (e SettlementEvent) validateNetworkFee() error {
 	errs.Add(requireBaseUnits("networkFeeBaseUnits", e.NetworkFeeBaseUnits))
 	return errs.ErrIfAny()
 }
+
+// RetentionTier is where a retained record is kept (daml-escrow PLAN.md
+// 110.6): online on the participant, warm in a query store, or cold in the
+// write-once archive (the ledger trail, documents and the DARs to read them).
+type RetentionTier string
+
+const (
+	RetentionTierOnline RetentionTier = "online"
+	RetentionTierWarm   RetentionTier = "warm"
+	RetentionTierCold   RetentionTier = "cold"
+)
+
+// RetentionEvent (daml-escrow PLAN.md 110.6) records that Data Cloud holds a
+// closed escrow's records for an institution, a metered custody service:
+// one event when retention starts (the escrow's close) and one per month
+// while it is held, until RetainUntil. Period ("2006-01", UTC) is the month
+// the event covers; with TenantID, EscrowID, Institution and Tier it is the
+// event's identity, so a re-sent month is stored once. Bytes is the
+// escrow's share of what is kept in Tier, a raw fact: the rating layer
+// prices the service, never this event. ClosedAt and RetainUntil (ClosedAt
+// plus the institution's retention period) bound the hold; OccurredAt in
+// UTC, as for the other event types.
+type RetentionEvent struct {
+	TenantID    string        `json:"tenantId"`
+	EscrowID    string        `json:"escrowId"`
+	Institution string        `json:"institution"`
+	Tier        RetentionTier `json:"tier"`
+	Bytes       int64         `json:"bytes"`
+	Period      string        `json:"period"`
+	ClosedAt    time.Time     `json:"closedAt"`
+	RetainUntil time.Time     `json:"retainUntil"`
+	OccurredAt  time.Time     `json:"occurredAt"`
+}
+
+// Validate checks RetentionEvent's required fields.
+func (e RetentionEvent) Validate() error {
+	var errs validate.Errors
+	errs.Add(validate.RequireNonEmpty("tenantId", e.TenantID))
+	errs.Add(validate.RequireNonEmpty("escrowId", e.EscrowID))
+	errs.Add(validate.RequireNonEmpty("institution", e.Institution))
+	errs.Add(validate.RequireOneOf("tier", string(e.Tier), string(RetentionTierOnline), string(RetentionTierWarm), string(RetentionTierCold)))
+	if e.Bytes < 0 {
+		errs.Add(fmt.Errorf("bytes must not be negative, got %d", e.Bytes))
+	}
+	if _, err := time.Parse("2006-01", e.Period); err != nil {
+		errs.Add(fmt.Errorf("period must be a month as 2006-01, got %q", e.Period))
+	}
+	for _, f := range []struct {
+		name string
+		at   time.Time
+	}{{"closedAt", e.ClosedAt}, {"retainUntil", e.RetainUntil}, {"occurredAt", e.OccurredAt}} {
+		if f.at.IsZero() {
+			errs.Add(validate.RequireNonEmpty(f.name, ""))
+		}
+	}
+	if !e.ClosedAt.IsZero() && !e.RetainUntil.IsZero() && !e.RetainUntil.After(e.ClosedAt) {
+		errs.Add(fmt.Errorf("retainUntil must be after closedAt"))
+	}
+	return errs.ErrIfAny()
+}
+
+// RetentionPeriod is the month t falls in, as RetentionEvent.Period.
+func RetentionPeriod(t time.Time) string { return t.UTC().Format("2006-01") }
