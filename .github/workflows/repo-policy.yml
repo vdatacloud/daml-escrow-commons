@@ -1,0 +1,74 @@
+# Shared by every daml-escrow repo (docs/REPOSITORIES.md); the source is daml-escrow. Edit it there, then copy
+# it over unchanged.
+#
+# Signed commits: every commit in a PR must be Verified on GitHub and carry Signed-off-by (merge commits are
+# exempt from the sign-off). Shared files: outside daml-escrow, the files below must match its main. It is
+# private, so that job reads it with ESCROW_READ_TOKEN (Contents: read on daml-escrow only); without the
+# secret it warns and passes.
+name: repo-policy
+
+on:
+  pull_request:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  signed-commits:
+    name: Signed commits
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check every commit in the PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          gh api --paginate "repos/${REPO}/pulls/${PR}/commits" \
+            --jq '.[] | [.sha[0:12], (.commit.verification.verified|tostring), (.parents|length|tostring),
+                  ((.commit.message|test("(?m)^Signed-off-by: "))|tostring)] | @tsv' > commits.tsv
+          bad=0
+          while IFS=$'\t' read -r sha verified parents signedoff; do
+            if [ "$verified" != "true" ]; then
+              echo "::error::${sha} is not Verified: sign commits (commit.gpgsign=true, key registered on GitHub)."; bad=1
+            fi
+            if [ "$parents" = "1" ] && [ "$signedoff" != "true" ]; then
+              echo "::error::${sha} has no Signed-off-by: commit with -s."; bad=1
+            fi
+          done < commits.tsv
+          echo "$(wc -l < commits.tsv) commit(s) checked."
+          exit $bad
+
+  shared-files:
+    name: Shared files
+    if: github.repository != 'vdatacloud/daml-escrow'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Compare with daml-escrow main
+        env:
+          ESCROW_READ_TOKEN: ${{ secrets.ESCROW_READ_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${ESCROW_READ_TOKEN}" ]; then
+            echo "::warning::ESCROW_READ_TOKEN is not set; skipping the shared-files check."
+            exit 0
+          fi
+          bad=0
+          for f in docs/REPOSITORIES.md .claude/skills/github-ci/SKILL.md \
+                   .github/pull_request_template.md .github/workflows/repo-policy.yml; do
+            curl -fsSL -H "Authorization: Bearer ${ESCROW_READ_TOKEN}" -H "Accept: application/vnd.github.raw" \
+              "https://api.github.com/repos/vdatacloud/daml-escrow/contents/${f}?ref=main" -o source.tmp
+            if ! diff -u source.tmp "$f"; then
+              echo "::error file=${f}::Out of date with daml-escrow. Copy its ${f} over this file unchanged."
+              bad=1
+            fi
+          done
+          [ "$bad" = 0 ] && echo "Shared files match daml-escrow main."
+          exit $bad
