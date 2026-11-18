@@ -50,5 +50,6 @@ The jobs a repo runs are the files in its `.github/workflows/`; read them rather
 ## Branch protection
 
 `main` is protected by a repository ruleset (PR required, no approval needed yet, signed commits, required checks,
-no force push or deletion; GitHub Actions may bypass so the graph commit can land). Check it with
+no force push or deletion). Only the org's `vdatacloud-graph-bot` app may bypass it, so the graph workflow can
+push its commit (a one-hour token from the `GRAPH_APP_ID` and `GRAPH_APP_PRIVATE_KEY` org secrets). Check it with
 `gh api repos/{owner}/{repo}/rulesets`. Changing it is a user decision: propose it, don't apply it unasked.

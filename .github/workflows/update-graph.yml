@@ -13,7 +13,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read  # the push uses the graph bot's token, not GITHUB_TOKEN
 
 concurrency:
   group: update-graph
@@ -23,11 +23,22 @@ jobs:
   build-graph:
     runs-on: ubuntu-26.04
     steps:
+      # main is protected by a ruleset that only the org's vdatacloud-graph-bot app may bypass, so the graph
+      # commit is pushed with a one-hour token minted from it (GRAPH_APP_ID, GRAPH_APP_PRIVATE_KEY: org secrets,
+      # Contents read and write), not with GITHUB_TOKEN.
+      - name: Mint the graph bot token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.GRAPH_APP_ID }}
+          private-key: ${{ secrets.GRAPH_APP_PRIVATE_KEY }}
+
       - name: Checkout Code
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
           ref: main
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
