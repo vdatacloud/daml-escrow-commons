@@ -22,5 +22,15 @@
         ]
       }
     ]
+  },
+  "permissions": {
+    "ask": [
+      "Edit(.github/workflows/**)",
+      "Write(.github/workflows/**)",
+      "Edit(scripts/install-git-hooks.sh)",
+      "Write(scripts/install-git-hooks.sh)",
+      "Edit(.git/hooks/**)",
+      "Write(.git/hooks/**)"
+    ]
   }
 }
